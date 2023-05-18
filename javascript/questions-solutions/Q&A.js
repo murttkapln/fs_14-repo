@@ -13,15 +13,15 @@ console.log(calFahrenheight(30)); // output: 86
 // }
 // console.log(reverseString("hello world")); //output: dlrow olleh
 
+console.log(x("hello world"));
 
 function x (a) {
-    let result =""
+    let result ="";
     for (let i=a.lenght -1; i>=0; i--) {
         result += a[i]
     }
     return result;
 }
-console.log(x("hello world"));
 
 
 
