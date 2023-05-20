@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("./TR-tr-20230417-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+#container {
+    /* width: 90%; */
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: rgba(0, 0, 0, 0.315);
+    text-align: center;
+}
+
+#title {
+    font-family: 'Bowlby One SC', cursive;
+    font-size: 50px;
+    letter-spacing: 0.05em;
+}
+span {
+    color: red;
+}
+
+
+
+.survey-form-container {
+    background-color: rgba(0, 0, 0, 0.815);
+    width: 33%;
+    margin: auto;
+    padding: 30px 40px;
+}

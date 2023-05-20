@@ -1,0 +1,134 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    /* color: white; */
+    font-size: 1.5rem;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #35424A;
+    width: 100%;
+    min-height: 7vh;
+    padding: 1rem;
+    border-bottom: 3px solid #9e4f85;
+    
+}
+
+.header__link {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.header__link a {
+    text-decoration: none;
+    color: white;
+}
+.header span {
+    color: #9e4f85;
+}
+
+.main {
+    background-image: url(../img/showcase.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 50vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main h2 {
+    margin-bottom: 2rem;
+    font-weight: 400;
+    font-size: 3rem;
+    letter-spacing: 0.2rem;
+}
+
+.subscribe {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    min-height: 7vh;
+    background-color: #35424A;
+    color: white;
+}
+
+.subscribe__right button {
+    font-size: 14px;
+    padding: 0.4 rem 1.5rem;
+    background-color: orangered;
+}
+.subscribe__right input {
+    width: 28rem;
+    padding: 0.4rem;
+    border: none;
+    outline: none;
+    text-transform: capitalize;
+    border-radius: 2px;
+}
+.article {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem;
+    text-align: center;
+}
+.article img {
+    width: 30%;
+    margin-bottom: 1rem;
+}
+.article h3 {
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.footer {
+    background-color:#35424A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.footer p {
+    margin-bottom: 1.2rem;
+}
+
+/*? Services.html */
+
+aside.services {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 1rem;
+}
+
+aside.services h5 {
+    margin: 2rem;
+    padding: 20px;
+}
+
+.box {
+    background: #dedede;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 4px 5px 5px rgb(173, 165, 165);
+}
