@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.container__header--left {
+    width: 200px;
+    display: flex;
+}
+
+.logo{
+    width: 100%;
+}
+.container__header--right {
+    display: flex;
+    
+}
+.container__header--right #second-btn {
+    flex: 80%;
+}
+#first-btn {
+    flex: 20%;
+}
