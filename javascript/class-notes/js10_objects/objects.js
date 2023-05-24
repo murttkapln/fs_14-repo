@@ -153,7 +153,7 @@ const personelAges = team.map((person) => person.age + 1)
 console.log(personelAges)
 
 //* Ornek3: name ve surname'leri birlestirip buyuk harfe ceviren ve
-//* bunu fullName key'i olarak saklayan, ayni zamanda age degerlerini 5
+//* bunu fullName key'i ile saklayan, ayni zamanda age degerlerini 5
 //* arttirarak age key'ine saklayan ve olusan diziyi donduren kodu yazınız.
 
 const teamFullName = team.map((p) => {
