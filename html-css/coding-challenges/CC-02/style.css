@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box
+    margin: 0;
+}
+
+.container {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr)  80px;
+}
+
+.content {
+    background-color: rgba(47, 29, 212, 0.822);
+    margin: 10px;
+    color: white;
+}
+.c1 {
+    grid-column: span 4;
+}
+.c2 {
+    grid-row: span 2;
+}
+.c3 {
+    grid-row: span 2;
+}
+.c4 {
+    grid-row: span 2;
+}
+.c5 {
+    grid-row: span 3;
+}
+.c6 {
+    grid-column: span 3;
+}
+.c7 {
+    grid-column: span 4;
+}
