@@ -136,17 +136,32 @@ const carData = [
 ]
 
 
-// 1- Rengi gümüş olan arabaları bir listeye ata.
+//* 1- Rengi gümüş olan arabaları bir listeye ata.
+
+// let newList = carData.filter((v,i,a) => v.color == "Silver")
+
+// console.log(newList);
+
+// let silverCars = []
+// const silver = carData.forEach((a) => {
+//   if (a.color === 'Silver') {
+//     silverCars.push(a.make)
+//   }
+//   return silverCars
+// })
+// console.log(silverCars);
+
+//* 2- 2015 yılından sonra üretilmiş arabaları bir listeye ata.
+
+let newList = carData.filter((v,i,a) => v.year > 2015)
+console.log(newList);
 
 
 
+//* 3- Arabaların ortalama kilometre değerini hesapla.
 
-// 2- 2015 yılından sonra üretilmiş arabaları bir listeye ata.
+// let newList1 = carData.reduce )
 
-
-
-
-// 3- Arabaların ortalama kilometre değerini hesapla.
 
 
 
@@ -159,10 +174,19 @@ const carData = [
 
 
 
-// 5- Farklı uzunlukta olması muhtemel iki listeden İlki key'lerden, ikincisi ise Value'lardan oluşmaktadır. Yine key ve value'lardan oluşan bir obje döndüren bir fonksiyon yazınız. Yeterli value yoksa, kalan keylerin değeri null olmalıdır. Yeterli anahtar yoksa, değerlerin geri kalanını yok sayın.
-// keys = ['a', 'b', 'c', 'd']
-// values = [1, 2, 3]
-// createDict(keys, values) // returns {'a': 1, 'b': 2, 'c': 3, 'd': null}
+//* 5- Farklı uzunlukta olması muhtemel iki listeden İlki key'lerden, ikincisi ise Value'lardan oluşmaktadır. Yine key ve value'lardan oluşan bir obje döndüren bir fonksiyon yazınız. Yeterli value yoksa, kalan keylerin değeri null olmalıdır. Yeterli anahtar yoksa, değerlerin geri kalanını yok sayın.
+// returns {'a': 1, 'b': 2, 'c': 3, 'd': null}
+ keys = ['a', 'b', 'c', 'd']
+ values = [1, 2, 3]
+function  createDict(keys, values){
+let obj = []
+keys.forEach((e,i) => {
+  obj[e] = values[i]
+});
+  return obj
+  
+}  
+console.log(createDict(keys,values));
 
 
 
