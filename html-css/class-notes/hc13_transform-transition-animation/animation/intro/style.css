@@ -1,0 +1,49 @@
+header {
+  text-align: center;
+  margin: 1rem;
+}
+
+code {
+  padding-top: 1rem;
+  font-size: 1.2rem;
+  color: red;
+}
+
+main {
+  margin: 1rem;
+  > ul {
+    padding: 2rem;
+    line-height: 30px;
+    font-size: 1.2rem;
+    text-align: justify;
+    word-break: break-all;
+    > li {
+      list-style-type: decimal-leading-zero;
+      & u {
+        font-weight: 700;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
+
+.outer {
+  background-color: rgb(114, 29, 46);
+  width: 500px;
+  height: 500px;
+  display: flex;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+}
+
+.inner {
+  background-color: gray;
+  width: 50%;
+  height: 50%;
+}
+
+
+
