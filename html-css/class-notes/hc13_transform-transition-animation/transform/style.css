@@ -16,7 +16,8 @@
   padding: 0.5rem;
 }
 .navbar img:hover {
-  height: 150px;
+  /* height: 150px; */ /*? verilen height değeri diğer elementlere etki ederken scale() değişikliğe sebebiyet vermez. */
+  transform: scale(1.9) rotate(45deg) ;
 }
 
 /* notes */
@@ -41,6 +42,96 @@ li u {
 }
 
 
+.text {
+  text-align: center;
+  margin:  2rem auto;
+  width: 50vw;
+  font-size: 2rem;
+}
 
+.rotate-x {
+  background: chocolate;
+  transform: rotateX(180deg);
+}
+
+.rotate-y {
+  background: crimson;
+  transform: rotateY(180deg);
+}
+.rotate {
+  background: greenyellow;
+  transform: rotate(45deg);
+}
+.scale-x {
+  background: cornflowerblue;
+  transform: scaleX(2);
+}
+
+.scale-y {
+  background: darkorange;
+  transform: scaleY(3);
+}
+.scale {
+  background: deeppink;
+  transform: scale(1.1);
+  &:hover {
+    transform: scale(3);
+    /* transform: scale(1.1); */ /*?  hover'a averilen scale değeri ile elemente verilen scale değeri aynı olursa değişim görülmez */
+  }
+}
+
+
+/* ************* -TRANSFORM- TRANSLATE ********* */
+/* Translate öteleme,hareket ettirmek için kullanılır. */
+
+.translate-div {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & h1 {
+    text-align: center;
+  }
+  .box {
+    width: 100px;
+    height: 50px;
+  }
+}
+
+.translate-x {
+  background: #b4cf66;
+  &:hover {
+    transform: translateX(-100px);
+  }
+}
+.translate-y {
+  background: #ffec5c;
+  transform: translateY(150px);
+  /* transform: translateY(-250px); */
+}
+.translate {
+  background: #ff5a33;
+  &:hover {
+    transform: translate(50px, 350px);
+  }
+}
+
+
+/* ******************    -TRANSFORM - SKEW ********************** */
+
+
+
+.skew-div {
+  margin: 2rem;
+  text-align: center;
+  .image {
+    border: 1px solid saddlebrown;
+    border-radius: 13px;
+    width: 150px;
+    transform: skew((45deg));
+    /* transform: skewY((45deg)); */
+    /* transform: skewX((45deg)); */
+  }
+}
 
 
