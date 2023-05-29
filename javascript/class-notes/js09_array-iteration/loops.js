@@ -7,7 +7,11 @@ console.log("**** LOOPS IN ARRAYS ***")
 //?-------------- ÖRNEK -------------------
 //? grades'in ortalamasini hesaplayiniz.
 // const grades = [55, 77, 23, 89, 100, 44, 33, 45]
-
+//? REDUCE METHOD
+// let sum = grades.reduce((value, index, Array) => (value + index), 0)
+// console.log(sum);
+// console.log("AVG:", (sum / grades.length));
+//? FOR LOOP
 // let sum = 0
 // for (let i = 0; i < grades.length; i++) {
 //   sum += grades[i]
@@ -22,6 +26,18 @@ console.log("**** LOOPS IN ARRAYS ***")
 // const lessThan50 = []
 // const equalOrBiggerThan50 = []
 
+//? forEach
+/* let x = []
+let y = []
+grades.forEach((a) => {
+  if (a < 50) {
+    x.push(a)
+  }else{
+    y.push(a)
+  }
+})
+console.log("x-->",x, "y-->", y); */
+//? for loop 
 // for (let j = 0; j < grades.length; j++) {
 //   if (grades[j] < 50) {
 //     lessThan50.push(grades[j])
