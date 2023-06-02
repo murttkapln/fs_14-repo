@@ -143,6 +143,73 @@ console.log(sayilar1);
 let concat = isimler.concat(sayilar1)
 console.log(concat);
 
+//* Array.from() string bir ifadeyi Array yapoar
+let arrayFrom = Array.from(`Sezer`)
+console.log(arrayFrom);
+
+//* Array() Array oluşturma
+let aa = Array(5, 2)
+console.log(aa);
+
+let bb = Array(sayilar, 2)
+console.log(bb);    //[Array(2), 2]
+let cc = Array(3) 
+console.log(cc); //[empty × 3]
+
+//* Array.of() Array'e cevirme alternatif 
+let arrayOf = Array.of(1,2,3,4,5)
+console.log(arrayOf); // [1, 2, 3, 4, 5]
+let empty = Array.of(2)
+console.log(empty);  // [2] --> Array methodundan farkı budur
+
+
+//* toString()  string bir ifadeye donusturur.
+
+
+// * join() belirtilen ayracla ayrılmış dizi ögelerinden oluşan bir ifade oluşturur
+let join = isimler.join(` + `)
+console.log(join);  // Noah + ali + hasan + ayse
+
+//* sort() sıralama yapar  --- ana diziyi degistirir
+let sort = sayilar1.sort((a,b) => a-b) // bu fonsksiyona göre islev yapar
+console.log(a);
+console.log(sayilar1);
+
+//* reverse() kaynak diziyi bozar
+let reverse = sayilar1.reverse()
+console.log(reverse); // [200, 100, 100, 84, 50, 41, 41, 35, 8, 3, 2, 1]
+console.log(sayilar1); // [200, 100, 100, 84, 50, 41, 41, 35, 8, 3, 2, 1]
+
+//* reduce()
+
+const ogrenciler2 = [
+    {id : 12, isim : "sezer", yas : 30, maas: 20000},
+    {id : 22, isim : "hasan", yas : 15, maas: 40000},
+    {id : 32, isim : "fatma", yas : 55, maas: 20000},
+    {id : 13, isim : "nuriye", yas : 19, maas: 45000},
+    {id : 92, isim : "kemal", yas : 45, maas: 80000},
+    {id : 15, isim : "mustafa", yas : 75, maas: 70000},
+    {id : 44, isim : "ceren", yas : 30, maas: 50000}
+];
+
+let sum = ogrenciler2.filter((x) => x.id % 2 === 0 && x.yas > 40).reduce((x,y)=> x + y.yas, 0)
+console.log(sum);
+
+// let yas = ogrenciler2.map((x) => x.yas).reduce((x,y)=> (x+y)) / (ogrenciler2.length).toFixed()
+// console.log(yas);
+
+// console.log(ogrenciler2.length);
+
+
+
+
+
+// let reduce = sayilar1.reduce((x,y)=> x + y,0)
+// console.log(reduce);
+
+// let sum = ogrenciler.map((a)=> a.yas)
+// console.log(sum);
+
 // // ? Declaration
 // ahmet()
 // function ahmet () {
