@@ -6,6 +6,8 @@ myHeader.style.backgroundColor = "red"
 myHeader.style.color = "white"
 
 
+
+
 const addButton = document.getElementById("btn")
 console.log(addButton);
 
@@ -15,6 +17,10 @@ addButton.style.borderRadius = "10px"
 addButton.style.padding = ".7rem"
 
 addButton.value = "SAVE"
+const başlik = document.getElementById("heading2")
+console.log(başlik);
+başlik.textContent = "Değişiklik yapılmıştır"
+console.log(başlik.innerHTML);
 
 const h1 = document.getElementById("heading1")
 console.log(h1);
@@ -59,10 +65,12 @@ console.log(lists);
 const listsArr = [...lists]
 myListsArr.forEach((li) => console.log(li))
 
+lists[2].innerText = "haloooo"
+lists[1].textContent = "Aloha"
 
-lists[2].innerHTML = `<h1>JavaScript</h1>`
-lists[3].innerHTML = `<h1>React</h1>`
-lists[4].innerHTML = `<h1>VUE</h1>`
+// lists[2].innerHTML = `<h1>JavaScript</h1>`
+// lists[3].innerHTML = `<h1>React</h1>`
+// lists[4].innerHTML = `<h1>VUE</h1>`
 
 
 const header = document.querySelector("header")
@@ -82,6 +90,8 @@ console.log(buton);
 
 const react = document.querySelector("section.item-list ul li:nth-child(4)")
 console.log(react);
+const haloo = document.querySelector("section.item-list ul li:nth-child(3)")
+console.log(haloo);
 
 
 const listeler = document.querySelectorAll("li")
@@ -98,6 +108,11 @@ for (const liste of listeler){
 
 // * 1- Yukarı Yönde
 
+const btn = document.querySelector("#btn")
+console.log(btn);
+console.log(btn.parentElement);
+console.log(btn.parentElement.parentElement);
+
 const addItem1 = document.querySelector(".add-item") 
 console.log(addItem1);
 
@@ -107,7 +122,7 @@ console.log(addItem1.parentNode.parentNode); //? Body
 const list1 = document.querySelector(".list")
 console.log(list1.textContent);
 console.log(list1.closest("section"));
-
+console.log(list1.closest("body"))
 console.log(list1.closest("body").querySelector("header h1").innerText);
 
 // * 1- Asagı Yönde
