@@ -1,0 +1,145 @@
+/*/ partial dosyaları @import ifadesiyle ana dosyamıza import edip kullanabiliriz*/
+
+@import "reset";
+@import "variables";
+
+
+body {
+    background-color: $bgColor;/*değişkenşi kullanırkende aynı şekilde $ işaretini kullanıyoruz*/
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    color: $fontColor;
+}
+
+/** Nesting */
+
+header {
+    background-color: $navBgColor;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    img {
+        width: 80px;
+        border: $myBorder;
+        border-radius: 11px;
+        cursor: pointer;
+        &:hover {/*! içinde bulunduğumuz lementi & ile refer edebiliriz*/
+            // transform: scale(1.1);
+            scale:1.1;
+        }
+    }
+    ul{
+        list-style-type: none;
+        li {
+            padding: 0.5rem;
+            display: inline-block;
+            a {
+                text-decoration: none;
+                color: $fontColor;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $bannerBgColor;
+    padding: 1rem;
+    line-height: 2rem;
+    aside {
+        button{
+            padding: 0.5rem;
+            border: none;
+            border-radius: 7px;
+            background-color: $buttonColor;
+            cursor: pointer;
+            transition: all  0.4s;
+            &:hover {
+                background-color: $bgColor;
+                scale: 1.2;
+
+            }
+        }
+    }
+    img{
+        width: 30%;
+    }
+}
+
+//? -----------  Mixin     -------------
+@mixin myBox($backColor, $color) {
+    background-color: $backColor;
+    color: $color;
+    text-align: center;
+    width: 25%;
+    height: 14rem;
+    border: $myBorder;
+    border-radius: 1rem;
+}
+
+.cards {
+    display: flex;
+    gap: 0.5rem;
+    .card1 {
+        @include myBox(yellow, darkblue)
+    }
+    .card2 {
+        @include myBox(red, yellow)
+    }
+    .card3 {
+        @include myBox(black, white)
+    }
+    .card4 {
+        @include myBox(maroon, darkblue)
+    }
+}
+
+// ? --------------------- @extend ---------------
+
+
+.articles {
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    .article1 {
+        background-color: gray;
+        width: 50%;
+        height: 12rem;
+        border-radius: 5px;
+        padding: 0.5rem;
+    }
+    .article2 {
+        @extend .article1; //? miras alma olayı ile ortak özellikleri aldık
+        background-color: hotpink;
+    }
+}
+
+footer {
+    p {
+        background-color: $bannerBgColor;
+    }
+    .social-icons{
+        display: flex;
+        $textColor: #999990, red, brown, burlywood,tomato;
+        @for $i from 1 through 5 {
+            .social#{$i} {
+                width: 20%;
+                padding: 3px * $i;       
+                background-color: darken(rgb(154,154,180),$i * 5);
+                font-size: $i * 1rem;
+                color: nth($textColor, $i);
+                @if 1 * $i / 2 >= 2 {
+                    text-decoration: underline;
+                }
+                @else {
+                    text-decoration: overline;
+                }
+            }
+        }
+    }
+}
