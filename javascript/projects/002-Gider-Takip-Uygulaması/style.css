@@ -1,0 +1,41 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container {
+    /* border: 1px solid red; */
+    margin: 2px auto;
+    width: 80%;
+	height: 100%;
+    #table {
+        width: 60%;
+        margin: auto;
+    }
+    #values {
+        width: 18%;
+        display: inline-block;
+        margin-right: 8.7rem;
+        margin-top: 3rem;
+        float: right;
+
+    }
+    
+}
+
+#input {
+    width: 60%;
+    margin: 0 auto;
+}
+form{
+    margin: 2px auto;
+    width: 60%;
+	height: 100%;
+    border-radius: 1rem;
+    #tutar {
+        text-align: left;
+    }
+    #addBtn {
+        margin-top: 1rem;
+    }
+}

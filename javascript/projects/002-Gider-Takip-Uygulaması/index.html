@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="./style.css">
+    <title>Gider Takip Uygulaması</title>
+</head>
+
+<body>
+    <h2 class="text-warning display-6 text-center fw-bold flex-wrap">Aylık Gider Takip Uygulaması</h2>
+    <div class="container">
+
+        <!-- **********İNPUT *********** -->
+        <div id="input" class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Gelir Ekle..." aria-label="Recipient's username"
+                aria-describedby="button-addon2">
+            <button class="btn btn-warning" type="button" id="button-addon2">ADD</button>
+        </div>
+        <!--*----------------- form ----------------->
+        <form class="border text-center p-3">
+            <p class="display-4">Harcama Formu</p>
+            <div class="row g-3 p-2">
+                <div class="col">
+                    <label class="form-label" for="harcama">Harcama Yapılan yer</label>
+                    <input type="text" class="form-control" id="harcama" placeholder="Manav,market,fatura">
+                </div>
+                <div class="col">
+                    <label class="form-label" for="tarih">Tarih</label>
+                    <input type="datetime-local" class="form-control" id="tarih" aria-label="Last name">
+                </div>
+            </div>
+            <div id="tutar" class="col">
+                <label class="form-label" for="harcamaTutarı">Harcanan Miktar</label>
+                <input type="text" class="form-control" id="harcamaTutarı" placeholder="100£">
+            </div>
+            <button id="addBtn" type="submit" class="btn btn-warning">SAVE</button>
+        </form>
+        <!-- *********Table ***************** -->
+
+        <table id="table" class="table table-bordered table-striped-columns">
+            <thead>
+                <tr>
+                    <th scope="col">Tarih</th>
+                    <th scope="col">Harcanan Yer</th>
+                    <th scope="col">Miktar</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+        </table>
+        <div id="values"class="mt-2 d-flex justify-content-end w-75">
+            <table class="table  table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Geliriniz : </th>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Gideriniz : </th>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>Kalan : </th>
+                        <td>0</td>
+                    </tr>
+                </thead>
+              </table>
+        </div>
+
+        
+
+
+        
+    </div>
+
+
+
+
+
+
+    <script src="./lib/fslightbox.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

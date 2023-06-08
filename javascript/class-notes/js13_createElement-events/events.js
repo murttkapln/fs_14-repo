@@ -61,4 +61,10 @@ document.querySelector("#input").addEventListener("keydown", (e) => {
     }
 })
 
+const removeBtn = document.querySelector("#btn2")
+document.querySelector("main").lastChild
 
+removeBtn.addEventListener("click", (e) => {
+  // e.target.parentElement.remove();
+  console.log(removeBtn());
+})
