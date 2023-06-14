@@ -42,9 +42,18 @@ const networkReq = new Promise((resolve, reject) => {
     reject("Ohh no there is a network error");
   }
 });
-
+//? Doğrudan finally kullanımı 
 networkReq
   .then((response) => console.log(response))
-  .then(()=> console.log("2. then"))
-  .catch((err) => document.write(err))
+  .then(() => console.log("2. then"))
+  .catch((err) => document.write(err));
 console.log(networkReq);
+
+try {
+  networkReq.then((response) => console.log(response));
+  console.log("2. then");
+} catch (err) {
+  document.write(err);
+} finally {
+  console.log("Her zaman calisir");
+}
