@@ -19,7 +19,7 @@
 //* Yapilan istek yerine getirilip sonuc degerlerinin dondurulmesi ile kodun calismasi devam eder.
 
 const getNews = async () => {
-    const API_KEY = "8693657eae5940b1a88b1eed7c5c3048"
+    const API_KEY = "1a1a999e0d7240a6bd2dead87bcca78e"
   
     const URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`
   
@@ -33,7 +33,7 @@ const getNews = async () => {
       const data = await res.json()
       renderNews(data.articles)
     } catch (err) {
-      // console.log(error)
+      console.log(error)
       renderError(err)
     }
   }
@@ -47,11 +47,10 @@ const getNews = async () => {
   }
   
   const renderNews = (news) => {
-    console.log(news)
     const newsDiv = document.getElementById("news")
   
     news.map((item) => {
-      const { title, description, content, url, urlToImage } = item //? destructure
+      const { title, content, url, urlToImage } = item //? destructure
       newsDiv.innerHTML += `
       <div class="col-sm-6 col-md-4 col-lg-3">
           <div class="card">
@@ -63,7 +62,7 @@ const getNews = async () => {
               </div>
           </div>
       </div>
-      
+     
       `
     })
   }
