@@ -33,7 +33,7 @@ const getNews = async () => {
       const data = await res.json()
       renderNews(data.articles)
     } catch (err) {
-      console.log(error)
+      console.log(err)
       renderError(err)
     }
   }
