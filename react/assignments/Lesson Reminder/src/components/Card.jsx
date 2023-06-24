@@ -2,11 +2,11 @@ import {data} from "../helper/data";
 
 const Card = () => {
   return (
-    <div className="row justify-content-around align-items-center flex-wrap ">
+    <div className="row justify-content-around align-items-center flex-wrap p-4">
       {data.map((item) => {
         const { id, name, hour, image } = item;
         return (
-          <div key={id} style={{height:"40vh"}} className="col-12 col-md-6 col-lg-4 card flex-row justify-content-around align-items-center">
+          <div key={id} style={{height:"30vh"}} className="col-12 col-md-6 col-lg-4 card flex-row justify-content-around align-items-center">
             <div className="w-25">
               <img className="w-100" src={image} alt="" />
             </div>
