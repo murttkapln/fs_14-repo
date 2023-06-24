@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#heading {
+    background-image: url("https://miro.medium.com/v2/resize:fit:1200/1*odW0CyTVxMVt5s3yhjjOhw.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.description {
+    font-size: 0.8rem;
+    color: crimson;
+    padding: 3px;
+    margin: 4px auto;
+}
+.cat{
+    background-image: url("https://cdn.pixabay.com/photo/2015/04/23/21/59/tree-736877_640.jpg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: fixed;
+}
