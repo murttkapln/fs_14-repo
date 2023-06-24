@@ -1,8 +1,8 @@
-const Name = ({ name }) => {
+const Name = () => {
     //   console.log(props)
     return (
       <div>
-        <p>Hello {name}</p>
+        <p>Hello</p>
       </div>
     )
   }
