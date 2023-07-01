@@ -1,3 +1,4 @@
+/*! -------------- 0- ROOT ---------------- */
 :root {
     --red: #dc3545;
 }
@@ -13,11 +14,50 @@
     cursor: pointer;
 }
 /*! ------------- 2- CAROUSEL --------------- */
+.carousel-item {
+    max-height: calc(100vh - 88px);
+}
+.carousel-caption h5 {
+    color: var(--red);
+    font-size: 2.4rem;
+    text-shadow: 3px 3px 3px black;
+}
+.carousel-caption p {
+    text-shadow: 3pax 3px 3px black;
+    font-weight: 600;
+}
+.carousel-caption .btn {
+    width: 7rem;
+}
+.carousel-caption {
+    bottom: 5rem !important;
+}
+.carousel-indicators {
+    gap: .7rem;
+    >button{
+        /*! bootstrap tarafından verilmiş stilleri ezmek için !important kullanılması gerekir*/
+        background-color: var(--red) !important;
+        height: 0.4rem !important;
+        width: 3rem !important;
+    }
+}
 
-
-/*! bootstrap tarafından verilmiş stilleri ezmek için !important kullanılması gerekir*/
 /*! ------------ 3- ABOUT SECTION ----------- */
 /*! ------------- 4- INSTRUCTORS -------------*/
+section#instructors .card{
+    transition: transform .3s;
+    cursor: pointer;
+    &:hover{
+    transform: scale(1.03);
+}
+#card-icon i {
+    transition: opacity .6s;
+    color: var(--red);
+    &:hover{
+        opacity: .5;
+    }
+}
+
 /*! ----------- 4- STUDENTS SECTION ----------*/
 /*! ----------- 5- COURSES SECTION ----------- */
 /*! ----------- 6- CONTACT SECTION ------------ */
