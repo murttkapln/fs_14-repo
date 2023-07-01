@@ -1,0 +1,24 @@
+:root {
+    --red: #dc3545;
+}
+/*! -------------- 1- NAVBAR ---------------- */
+.navbar .navbar-nav {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: color .7s;
+}
+.navbar .nav-link:hover {
+    color: var(--red);
+    cursor: pointer;
+}
+/*! ------------- 2- CAROUSEL --------------- */
+
+
+/*! bootstrap tarafından verilmiş stilleri ezmek için !important kullanılması gerekir*/
+/*! ------------ 3- ABOUT SECTION ----------- */
+/*! ------------- 4- INSTRUCTORS -------------*/
+/*! ----------- 4- STUDENTS SECTION ----------*/
+/*! ----------- 5- COURSES SECTION ----------- */
+/*! ----------- 6- CONTACT SECTION ------------ */
+/*! --------------- 7- FOOTER ----------------- */
