@@ -60,5 +60,15 @@ section#instructors .card{
 
 /*! ----------- 4- STUDENTS SECTION ----------*/
 /*! ----------- 5- COURSES SECTION ----------- */
+.nav-pills .nav-link.active {
+    background-color: var(--red);
+}
+.nav-pills .nav-link{
+    color: white;
+}
+
 /*! ----------- 6- CONTACT SECTION ------------ */
+
+
+
 /*! --------------- 7- FOOTER ----------------- */
