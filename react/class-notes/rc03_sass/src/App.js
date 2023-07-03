@@ -3,6 +3,11 @@ import Footer from "./components/Footer"
 import Header from "./components/Header"
 
 
+
+//? SCSS ' import ettik
+import "./scss/app.scss"
+
+
 function App() {
   return (
     <>

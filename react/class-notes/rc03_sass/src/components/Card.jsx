@@ -1,3 +1,6 @@
+import CardStye from "../scss/card.module.scss"
+
+
 const Card = () => {
   return (
     <div>
