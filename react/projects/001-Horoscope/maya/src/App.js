@@ -7,22 +7,12 @@ import "./scss/app.scss"
 
 
 function App() {
-  console.log(data);
+  // console.log(data);
   return (
     <div className="App">
       <Navbar/>
       <Header/>
-      {data.map((item)=> {
-        const {id, title, date, desc, image} = item
-        return (
-          <div>
-            <Main key={id} title={title} date={date} desc={desc} img ={image}/>
-          </div>
-
-         
-
-        )
-      })}
+      <Main data={data}/>
 
     </div>
   )

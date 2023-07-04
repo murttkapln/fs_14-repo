@@ -1,15 +1,15 @@
+import Header from "../header/Header"
+import Card from "./Card"
+import MainStyle from "./Main.module.scss"
 
 
 
-const Main = ({id,title, date, desc, img}) => {
+const Main = ({data}) => {
+    // console.log(data);
   return (
-    <div>
-        <div key={id}>
-            <h1>{title}</h1>
-            <p>{date}</p>
-            <p>{desc}</p>
-            <img src={img} alt="" />
-        </div>
+    <div className={MainStyle["card-container"]}>
+        <Header/>
+        <Card data={data}/>
     </div>
   )
 }

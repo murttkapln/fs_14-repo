@@ -1,9 +1,9 @@
-
+import HeaderStyle from "./Header.module.scss"
 
 const Header = () => {
   return (
-    <div>
-        <h1>WHO ARE YOU?</h1>
+    <div className={HeaderStyle["header"]}>
+        <span className={HeaderStyle["heading"]}>WHO ARE YOU?</span>
     </div>
   )
 }
