@@ -1,0 +1,36 @@
+  @import url('https://fonts.googleapis.com/css2?family=Rubik+Distressed&display=swap');
+
+.nav {
+   align-items: center; 
+   background-color: #cd890c;
+   display: flex;
+   justify-content: space-between;
+   padding: 0px 1rem;
+   position: fixed;
+   top:0;
+   width: 100%;
+   z-index: 4;
+   img {
+      height: 100px;
+      width: 100px;
+   }
+   .links{
+      text-transform: uppercase;
+      font-size: 1.5rem;
+      font-family: 'Rubik Distressed', cursive;
+   }
+   li{
+      list-style-type: none;
+   }
+   a{
+      text-decoration: none;
+      color: black;
+      padding: 0.5rem;
+      border-radius: 5px;
+      line-height: 3rem;
+      &:hover {
+         background-color: rgb(23, 27, 32);
+         color: #cd890c;
+      }
+   }
+}

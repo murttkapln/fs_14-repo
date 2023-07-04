@@ -3,6 +3,8 @@ import Main from "./components/main/Main"
 import Navbar from "./components/navbar/Navbar"
 import {data} from "./helper/data"
 
+import "./scss/app.scss"
+
 
 function App() {
   console.log(data);
