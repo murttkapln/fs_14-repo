@@ -8,7 +8,7 @@ const UseStateObject = () => {
 
    {/* 3 ayrı state yerine obje olarak kullanmak */}
   const [kisi, setKisi] = useState({
-    name: "Ahmet Kan",
+    name: "Charly",
     age: 30,
     salary: 50000,
   })
@@ -25,14 +25,14 @@ const UseStateObject = () => {
     //? toggle == true ise
     if (toggle) {
       setKisi({
-        name: "Canan cann",
+        name: "Micheal",
         age: 40,
         salary: 60000,
       })
     } else {
       //? toggle == false ise
       setKisi({
-        name: "Ahmet Kan",
+        name: "Mike",
         age: 30,
         salary: 50000,
       })
@@ -60,7 +60,7 @@ const UseStateObject = () => {
       <button
         onClick={() =>
           setKisi({
-            name: "Canan cann",
+            name: "Semifinal",
             age: 40,
             salary: 60000,
           })
