@@ -1,10 +1,14 @@
-import ReactBootsrap from "./components/ReactBootsrap";
+import CardContainer from "./components/CardContainer";
+import Header from "./components/Header";
+import { Container } from "react-bootstrap";
+
 
 function App() {
   return (
-    <div>
-      <ReactBootsrap/>
-    </div>
+    <Container className="text-center mt-5">
+      <Header/>
+      <CardContainer/>
+    </Container>
   );
 }
 
