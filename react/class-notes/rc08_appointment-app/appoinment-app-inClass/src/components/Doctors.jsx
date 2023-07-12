@@ -1,13 +1,50 @@
-import Container from "react-bootstrap/Container"
+import Container from "react-bootstrap/Container";
+import { doctorData } from "../helper/data";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import AddModal from "./AddModal";
+import { useState } from "react";
 
-const Doctors = () => {
+const Doctors = ({ appointments, setAppointmnets }) => {
+  const [show, setShow] = useState(false);
+  const [drName, setDrName] = useState("");
+  const handleImgClick = () => {
+    setShow(!show);
+  };
+  // console.log(doctorData);
   return (
     <Container className="p-2">
       <h3 className="display-6 mb-3" style={{ color: "rgb(166, 18, 189)" }}>
         Our Doctors
       </h3>
+      <Row className="justify-content-evenly">
+        {doctorData.map(({ id, name, dep, img }) => (
+          <Col key={id} xs={6} sm={4} md={3}>
+            <img
+              onClick={()=>{
+                setShow(!show)
+                setDrName(name)
+              }}
+              src={img}
+              alt={name}
+              className="img-thumbnail doctor-img"
+              role="button"
+              
+            />
+            <h5>{name}</h5>
+            <h6>{dep}</h6>
+          </Col>
+        ))}
+      </Row>
+      <AddModal
+        show={show}
+        handleClose={() => setShow(!show)}
+        apps={appointments}
+        setApps={setAppointmnets}
+        drName={drName}
+      />
     </Container>
-  )
-}
+  );
+};
 
-export default Doctors
+export default Doctors;
