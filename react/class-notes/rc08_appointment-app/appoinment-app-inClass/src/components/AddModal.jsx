@@ -1,66 +1,67 @@
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import Form from "react-bootstrap/Form";
-import { useState } from "react";
+import Button from "react-bootstrap/Button"
+import Modal from "react-bootstrap/Modal"
+import Form from "react-bootstrap/Form"
+import { useState } from "react"
 
-function AddModal({ show, handleClose,apps, setApps, drName }) {
-  const [name, setName] = useState("");
-  const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
-  // console.log(name, date);
+function AddModal({ show, handleClose, apps, setApps, drName }) {
+  const [name, setName] = useState("")
+  const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setApps([...apps, {
-        id:apps.length+1,
-        patient:name,
-        day:date,
+    e.preventDefault()
+    setApps([
+      ...apps,
+      {
+        id: apps.length + 1,
+        patient: name,
+        day: date,
         consulted: false,
-        doctor:drName
-    }])
-
-
-
-
-
-    handleClose();
-  };
+        doctor: drName,
+      },
+    ])
+    handleClose()
+  }
   return (
     <>
-      <Modal size="sm" show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Appoinment for {drName}</Modal.Title>
+          <Modal.Title>Appointment for {drName}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="name">
               <Form.Label>Patient Name</Form.Label>
               <Form.Control
-                onChange={(e) => setName(e.target.value)}
                 type="text"
-                placeholder="Enter your name"
-                autoFocus
+                placeholder="Enter name"
+                onChange={(e) => setName(e.target.value)}
                 value={name}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Day&Time</Form.Label>
+
+            <Form.Group className="mb-3" controlId="date">
+              <Form.Label>Date</Form.Label>
               <Form.Control
-                onChange={(e) => setName(e.target.date)}
                 type="date"
-                autoFocus
+                placeholder="Date"
+                onChange={(e) => setDate(e.target.value)}
                 value={date}
               />
             </Form.Group>
-            <div className="d-flex justify-content-center gap-3 mb-2">
-              <Button variant="danger" type="submit">
-                Submit
+
+            <div className="text-center">
+              <Button variant="success" type="submit" className="me-2">
+                Save
               </Button>
-              <Button onClick={handleClose}>Close</Button>
+              <Button variant="danger" onClick={handleClose}>
+                Close
+              </Button>
             </div>
           </Form>
         </Modal.Body>
       </Modal>
     </>
-  );
+  )
 }
 
-export default AddModal;
+export default AddModal
