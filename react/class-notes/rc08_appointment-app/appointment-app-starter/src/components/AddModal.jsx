@@ -6,14 +6,16 @@ import Modal from "react-bootstrap/Modal";
 function AddModal({ show, handleClose }) {
     const [name , setName ] = useState("")
     const [date, setDate] = useState( new Date().toISOString().slice(0,10))
-    const handleSubmit = ()=> {
+    const handleSubmit = (e)=> {
         e.preventDefault()
 
-        
+
 
 
         handleClose()
     }
+
+    console.log(name, date);
 
   return (
     <>
@@ -31,6 +33,7 @@ function AddModal({ show, handleClose }) {
                 type="text"
                 placeholder="Enter your name"
                 autoFocus
+                required
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
