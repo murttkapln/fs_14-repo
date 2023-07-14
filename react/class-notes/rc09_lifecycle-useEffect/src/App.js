@@ -1,15 +1,10 @@
-import { useState } from "react"
-import LifeCycleMethods from "./components/LifeCycleMethods"
-import UseEffectHook from "./UseEffecatHook"
+import User from "./components/User"
 
-function App() {
-  const [visible , setVisible ] = useState(false)
+
+const App = () => {
   return (
-    <div className="container text-center mt-4">
-      <button onClick={()=> {setVisible(!visible)}} className="btn btn-danger">Show/Hide</button>
-      {visible && <LifeCycleMethods /> }
-      <UseEffectHook/>
-      
+    <div className="text-center">
+      <User/>
     </div>
   )
 }
