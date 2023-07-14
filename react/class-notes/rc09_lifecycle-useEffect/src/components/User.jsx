@@ -18,12 +18,12 @@ const User = () => {
     //   .then((data) => setUserData(data.results[0]))
     //   .catch((err) => console.log(err))
     //! ComponentDidMount
-    const timer = setInterval(getUser, 3000);
+    // const timer = setInterval(getUser, 3000);
     getUser();
 
     //! ComponentWillUnMount
     return () => {
-      clearInterval(timer);
+    //   clearInterval(timer);
     };
   }, []);
 
