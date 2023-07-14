@@ -5,15 +5,18 @@ import { doctoData, doctorData } from "../helper/data";
 import { useState } from "react";
 import AddModal from "./AddModal";
 
-const Doctors = () => {
+const Doctors = ({ apps, setApps }) => {
   // console.log(doctorData);
   const [show, setShow] = useState(false);
+  const [drName , setDrName ] = useState("")
   const handleClose = () => {
     setShow(!show);
+    
   };
-  const handleImgClick = () => {
-    setShow(!show)
-  };
+  // const handleImgClick = () => {
+  //   setShow(!show);
+  //   setDrName(name)
+  // };
   return (
     <Container className="p-2">
       <h3 className="display-6 mb-3" style={{ color: "rgb(166, 18, 189)" }}>
@@ -23,7 +26,10 @@ const Doctors = () => {
         {doctorData.map(({ id, img, dep, name }) => (
           <Col key={id} xs={6} sm={4} md={3}>
             <img
-              onClick={handleImgClick}
+              onClick={()=>{
+                setDrName(name)
+                setShow(!show)
+              }}
               src={img}
               alt={name}
               className="img-thumbnail doctor-img"
@@ -33,7 +39,15 @@ const Doctors = () => {
           </Col>
         ))}
       </Row>
-      {show && <AddModal show={show} handleClose={handleClose} />}
+      {show && (
+        <AddModal
+          apps={apps}
+          setApps={setApps}
+          show={show}
+          handleClose={handleClose}
+          drName={drName}
+        />
+      )}
     </Container>
   );
 };
