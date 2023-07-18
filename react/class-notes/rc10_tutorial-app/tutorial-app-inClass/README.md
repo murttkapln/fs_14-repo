@@ -1,6 +1,6 @@
 # API Base URLs
 
-## https://tutorial-api.fullstack.clarusway.com/
+## https://tutorial-api.fullstack.clarusway.com/tutorials/
 
 ### API ENDPOINTS
 
