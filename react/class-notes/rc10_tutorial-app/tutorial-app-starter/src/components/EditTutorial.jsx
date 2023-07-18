@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 const EditTutorial = () => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   return (
     <div
       className="modal fade"
@@ -35,8 +39,6 @@ const EditTutorial = () => {
                   className="form-control"
                   id="title"
                   placeholder="Enter your title"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
                   required
                 />
               </div>
@@ -48,9 +50,9 @@ const EditTutorial = () => {
                   type="text"
                   className="form-control"
                   id="desc"
-                  placeholder="Enter your Description"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Enter your Description"
                   required
                 />
               </div>

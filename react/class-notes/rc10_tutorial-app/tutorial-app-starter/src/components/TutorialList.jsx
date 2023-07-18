@@ -1,8 +1,11 @@
-import { FaEdit } from "react-icons/fa"
-import { AiFillDelete } from "react-icons/ai"
-import axios from "axios"
+import { FaEdit } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
+import axios from "axios";
+import EditTutorial from "./EditTutorial";
+import { useState } from "react";
 
-const TutorialList = ({tutorials,getTutorials}) => {
+const TutorialList = ({ tutorials, getTutorials }) => {
+  const [editItem, setEditItem] = useState("")
   // const tutorials = [
   //   {
   //     id: 1,
@@ -15,16 +18,24 @@ const TutorialList = ({tutorials,getTutorials}) => {
   //     description: "JS library for UI design",
   //   },
   // ]
- const handleDelete = async (id)=>{
   const BASE_URL = "http://tutorial-api.fullstack.clarusway.com/tutorials";
- try {
-  await axios.delete(`${BASE_URL}/${id}/`)
- } catch (error) {
-  console.log(error);
-  
- }
- getTutorials()
- }
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`${BASE_URL}/${id}/`);
+    } catch (error) {
+      console.log(error);
+    }
+    getTutorials();
+  };
+  const editTutor = async (tutor) => {
+    try {
+      await axios.put(`${BASE_URL}/${tutor.id}/, tutor`);
+    } catch (error) {
+      console.log(error);
+      
+    }
+    getTutorials()
+  };
   return (
     <div className="container mt-4">
       <table className="table table-striped">
@@ -40,7 +51,7 @@ const TutorialList = ({tutorials,getTutorials}) => {
         </thead>
         <tbody>
           {tutorials?.map((item) => {
-            const { id, title, description } = item
+            const { id, title, description } = item;
             return (
               <tr key={id}>
                 <th>{id}</th>
@@ -51,21 +62,32 @@ const TutorialList = ({tutorials,getTutorials}) => {
                     size={20}
                     type="button"
                     className="me-2 text-warning"
+                    data-bs-toggle="modal"
+                    data-bs-target="#open-modal"
+                    // onClick={() =>
+                    //   editTutor({
+                    //     id: 2119,
+                    //     title: "REACT",
+                    //     description: "JS Library",
+                    //   })
+                    // }
+                   onClick={()=>setEditItem(item)}
                   />
                   <AiFillDelete
                     size={22}
                     type="button"
                     className="text-danger "
-                    onClick={()=> handleDelete(id)}
+                    onClick={() => handleDelete(id)}
                   />
                 </td>
               </tr>
-            )
+            );
           })}
         </tbody>
       </table>
+      <EditTutorial editItem={editItem}/>
     </div>
-  )
-}
+  );
+};
 
-export default TutorialList
+export default TutorialList;
