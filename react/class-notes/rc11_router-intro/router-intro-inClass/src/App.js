@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Instructors from "./pages/Instructors";
 import NotFound from "./pages/NotFound";
 
+
 function App() {
   return (
     <>
