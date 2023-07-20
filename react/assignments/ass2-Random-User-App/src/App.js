@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import mailSvg from "./assets/mail.svg";
 import manSvg from "./assets/man.svg";
 import womanSvg from "./assets/woman.svg";
@@ -9,11 +9,24 @@ import phoneSvg from "./assets/phone.svg";
 import padlockSvg from "./assets/padlock.svg";
 import cwSvg from "./assets/cw.svg";
 import Footer from "./components/footer/Footer";
+import axios from "axios";
 
 const url = "https://randomuser.me/api/";
 const defaultImage = "https://randomuser.me/api/portraits/men/75.jpg";
 
 function App() {
+  const [userData, setUserData] = useState([]);
+  const getUserData = async () => {
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setUserData(data.result[0]))
+      .catch((error) => console.log(error));
+      
+  };
+  useEffect(() => {
+    getUserData()
+  }, [])
+  console.log(userData);
   return (
     <main>
       <div className="block bcg-orange">
