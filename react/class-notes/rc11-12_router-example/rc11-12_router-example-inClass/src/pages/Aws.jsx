@@ -1,3 +1,5 @@
+import React from "react";
+
 const Aws = () => {
   return (
     <div className="mt-4 text-center">
