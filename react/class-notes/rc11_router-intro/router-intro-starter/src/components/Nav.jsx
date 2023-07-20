@@ -1,14 +1,16 @@
+import { Link, NavLink } from "react-router-dom";
+
 const Nav = () => {
   return (
     <ul className="bg-warning">
       <li>
-        <a href="/">Home</a>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <a href="/instructors">Instructors</a>
+        <NavLink to="/instructors">Instructors</NavLink>
       </li>
       <li>
-        <a href="/contact">Contact</a>
+        <NavLink to="/contact">Contact</NavLink>
       </li>
     </ul>
   );
