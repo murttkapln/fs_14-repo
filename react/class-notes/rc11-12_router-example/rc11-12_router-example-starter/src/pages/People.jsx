@@ -25,14 +25,14 @@ const People = () => {
             <div
               key={id}
               className=" col-sm-12 col-md-6 col-lg-4"
-              type="button"
-              onClick={()=>navigate(`${id}`,{state:person})}
+              // type="button"
+              // onClick={()=>navigate(`${id}`,{state:person})}
             >
-              <img className="rounded-circle" src={avatar} alt="img" />
-              <h6>
+              <img className="rounded-circle img-thumbnail" src={avatar} alt="img" />
+              <h6 className="mt-2 text-info-emphasis fs-4">
                 {first_name} {last_name}
               </h6>
-              <button className="btn btn-success">Person {id}</button>
+              <button onClick={()=>navigate(`${id}`,{state:person})} className="btn btn-success">Person {id}</button>
             </div>
           );
         })}
