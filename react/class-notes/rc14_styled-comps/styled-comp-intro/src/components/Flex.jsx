@@ -7,9 +7,9 @@ const Flex = styled.div`
   align-items: center;
   gap: 1rem;
   max-width: 500px;
-  margin: auto;
+  margin: 1rem auto;
   /* background-color: ${(props) => props.bg || "transparent"}; */
-  background-color: ${({ bg }) => bg ?? "transparent"};
+  background-color: ${({ bg }) => bg || "transparent"};
 `
 
 export default Flex
