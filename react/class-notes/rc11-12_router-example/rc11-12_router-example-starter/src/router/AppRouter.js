@@ -11,8 +11,12 @@ import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import React from "../pages/React";
 import Next from "../pages/Next";
+import PrivateRouter from "./PrivateRouter";
+import Login from "../pages/Login";
+import { useState } from "react";
 
 const AppRouter = () => {
+  const [user , setUser ] = useState(false)
   return (
     <div>
       <Nav />
@@ -28,7 +32,14 @@ const AppRouter = () => {
           </Route>
           <Route path="aws" element={<Aws />} />
         </Route>
-        <Route path="/contact" element={<Contact />} />
+
+        <Route element={<PrivateRouter user={user}/>}>
+          <Route path="/people" element={<People />} />
+          <Route path="/people/:id" element={<PersonDetail />} />
+        </Route>
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login  setUser={setUser}/>} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
