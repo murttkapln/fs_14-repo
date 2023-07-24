@@ -13,6 +13,7 @@ body{
 
 p {
     font-size: 1.1 rem;
+    line-height: 2;
 }
 
 `
