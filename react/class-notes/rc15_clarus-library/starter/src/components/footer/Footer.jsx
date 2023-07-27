@@ -1,21 +1,28 @@
-import React from "react";
-import { useThemeContext } from "../../context/ThemeContext";
-import { lightIcon, darkIcon } from "../../helper/iconData";
-import { FooterBtn, FooterContainer } from "./Footer.style";
+import React from 'react'
+import { useThemeContext } from '../../context/ThemeContext'
+import { lightIcon,darkIcon } from '../../helper/iconData'
+import { FooterBtn, FooterContainer } from './Footer.style'
 
 const Footer = () => {
-  const { myTheme, setMyTheme } = useThemeContext();
+  const {myTheme,setMyTheme} = useThemeContext()
 
   const handleClick = () => {
-
+    // if(myTheme === "light"){
+    //   setMyTheme("dark")
+    // }else {
+    //   setMyTheme("light")
+    // }
+    setMyTheme((prev)=> prev === "light" ? "dark": "light")
   }
+
   return (
     <FooterContainer>
-      <FooterBtn onclick={handleClick}>
-        {myTheme === "light" ? lightIcon : darkIcon}
+      <FooterBtn onClick={handleClick}>
+        {myTheme === "light" ? lightIcon : darkIcon }
       </FooterBtn>
     </FooterContainer>
-  );
-};
+    
+  )
+}
 
-export default Footer;
+export default Footer

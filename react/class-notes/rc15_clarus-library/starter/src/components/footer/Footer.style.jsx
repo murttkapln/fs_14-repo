@@ -2,12 +2,11 @@
 
 import styled from "styled-components";
 
-export const FooterContainer = styled.footer`
+export const FooterContainer = styled.div`
   position: relative;
 `;
-import styled from "styled-components";
 
-export const Button = styled.button`
+export const FooterBtn = styled.button`
   border: none;
   outline: none;
   background: none;

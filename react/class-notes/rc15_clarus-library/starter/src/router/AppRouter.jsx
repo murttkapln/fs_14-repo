@@ -1,8 +1,12 @@
 import React from 'react'
+import Footer from '../components/footer/Footer'
 
 const AppRouter = () => {
   return (
-    <div>AppRouter</div>
+    <div>
+      AppRouter
+      <Footer/>
+    </div>
   )
 }
 
