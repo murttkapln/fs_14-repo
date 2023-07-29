@@ -3,7 +3,6 @@
 
 # Project-007 : Clarus Library
 
-# API_KEY = "AIzaSyAy13hvoPvJnqZa6l_GSwxpLCxHdND3uQ8"
 
 ## Description
 
