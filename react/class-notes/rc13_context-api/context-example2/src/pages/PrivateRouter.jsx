@@ -1,5 +1,5 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { useLoginContext } from "../context/LoginContext";
+import { useLoginContext } from "../context/LoginContext.jsx";
 
 const PrivateRouter = () => {
   const { user } = useLoginContext();

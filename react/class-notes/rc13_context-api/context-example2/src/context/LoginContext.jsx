@@ -1,26 +1,24 @@
-import { useContext } from "react"
-import { useState } from "react"
-import { createContext } from "react"
+import { createContext, useContext, useState } from "react";
 
-//! 1- Login Context'i olusuturuldu
-export const LoginContext = createContext()
+//! Oluşturma
+export const LoginContext = createContext();
 
-//! 2- Sarmalayici (Provider) Component
-export const LoginProvider = ({children})=> {
-      // //! Local State
-  const [user, setUser] = useState({ email: "", password: "" })
+//! Sarmallama(Provider) Component
 
-  const values = {user, setUser}
-    return (
-        <LoginContext.Provider value ={values}>
-            {children}
-        </LoginContext.Provider>
-    )
-}
+const LoginProvider = ({ children }) => {
+  //! Local State
+  const [user, setUser] = useState({ email: "", password: "" });
+  const values = {
+    user,
+    setUser,
+  };
+  return (
+    <LoginContext.Provider value={values}>{children}</LoginContext.Provider>
+  );
+};
 
-//! 3-Consuming Hook
-
-export const useLoginContext = ()=>{
-    return useContext(LoginContext)
-}
-export default LoginProvider
+//! Consuming Hook (Custom Hook)
+export const useLoginContext = () => {
+  return useContext(LoginContext);
+};
+export default LoginProvider;

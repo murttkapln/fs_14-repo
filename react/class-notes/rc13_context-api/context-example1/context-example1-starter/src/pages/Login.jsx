@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -6,19 +6,23 @@ import { LoginContext } from "../context/LoginContext";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  // //! Local State
+  const navigate = useNavigate();
+  // Local State
   // const [user, setUser] = useState({ email: "", password: "" });
-  //? Consuming of login context
-  const {user, setUser} = useContext(LoginContext)
-  const navigate = useNavigate()
+
+  //? Consuming of LoginContext
+  //? veriler global state'den çağrıldı
+  const { user, setUser } = useContext(LoginContext);
+  // console.log(user);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(-1)
-    // setUser("")
-
+    navigate(-1);
+    // setUser({
+    //   email: "",
+    //   password: "",
+    // });
   };
-
-
   return (
     <Container>
       <h1 className="text-center mt-4">LOGIN PAGE</h1>
@@ -26,10 +30,10 @@ const Login = () => {
         <Form.Group className="mb-3" controlId="username">
           <Form.Label>Email</Form.Label>
           <Form.Control
+            required
             type="email"
             placeholder="Enter your email"
             name="email"
-            required
             value={user?.email}
             onChange={(e) => setUser({ ...user, email: e.target.value })}
           />
@@ -38,10 +42,10 @@ const Login = () => {
         <Form.Group className="mb-3" controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
+            required
             type="password"
             placeholder="Enter your password"
             name="password"
-            required
             value={user?.password}
             onChange={(e) => setUser({ ...user, password: e.target.value })}
           />

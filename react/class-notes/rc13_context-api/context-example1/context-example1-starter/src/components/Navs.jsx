@@ -7,6 +7,8 @@ import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 
 function Navs() {
+  //? Consuming Of LoginContext
+  // istediğimiz yerde consuming yapabiliriz
   const { user, setUser } = useContext(LoginContext);
   return (
     <Navbar expand="md">
@@ -33,11 +35,10 @@ function Navs() {
               People
             </Link>
             {user.email && user.password ? (
-              <Link onClick={()=>{
-                setUser("")
-              }} className="nav-link" to="/login">
-                Logout
-              </Link>
+              <Link onClick={()=>setUser({
+                email:"",
+                password:""
+              })} className="nav-link" to="/login">Logout</Link>
             ) : (
               <Link className="nav-link" to="/login">
                 Login

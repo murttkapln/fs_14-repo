@@ -6,7 +6,7 @@ import People from "./pages/People";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import PersonDetail from "./pages/PersonDetail";
 import Login from "./pages/Login";
-import { LoginContext, LoginProvider } from "./context/LoginContext";
+import  LoginProvider  from "./context/LoginContext.jsx";
 
 import PrivateRouter from "./pages/PrivateRouter";
 
@@ -15,9 +15,6 @@ function App() {
     <LoginProvider>
       <BrowserRouter>
         <Navs />
-        <LoginProvider>
-          <h1>deneme</h1>
-        </LoginProvider>
         <Routes>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />

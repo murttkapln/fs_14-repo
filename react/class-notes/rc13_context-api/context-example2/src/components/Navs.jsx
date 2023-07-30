@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container"
 import Nav from "react-bootstrap/Nav"
 import Navbar from "react-bootstrap/Navbar"
 import Image from "react-bootstrap/Image"
-import { useLoginContext } from "../context/LoginContext"
+import { useLoginContext } from "../context/LoginContext.jsx"
 
 function Navs() {
   // ! Consuming login context
@@ -33,7 +33,7 @@ function Navs() {
             <Link className="nav-link" to="/people">
               People
             </Link>
-
+               {/*//?  optional chaining */}
             {user?.email && user?.password ? (
               <Link
                 className="nav-link"
