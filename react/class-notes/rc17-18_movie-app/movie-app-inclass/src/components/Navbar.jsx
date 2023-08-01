@@ -8,7 +8,7 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const currentUser = { displayName: "felix franko" };
+  const currentUser = { displayName: "V for Vandetta" };
   return (
     <>
       <Disclosure

@@ -4,7 +4,7 @@ import AuthContextProvider from "./context/AuthContext";
 
 const App = () => {
   return (
-    <div className="dark:bg-gray-dark-main">
+    <div className="dark:bg-gray-dark-main min-h-screen">
       <AuthContextProvider>
         <AppRouter />
       </AuthContextProvider>
