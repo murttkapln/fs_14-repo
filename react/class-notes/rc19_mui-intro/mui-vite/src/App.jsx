@@ -1,4 +1,4 @@
-import AppbarComp from "./components/AppbarComp"
+import AppBar from "./components/AppBar"
 import CardComp from "./components/CardComp"
 import TextFieldComp from "./components/TextFieldComp"
 import Typo from "./components/Typo"
@@ -30,7 +30,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Typo />
         <TextFieldComp />
-        <AppbarComp />
+        <AppBar />
         <CardComp />
       </ThemeProvider>
     </>
