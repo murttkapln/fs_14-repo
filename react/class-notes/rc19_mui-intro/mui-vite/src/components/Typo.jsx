@@ -1,9 +1,12 @@
-
+// import {Typography} from "æmui/material"
+import Typography from "æmui/material/Typography"; //? Performans acisindan daha mantikli
 
 const Typo = () => {
   return (
-    <div>Typo</div>
-  )
-}
+    <div>
+      <Typography>MUI Typo</Typography>
+    </div>
+  );
+};
 
-export default Typo
+export default Typo;
