@@ -1,11 +1,12 @@
-import { TextField } from "@mui/material";
+
 import Typo from "./components/Typo";
+import TextFieldComp from "./components/TextFieldComp";
 
 function App() {
   return (
     <>
       <Typo />
-      <TextField/>
+      <TextFieldComp/>
     </>
   );
 }
