@@ -18,7 +18,7 @@ export default function CardComp() {
           <Grid item key={id} xs={12} sm={6} md={4}>
             <Card>
               <CardActionArea>
-                <CardMedia component="img" image={img} alt={name} />
+                <CardMedia  component="img" image={img} alt={name} />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     {name}
