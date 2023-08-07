@@ -1,22 +1,30 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
-import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { useState } from "react";
+import * as React from "react"
+import Button from "@mui/material/Button"
+import TextField from "@mui/material/TextField"
+import Link from "@mui/material/Link"
+import Box from "@mui/material/Box"
+import Avatar from "@mui/material/Avatar"
+import Typography from "@mui/material/Typography"
+import Container from "@mui/material/Container"
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { setUser } from "../features/authSlice"
+import { useNavigate } from "react-router-dom"
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setEmail("");
-    setPassword("");
-  };
+    e.preventDefault()
+    //? kullanici bilgileri ile state'i guncelleme istegi
+    dispatch(setUser({ email, password }))
+    setEmail("")
+    setPassword("")
+    navigate("/")
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -36,7 +44,7 @@ export default function Login() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
@@ -83,5 +91,5 @@ export default function Login() {
         {"."}
       </Typography>
     </Container>
-  );
+  )
 }
