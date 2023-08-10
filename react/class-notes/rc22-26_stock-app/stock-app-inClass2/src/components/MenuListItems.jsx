@@ -46,14 +46,14 @@ const icons = [
   {
     title: "Admin Panel",
     icon: <SupervisorAccountIcon />,
-    url: "https://10001.fullstack.clarusway.com/admin",
+    url: "https://11544.fullstack.clarusway.com/admin",
   },
 ]
 
-
 const MenuListItems = () => {
   const navigate = useNavigate()
-  //? window.location.href= item.url -- _blank kullanılmayacaksa bu yöntem de kullanılır.
+  
+  //? window.location.href =item.url
   return (
     <div>
       <List>
@@ -62,9 +62,9 @@ const MenuListItems = () => {
             key={index}
             disablePadding
             onClick={() => {
-              item.url.includes("http" || "www") ? (window.open(item.url, "_blank"))
-              :navigate(item.url)
-
+              item.url.includes("http" || "www")
+                ? window.open(item.url, "_blank")
+                : navigate(item.url)
             }}
             sx={{
               color: "white",
