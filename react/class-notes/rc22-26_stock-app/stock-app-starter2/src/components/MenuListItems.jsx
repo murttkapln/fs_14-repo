@@ -52,7 +52,7 @@ const icons = [
 
 const MenuListItems = () => {
   const navigate = useNavigate();
-
+//? window.location.href = item.url --- target belirtmeyeceksek bu yöntem de kullanılabilir.
   return (
     <div>
       <List>
@@ -60,11 +60,20 @@ const MenuListItems = () => {
           <ListItem
             key={index}
             disablePadding
-            onClick={() => navigate(item.url)}
-            sx={{color: "white", "& .MuiSvgIcon-root": {color: "white"}, "&:hover": {color: "red"}, "&:hover .MuiSvgIcon-root": {color: "red"}}} //? ***superr*** nested yapılarda stilleme yaparken parent'ta child olanı da bu şekilde stillendirebiliyoruz. ===/\===
+            onClick={() => {
+              item.url.includes("http" || "www")
+                ? window.open(item.url, "_blank")
+                : navigate(item.url);
+            }}
+            sx={{
+              color: "white",
+              "& .MuiSvgIcon-root": { color: "white" },
+              "&:hover": { color: "red" },
+              "&:hover .MuiSvgIcon-root": { color: "red" },
+            }} //? ***superr*** nested yapılarda stilleme yaparken parent'ta child olanı da bu şekilde stillendirebiliyoruz. ===/\===
           >
             <ListItemButton>
-              <ListItemIcon >{item.icon}</ListItemIcon>
+              <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.title} />
             </ListItemButton>
           </ListItem>
