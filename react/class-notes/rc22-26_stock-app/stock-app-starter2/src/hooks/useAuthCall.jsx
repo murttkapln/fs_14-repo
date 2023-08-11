@@ -36,18 +36,22 @@ import {
   fetchStart,
   loginSuccess,
   logoutSuccess,
+  registerSuccess,
 } from "../features/authSlice";
 
 const useAuthCall = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const login = async (userData) => {
-    const BASE_URL = "https://11544.fullstack.clarusway.com";
+    // const BASE_URL = "https://11544.fullstack.clarusway.com";
+
+   
+    
 
     dispatch(fetchStart());
     try {
       const { data } = await axios.post(
-        `${BASE_URL}/account/auth/login/`,
+        `${import.meta.env.VITE_BASE_URL}/account/auth/login/`,
         userData
       );
       dispatch(loginSuccess(data));
@@ -61,11 +65,11 @@ const useAuthCall = () => {
   };
 // ----------------------------------------------------
   const logout = async (userData) => {
-    const BASE_URL = "https://11544.fullstack.clarusway.com";
+    // const BASE_URL = "https://11544.fullstack.clarusway.com";
 
     dispatch(fetchStart());
     try {
-      await axios.post(`${BASE_URL}/account/auth/logout/`);
+      await axios.post(`${import.meta.env.VITE_BASE_URL}/account/auth/logout/`);
       dispatch(logoutSuccess());
       toastSuccessNotify("logout islemi basarili");
       navigate("/");
@@ -75,8 +79,24 @@ const useAuthCall = () => {
       toastErrorNotify(error.response.data.non_field_errors);
     }
   };
+  //------------------------------------------------
+  const reggister = async (userData) => {
+    // const BASE_URL = "https://11544.fullstack.clarusway.com";
 
-  return { login, logout };
+    dispatch(fetchStart());
+    try {
+      await axios.post(`${import.meta.env.VITE_BASE_URL}/account/register/`, userData);
+      dispatch(registerSuccess());
+      toastSuccessNotify("kayit islemi basarili");
+      navigate("/stock");
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+      toastErrorNotify("kayit islemi basarisiz olmustur");
+    }
+  };
+
+  return { login, logout , reggister};
 };
 
 export default useAuthCall;
