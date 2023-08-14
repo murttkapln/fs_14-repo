@@ -1,41 +1,51 @@
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchFail, fetchStart, getStockSuccess } from "../features/stockSlice";
-import {toastSuccessNotify} from "react-toastify"
-import useAxios from "./useAxios";
+import { fetchFail, fetchStart, getStockSuccess } from "../features/stockSlice"
+import { useDispatch } from "react-redux"
+import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify"
+import useAxios from "./useAxios"
 
 const useStockCall = () => {
-  const { token } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-const {axiosWithToken}= useAxios()
+  const dispatch = useDispatch()
+  const { axiosWithToken } = useAxios()
+
   const getStockData = async (url) => {
-    dispatch(fetchStart());
+    dispatch(fetchStart())
     try {
-      const { data } = await axiosWithToken(`/stock/${url}`);
-      dispatch(getStockSuccess({ data, url }));
-      console.log(data);
+      const { data } = await axiosWithToken(`/stock/${url}/`)
+      dispatch(getStockSuccess({ data, url }))
+      console.log(data)
     } catch (error) {
-      dispatch(fetchFail());
-      console.log(error);
+      dispatch(fetchFail())
+      console.log(error)
     }
-  };
-  
-  const getDeleteData = async (url, id) => {
-    dispatch(fetchStart());
+  }
+
+  const deleteStockData = async (url, id) => {
+    dispatch(fetchStart())
     try {
-      await axiosWithToken.delete(`/stock/${url}/${id}/`);
-      
-      toastSuccessNotify(`${url} seuccessfully deleted`)
-      getStockData("url");
-      
+      await axiosWithToken.delete(`/stock/${url}/${id}/`)
+      toastSuccessNotify(`${url} succesfuly deleted`)
+      getStockData(url)
     } catch (error) {
-      dispatch(fetchFail());
-      toastErrorNotify("`${url} can not be deleted`")
-      console.log(error);
+      dispatch(fetchFail())
+      toastErrorNotify(`${url} can not be deleted`)
+      console.log(error)
     }
-  };
+  }
 
-  return { getStockData };
-};
+  const postStockData = async (url, info) => {
+    dispatch(fetchStart())
+    try {
+      await axiosWithToken.post(`/stock/${url}/`, info)
+      toastSuccessNotify(`${url} succesfuly posted`)
+      getStockData(url)
+    } catch (error) {
+      dispatch(fetchFail())
+      toastErrorNotify(`${url} can not be posted`)
+      console.log(error)
+    }
+  }
 
-export default useStockCall;
+  return { getStockData, deleteStockData, postStockData }
+}
+
+export default useStockCall
