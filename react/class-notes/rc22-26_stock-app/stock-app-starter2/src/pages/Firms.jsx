@@ -1,47 +1,37 @@
-import { useEffect } from "react"
-import Typography from "@mui/material/Typography"
-import Button from "@mui/material/Button"
-import axios from "axios"
-import { useSelector } from "react-redux"
-import { useDispatch } from "react-redux"
+import { useEffect } from "react";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import axios from "axios";
+// import {fetchFail, fetchStart, getFirmSuccess} from "../features.stockSlice"
+import { useSelector } from "react-redux";
+import useStockCall from "../hooks/useStockCall";
 
 const Firms = () => {
-  const { token } = useSelector((state) => state.auth)
-  const dispatch = useDispatch()
+  // const { token } = useSelector((state) => state.auth)
+  // const dispatch = useDispatch()
+  const { getStockData } = useStockCall();
+  const { firms } = useSelector((state) => state.stock);
 
-  const getFirms = async () => {
-    // dispatch(fetchStart())
-    try {
-      const { data } = await axios(
-        `${import.meta.env.VITE_BASE_URL}/stock/firms/`,
-        {
-          headers: { Authorization: `Token ${token}` },
-        }
-      )
-      // dispatch(getFirmsSuccess(data))
-      console.log(data)
-    } catch (error) {
-      // dispatch(fetchFail())
-      console.log(error)
-    }
-  }
-
-  const getSales = async () => {
-    try {
-      const { data } = await axios(
-        `${import.meta.env.VITE_BASE_URL}/stock/sales/`,
-        {
-          headers: { Authorization: `Token ${token}` },
-        }
-      )
-      console.log(data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // const getFirms = async () => {
+  //   dispatch(fetchStart())
+  //   try {
+  //     const { data } = await axios(
+  //       `${import.meta.env.VITE_BASE_URL}/stock/firms/`,
+  //       {
+  //         headers: { Authorization: `Token ${token}` },
+  //       }
+  //     )
+  //     dispatch(getFirmsSuccess(data))
+  //     console.log(data)
+  //   } catch (error) {
+  //     dispatch(fetchFail())
+  //     console.log(error)
+  //   }
+  // }
   useEffect(() => {
-    getFirms()
-  }, [])
+    //getFirms()
+    getStockData("firms");
+  }, []);
 
   return (
     <div>
@@ -50,7 +40,7 @@ const Firms = () => {
       </Typography>
       <Button variant="contained">NEW FIRM</Button>
     </div>
-  )
-}
+  );
+};
 
-export default Firms
+export default Firms;
