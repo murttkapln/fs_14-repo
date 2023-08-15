@@ -35,7 +35,10 @@ const Firms = () => {
   const { firms } = useSelector((state) => state.stock);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setInfo({ name: "", phone: "", address: "", image: "" });
+  };
   const [info, setInfo] = useState({
     name: "",
     phone: "",
@@ -57,12 +60,17 @@ const Firms = () => {
         NEW FIRM
       </Button>
 
-      <FirmModal open={open} handleClose={handleClose} info={info} setInfo={setInfo} />
+      <FirmModal
+        open={open}
+        handleClose={handleClose}
+        info={info}
+        setInfo={setInfo}
+      />
 
       <Grid container justifyContent={"center"} spacing={2}>
         {firms?.map((firm) => (
           <Grid item key={firm.id}>
-            <FirmCard firm={firm} handleOpen={handleOpen} setInfo={setInfo}/>
+            <FirmCard firm={firm} handleOpen={handleOpen} setInfo={setInfo} />
           </Grid>
         ))}
       </Grid>

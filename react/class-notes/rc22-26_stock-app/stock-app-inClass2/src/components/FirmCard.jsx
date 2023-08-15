@@ -53,7 +53,7 @@ export default function FirmCard({ firm,handleOpen,setInfo}) {
         />
         <DeleteOutlineIcon
           sx={btnStyle}
-          onClick={() => deleteStockData("firms", id)}
+          onClick={() => deleteStockData("firms", firm.id)}
         />
       </CardActions>
     </Card>
