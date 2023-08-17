@@ -1,18 +1,18 @@
-import { Typography } from "@mui/material";
-import KpiCards from "../components/KpiCards";
-import Charts from "../components/Charts";
-
+import { Typography } from "@mui/material"
+import KpiCards from "../components/KpiCards"
+import Charts from "../components/Charts"
 const Home = () => {
   return (
     <div>
-      <Typography variant="h3" color="primary" align="center">
+      <Typography variant="h4" color="error" mb={2}>
         Dashboard
       </Typography>
 
-      <KpiCards/>
-      <Charts/>
-    </div>
-  );
-};
+      <KpiCards />
 
-export default Home;
+      <Charts />
+    </div>
+  )
+}
+
+export default Home
