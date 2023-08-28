@@ -1,5 +1,4 @@
-
-import { Home } from '@mui/icons-material'
+import Home from "./pages/Home" 
 import { Container } from '@mui/material'
 
 

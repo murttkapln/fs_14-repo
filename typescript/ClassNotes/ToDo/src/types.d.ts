@@ -1,0 +1,1 @@
+const AddFn = (text: string) => Promise<void>
