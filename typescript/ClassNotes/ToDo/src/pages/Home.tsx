@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Typography } from "@mui/material";
 import AddTodoComp from "../components/AddTodoComp";
-interface TodoType {
-  todo: string;
-  isDone: boolean;
-  id: string | number; // id bilgisi string yada number olabilir. İki veri tipinide kabul edecek.
-}
+import TodoList from "../components/TodoList";
+import { notify } from "../helper/sweetAlert";
+// interface TodoType {
+//   todo: string;
+//   isDone: boolean;
+//   id: string | number; // id bilgisi string yada number olabilir. İki veri tipinide kabul edecek.
+// }
 
 const Home = () => {
   // const [todos, setTodos] = useState([] as TodoType[]);
@@ -35,8 +37,36 @@ const Home = () => {
   const addTodo: AddFn = async text => {
     try {
       await axios.post(url, { todo: text, isDone: false });
+      notify("The todo was created successfully!", "success");
     } catch (error) {
       console.log(error);
+      notify("The todo was not created successfully!", "error");
+    } finally {
+      getTodos();
+    }
+  };
+
+  const toggleTodo: ToggleFn = async todo => {
+    try {
+      await axios.put(`${url}/${todo.id}/sdasd`, {
+        ...todo,
+        isDone: !todo.isDone,
+      });
+      notify("The todo was updated successfully!", "success");
+    } catch (error) {
+      console.log(error);
+      notify("The todo was not updated successfully!", "error");
+    } finally {
+      getTodos();
+    }
+  };
+  const deleteTodo: DeleteFn = async id => {
+    try {
+      await axios.delete(`${url}/${id}`);
+      notify("The todo was deleted successfully!", "success");
+    } catch (error) {
+      console.log(error);
+      notify("The todo was not deleted successfully!", "error");
     } finally {
       getTodos();
     }
@@ -57,6 +87,7 @@ const Home = () => {
         Todo App with Typescript
       </Typography>
       <AddTodoComp addTodo={addTodo} />
+      <TodoList todos={todos} deleteTodo={deleteTodo} toggleTodo={toggleTodo} />
     </Container>
   );
 };
