@@ -26,7 +26,7 @@ const Register = () => {
         }}
       >
         <Grid item xs={12}>
-          <Typography variant="h3" color="primary" align="center">
+          <Typography data-test="stockApp" variant="h3" color="primary" align="center">
             STOCK APP
           </Typography>
         </Grid>
@@ -47,6 +47,7 @@ const Register = () => {
             align="center"
             mb={2}
             color="secondary.light"
+            data-test="registerHeader"
           >
             Register
           </Typography>

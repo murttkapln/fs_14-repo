@@ -43,7 +43,7 @@ const Login = () => {
         }}
       >
         <Grid item xs={12} mb={3}>
-          <Typography variant="h3" color="primary" align="center">
+          <Typography data-test="loginHeader" variant="h3" color="primary" align="center">
             STOCK APP
           </Typography>
         </Grid>
@@ -60,6 +60,7 @@ const Login = () => {
             <LockIcon size="30" />
           </Avatar>
           <Typography
+            data-test="loginHeader"
             variant="h4"
             align="center"
             mb={4}
@@ -81,6 +82,7 @@ const Login = () => {
               <Form>
                 <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
                   <TextField
+                    data-test="emailLogin"
                     label="Email"
                     name="email"
                     id="email"
@@ -93,6 +95,7 @@ const Login = () => {
                     helperText={errors.email}
                   />
                   <TextField
+                    data-test="passwordLogin"
                     label="password"
                     name="password"
                     id="password"
@@ -104,7 +107,7 @@ const Login = () => {
                     error={touched.password && Boolean(errors.password)}
                     helperText={errors.password}
                   />
-                  <Button variant="contained" type="submit">
+                  <Button data-test="sbmtlogin" variant="contained" type="submit">
                     Submit
                   </Button>
                 </Box>
@@ -113,13 +116,13 @@ const Login = () => {
           </Formik>
 
           <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link to="/register">Don't you have an account?</Link>
+            <Link data-test="registerLink" to="/register">Don't you have an account?</Link>
           </Box>
         </Grid>
 
         <Grid item xs={10} sm={7} md={6}>
           <Container>
-            <img src={image} alt="img" />
+            <img data-test="loginImg" src={image} alt="img" />
           </Container>
         </Grid>
       </Grid>

@@ -1,100 +1,64 @@
-import { useState } from "react"
-import Box from "@mui/material/Box"
-import Button from "@mui/material/Button"
+import * as React from "react"
+import Card from "@mui/material/Card"
+import CardActions from "@mui/material/CardActions"
+import CardContent from "@mui/material/CardContent"
+import CardMedia from "@mui/material/CardMedia"
 import Typography from "@mui/material/Typography"
-import TextField from "@mui/material/TextField"
-import Modal from "@mui/material/Modal"
-import { modalStyle } from "../styles/globalStyles"
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
+import EditIcon from "@mui/icons-material/Edit"
+import { btnStyle } from "../styles/globalStyles"
 import useStockCall from "../hooks/useStockCall"
 
-export default function FirmModal({ open, handleClose, info, setInfo }) {
-  const { postStockData, putStockData } = useStockCall()
-  //   const [info, setInfo] = useState({
-  //     name: "",
-  //     phone: "",
-  //     address: "",
-  //     image: "",
-  //   })
+export default function FirmCard({ firm, handleOpen, info, setInfo }) {
+  const { deleteStockData } = useStockCall()
 
-  const handleChange = (e) => {
-    // const { name, value } = e.target
-    setInfo({ ...info, [e.target.name]: e.target.value })
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(info.id)
-    if (info.id) {
-      putStockData("firms", info)
-    } else {
-      postStockData("firms", info)
-    }
-
-    handleClose()
-  }
   return (
-    <div>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={modalStyle}>
-          <Box
-            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
-            component="form"
-            onSubmit={handleSubmit}
-          >
-            <TextField
-              label="Firm Name"
-              name="name"
-              id="name"
-              type="text"
-              variant="outlined"
-              value={info?.name}
-              required
-              onChange={handleChange}
-            />
+    <Card
+      sx={{
+        p: 2,
+        width: "300px",
+        height: "400px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
+      <CardContent>
+        <Typography data-test="firmCardName" gutterBottom variant="h5" component="div">
+          {firm.name}
+        </Typography>
+        <Typography data-test="firmCardAdress" variant="body2" color="text.secondary">
+          {firm.address}
+        </Typography>
+      </CardContent>
+      <CardMedia
+        data-test="firmCardImage"
+        sx={{ p: 1, objectFit: "contain", height: 140 }}
+        image={firm.image}
+        title={firm.name}
+        component="img"
+      />
 
-            <TextField
-              label="Phone"
-              name="phone"
-              id="phone"
-              type="tel"
-              variant="outlined"
-              value={info?.phone}
-              required
-              onChange={handleChange}
-            />
-            <TextField
-              label="Address"
-              name="address"
-              id="address"
-              type="text"
-              variant="outlined"
-              value={info?.address}
-              required
-              onChange={handleChange}
-            />
+      <Typography data-test="firmCardPhone" variant="body2" color="text.secondary">
+        {firm.phone}
+      </Typography>
 
-            <TextField
-              label="Image"
-              name="image"
-              id="image"
-              type="url"
-              variant="outlined"
-              value={info?.image}
-              required
-              onChange={handleChange}
-            />
-
-            <Button variant="contained" type="submit">
-              Submit
-            </Button>
-          </Box>
-        </Box>
-      </Modal>
-    </div>
+      <CardActions>
+        <EditIcon
+          data-test="editBtn"
+          sx={btnStyle}
+          onClick={() => {
+            handleOpen()
+            setInfo(firm)
+          }}
+        />
+        <DeleteOutlineIcon
+          data-test="deleteBtn"
+          sx={btnStyle}
+          onClick={() => deleteStockData("firms", firm.id)}
+        />
+      </CardActions>
+    </Card>
   )
 }
