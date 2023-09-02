@@ -11,7 +11,6 @@ import StarsIcon from "@mui/icons-material/Stars"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount"
 import { useNavigate } from "react-router-dom"
-
 const icons = [
   {
     icon: <DashboardCustomizeIcon />,
@@ -49,10 +48,8 @@ const icons = [
     url: "https://10001.fullstack.clarusway.com/admin",
   },
 ]
-
 const MenuListItems = () => {
   const navigate = useNavigate()
-  
   //? window.location.href =item.url
   return (
     <div>
@@ -74,8 +71,8 @@ const MenuListItems = () => {
             }}
           >
             <ListItemButton>
-              <ListItemIcon>{item.icon}</ListItemIcon>
-              <ListItemText primary={item.title} />
+              <ListItemIcon data-test={"icon"+item.icon} >{item.icon}</ListItemIcon>
+              <ListItemText data-test={"title"+item.title} primary={item.title} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -83,5 +80,4 @@ const MenuListItems = () => {
     </div>
   )
 }
-
 export default MenuListItems

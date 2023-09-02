@@ -9,13 +9,14 @@ describe("login-test", () => {
         cy.url().should("include", "/");
         cy.get("[data-test='loginHeader']").contains("Login").should("be.visible");
         cy.get("[data-test='emailLogin']")
-            .should("be.visible").type("kaplan1@gmail.com")
+            .should("be.visible").type("ghost@gmail.com")
         cy.get("[data-test='passwordLogin']")
             .should("be.visible").type("Kaplan2525.")
         cy.get("[data-test='sbmtlogin']")
             .should("be.visible")
             .click({ force: true });
         cy.url().should("include", "/stock");
+        
 
 
     });

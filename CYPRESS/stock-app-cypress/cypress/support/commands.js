@@ -11,9 +11,6 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
-Cypress.Commands.add('login', ("login",() => {
-    
-})
 //
 //
 // -- This is a child command --
@@ -26,3 +23,16 @@ Cypress.Commands.add('login', ("login",() => {
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add("login",() => {
+    cy.url().should("include", "/");
+        cy.get("[data-test='loginHeader']").contains("Login").should("be.visible");
+        cy.get("[data-test='emailLogin']")
+            .should("be.visible").type("ghost@gmail.com")
+        cy.get("[data-test='passwordLogin']")
+            .should("be.visible").type("Kaplan2525.")
+        cy.get("[data-test='sbmtlogin']")
+            .should("be.visible")
+            .click({ force: true });
+        cy.url().should("include", "/stock");
+    });
+    

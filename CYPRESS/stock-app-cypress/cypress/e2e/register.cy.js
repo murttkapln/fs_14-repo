@@ -7,21 +7,20 @@ describe('stock register', () => {
     cy.url().should("include", "/register");
     cy.get("[data-test='registerHeader']").contains("Register")
     cy.get("[data-test='userName']")
-      .should("be.visible").type("ghosttest1")
+      .should("be.visible").type("testghost")
     cy.get("[data-test='firstName']")
-      .should("be.visible").type("murat1")
+      .should("be.visible").type("ghost")
     cy.get("[data-test='lastName']")
-      .should("be.visible").type("test1")
+      .should("be.visible").type("test")
     cy.get("[data-test='email']")
-      .should("be.visible").type("kaplan1@gmail.com")
+      .should("be.visible").type("ghost@gmail.com")
     cy.get("[data-test='password']")
       .should("be.visible").type("Kaplan2525.")
     cy.get("[data-test='sbmtRegister']")
       .should("be.visible").click({ force: true });
     cy.url().should("include", "/stock");
     cy.get("[data-test='logoutBtn']", { timeout: 20000 }).should("be.visible").click();
-   
-    
+      
   })
 
 })
