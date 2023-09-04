@@ -1,9 +1,18 @@
-
+import { IconButton, ListItem, ListItemText } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete"
 
 const TodoListItem = () => {
   return (
-    <div>TodoListItem</div>
-  )
-}
+    <ListItem
+      disableGutters
+      secondaryAction={
+        <IconButton aria-label="comment">
+          <DeleteIcon />
+        </IconButton>
+      }>
+      <ListItemText primary={`Line item`}/>
+    </ListItem>
+  );
+};
 
-export default TodoListItem
+export default TodoListItem;
