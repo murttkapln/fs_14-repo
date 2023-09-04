@@ -4,11 +4,11 @@ import { Container, Typography } from "@mui/material";
 import AddTodoComp from "../components/AddTodoComp";
 import TodoLists from "../components/TodoLists";
 
-interface TodoType {
-  todo: string;
-  isDone: boolean;
-  id: string | number; // id=> string veya number olabilir
-}
+// interface TodoType {
+//   todo: string;
+//   isDone: boolean;
+//   id: string | number; // id=> string veya number olabilir
+// }
 const Home = () => {
   // const [todos , setTodos ] = useState([] as TodoType[])
   // const [todos , setTodos ] = useState<Array<TodoType>>([])
@@ -62,7 +62,7 @@ type AddFn = (text:string) => Promise<void>;
         Todo App with TypeScript
       </Typography>
       <AddTodoComp addTodo={addTodo} />
-      <TodoLists/>
+      <TodoLists todos={todos}/>
     </Container>
   );
 };
