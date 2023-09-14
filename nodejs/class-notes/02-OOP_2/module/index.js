@@ -52,7 +52,7 @@ module.exports = {
     test3,
 }
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 
 module.exports.test1 = function() {
     console.log('test1 çalıştı.')
@@ -64,6 +64,23 @@ module.exports.test2 = function() {
 
 module.exports.test3 = function() {
     console.log('test3 çalıştı.')
+}
+
+module.exports.variable = 'new-value'
+
+/* ------------------------------------------------------- */
+
+module.exports = {
+    test1: function() {
+        console.log('test1 çalıştı.')
+    },
+    test2: function() {
+        console.log('test2 çalıştı.')
+    },
+    test3: function() {
+        console.log('test3 çalıştı.')
+    },
+    variable: 'new-value'
 }
 
 /* ------------------------------------------------------- */
