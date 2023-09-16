@@ -28,8 +28,8 @@ test()
 // const { test1, test2, test3 } = require('./module/')
 // test1(), test2(), test3()
 
-const { test1: newFunc, test2, test3 } = require('./module/')
-newFunc(), test2(), test3()
+// const { test1: newFunc, test2, test3 } = require('./module/')
+// newFunc(), test2(), test3()
 
 /* ------------------------------------------------------- */
 /* ------------------------------------------------------- */

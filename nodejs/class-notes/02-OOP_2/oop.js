@@ -111,7 +111,7 @@ class Accessory extends Car {
 }
 
 const fordCliamate = new Accessory('Bosh Climate', 'Ford', 'Mustang', 1967, 'SUV')
-// const fordCliamate = new Accessory('Bosh Climate', ...Object.values(ford)) //? Sıralama Önemli.
+// const fordCliamate = new Accessory('Bosh Climate', ...Object.values(ford))//? Sıralama Önemli.
 console.log (fordCliamate)
 
 /* ------------------------------------------------------- *
