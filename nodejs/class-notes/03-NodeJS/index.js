@@ -1,11 +1,11 @@
-"use strict"
+"use strict";
 
 /* --------------------------------------------
 
         NODEJS
 
 -------------------------------------------- */
-const http = require('node:http') // builtin: https://nodejs.org/api/http.html
+const http = require("node:http"); // builtin: https://nodejs.org/api/http.html
 /* -------------------------------------------- *
 
 // http.createServer((req, res) => { ... }
@@ -43,54 +43,54 @@ const app = http.createServer((req, res) => {
 
 /* -------------------------------------------- *
 
-http.createServer((req, res) => {
+http
+  .createServer((req, res) => {
+    if (req.url == "/") {
+      res.statusCode = 404; // Default :200
+      res.statusMessage = "Not Found"; // Default: OK
 
-    if (req.url == '/') {
+    //*   --------------setHeader()----------------
 
-        res.statusCode = 404 // Default: 200
-        res.statusMessage = 'Not Found' // Default: OK
+    
+      res.setHeader("Content-Type", "text/html");
+      res.setHeader("another-header", "another-value");
 
-        res.setHeader('Content-Type', 'text/html')
-        res.setHeader('another-header', 'another-value')
-
-        res.write('* Satır1')
-        res.write('* Satır2')
-        res.write('* Satır3')
-        res.end()
+      res.write("* Satır1");
+      res.write("* Satır2");
+      res.write("* Satır3");
+      res.end()
+    } else if (req.url == "/api") {
+      if (req.method == "GET") {
+          
         
-    } else if ( req.url == '/api' ) {
+        //*  --------------writeHead()---------------
 
-        if (req.method == 'GET') {
+        //? bu yöntemle daha hızlı ve efektif şekilde response için gerekli bilgileri aktarabiliriz.
+        // res.writeHead(200, {
+        //     "Content-Type": "application-json",
+        //     "another-header": "another-value",
+        // })
 
-            // res.writeHead(200, {
-            //     'Content-Type': 'application/json',
-            //     'another-header': 'another-value',
-            // })
-
-            // OVERLOAD GOOD EXAMPLE:
-            res.writeHead(200, "Status Message", {
-                'Content-Type': 'application/json',
-                'another-header': 'another-value',
-            })
-
-            const obj = {
-                result: true,
-                message: 'İşlem Başarılı.'
-            }
-
-            res.end( JSON.stringify(obj) )
-
-        } else {
-
-            res.end('Not supporting different method.')
-
+// yukarıdaki 2 parametre alırken aşağıdaki 3 parametre almaktadır.Overload mantığına göre hareket etmesi için şunu diyebiliriz.
+//? 2 parametre gönderdiğimizde yukarıdakinin çalışmasını beklerken 3 parametre gönderildiğinde aşağıdakinin çalışmasını bekleriz. İşte overload mantığı bu şekildedir.
+        // OVERLOAD GOOD EXAMPLE
+        res.writeHead(200, "Status Message", {
+            "Content-Type": "application-json",
+            "another-header": "another-value",
+        })
+        const obj = {
+            result: true,
+            message:"Islem basarili."
         }
-
+        res.end(JSON.stringify(obj))
+      } else {
+        res.end("Not Supporting different method");
+      }
     } else {
-        res.end('Server is running')
+      res.end("Server is Running");
     }
-
-}).listen(8000, () => console.log('http://127.0.0.1:8000'))
+  })
+  .listen(8000, () => console.log("http://127.0.0.1:8000"));
 
 /* -------------------------------------------- *
 // ENV
