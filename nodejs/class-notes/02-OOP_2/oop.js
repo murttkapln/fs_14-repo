@@ -236,7 +236,7 @@ console.log ( ford )
 console.log ( ford.getDetails() )
 // console.log ( ford.#privateProp ) // NO ACCESS
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 //? GETTER & SETTER METHODS: Görevi veri getirme (getter) ve veri güncelleme (setter) olan metodlardır.
 //? "STATIC" KEYWORD: Class'dan direkt erişim. (Instance erişemez.)
 
@@ -307,3 +307,14 @@ console.log( Car.staticMethod() )
 /* ------------------------------------------------------- */
 
 //! HAPPY CODDING :)
+
+
+/* ------------------------------------------------------- */
+class Person {
+    
+}
+
+
+
+
+/* ------------------------------------------------------- */
