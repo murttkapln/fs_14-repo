@@ -53,7 +53,7 @@ const middleFunction1 = (req, res, next) => {
 
     if (skip) {
         
-        // Bir sonraki bağımsız fonksiyona git:
+        // Bir sonraki route'a (bağımsız fonksiyona) git:
         next('route')
 
     } else {
@@ -97,7 +97,7 @@ app.get('/', (req, res) => {
     })
 })
 
-/* ------------------------------------------------------- */
+/* ------------------------------------------------------- *
 //* Middlewares & use():
 
 const middleFunction1 = (req, res, next) => {
@@ -152,7 +152,21 @@ app.get('/*', (req, res) => {
 /* ------------------------------------------------------- */
 //* Calling middlewares from file:
 
+// const [ middleFunction1, middleFunction2 ] = require('./middlewares/index.js')
+// const [ middleFunction1, middleFunction2 ] = require('./middlewares/index')
+// const [ middleFunction1, middleFunction2 ] = require('./middlewares/')
+// app.use(middleFunction1, middleFunction2)
 
+// const middleFunctions = require('./middlewares/')
+// app.use(middleFunctions)
+
+app.use(require('./middlewares/'))
+
+app.get('/*', (req, res) => {
+    res.send({
+        message: 'Welcome to Home'
+    })
+})
 
 /* ------------------------------------------------------- */
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
