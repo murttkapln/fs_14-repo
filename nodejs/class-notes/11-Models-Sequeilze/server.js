@@ -16,15 +16,13 @@ app.use(express.json())
 app.all('/', (req, res) => {
     res.send('WELCOME TO TODO API')
 })
+
 /* ------------------------------------------------------- */
-//* SEQUELIZE
-//? $ npm i sequelize sqlite3
-const {Sequelize,DataTypes} = require('sequelize')
-
-
+//* TodoModel moved to todo.model.js
 
 
 /* ------------------------------------------------------- */
+
 const errorHandler = (err, req, res, next) => {
     const errorStatusCode = res.errorStatusCode ?? 500
     console.log('errorHandler runned.')
