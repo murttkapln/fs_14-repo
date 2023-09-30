@@ -13,13 +13,14 @@ const PORT = process.env.PORT || 8000;
 // Accept json data:
 app.use(express.json())
 
-app.all('/', (req, res) => {
-    res.send('WELCOME TO TODO API')
-})
+// app.all('/', (req, res) => {
+//     res.send('WELCOME TO TODO API')
+// })
 
 /* ------------------------------------------------------- */
 //* TodoModel moved to todo.model.js
 
+app.use(require('./todo.router'))
 
 /* ------------------------------------------------------- */
 
@@ -31,6 +32,7 @@ const errorHandler = (err, req, res, next) => {
         message: err.message, // error string message
         cause: err.cause, // error option cause
         // stack: err.stack, // error details
+        body: req.body,
     })
 }
 app.use(errorHandler)
