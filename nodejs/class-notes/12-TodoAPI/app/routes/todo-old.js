@@ -4,7 +4,7 @@
 ------------------------------------------------------- */
 const router = require('express').Router()
 
-const Todo = require('./todo.model')
+const Todo = require('../models/todo')
 
 // LIST:
 router.get('/', async (req, res) => {
