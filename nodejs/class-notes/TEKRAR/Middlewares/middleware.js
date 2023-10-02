@@ -36,7 +36,8 @@ app.get('/',(req,res)=> {
         message: "Welcome to home"
     })
 })
-/* ---------------------------------------------- */
+/* ---------------------------------------------- *
+       //! next() for next callBackFunction:
 const middleFunction1 = (req,res,next)=>{
     console.log(req.query); 
     const skip = req.query.skip ?? false
@@ -83,14 +84,56 @@ app.get('/',(req,res)=>{
         message:'next route'
     })
 })
+/* ---------------------------------------------- */
+//* Middlewares & USE:
+//! app.use('') // middleware çalıştırma methodu- alternatif
+const middleFunction1 = (req,res,next)=>{
+    console.log(req.query); 
+    const skip = req.query.skip ?? false
+    req.customData = 'Custom Data With Request'
+    res.customDataInResponse = 'Custom Data With Response'
+    if(skip){
+        // Bir sonraki bağımsız funct.'a gider
+        next('route')    
+        console.log('next-router calisti');
+    }else {
+        // Bir sonraki func.'a git
+        console.log('next calisti');
+        next()
+        
+    }
+}
+
+const middleFunction2 = (req,res,next)=>{
+    // next()
+   res.send({
+    customData:[
+        req.customData,
+        res.customDataInResponse
+    ],
+    message: 'Here is func2, first next() runned'
+   })
+
+
+}
+
+app.use(middleFunction1) // default_url= *
+// app.use('/*',middleFunction1) // default_url= *
+
+// app.use('/path',middleFunction1) // path == /path/*
+app.use(middleFunction1,middleFunction2)
+// app.use([middleFunction1,middleFunction2])
+
+app.get('/*',(req,res)=>{
+    res.send({
+        message:'first route'
+    })
+})
 
 
 
 
 
-
-
-// next() //! next() for next callBackFunction:
 
 /* ---------------------------------------------- */
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
