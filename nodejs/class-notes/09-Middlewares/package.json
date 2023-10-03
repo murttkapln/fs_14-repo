@@ -1,8 +1,8 @@
 {
   "name": "09-middlewares",
   "version": "1.0.0",
-  "description": "![](./middlewares1.png)",
-  "main": "middleware.js",
+  "description": "### What? Why?",
+  "main": "middlewares.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

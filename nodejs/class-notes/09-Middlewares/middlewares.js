@@ -9,7 +9,7 @@ const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 
-/* ------------------------------------------------------- *
+/* ------------------------------------------------------- */
 //? Middleware functions must be has three parameters. 
 //? Last parameter is for next().
 
@@ -22,12 +22,12 @@ app.get('/', (req, res, next) => {
     req.customData = 'Custom Data With Request'
     res.customDataWithResponse = 'Custom Data With Response'
     
-    next() // Go to next Function. // Block Command
+    next() // Go to next Function.
     
-    // next() çalıştığı için çıktı vermeceyecek.
+    // next() komutundan sonra çıktı vermek anlamsız olacaktır. (Hata verecektir.)
     res.send({
         message: 'Middleware running'
-    }) // Block Command
+    })
 })
 
 app.get('/', (req, res) => {
