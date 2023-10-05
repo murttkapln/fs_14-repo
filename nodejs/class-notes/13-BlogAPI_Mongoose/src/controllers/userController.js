@@ -96,7 +96,8 @@ module.exports.User = {
 
                 res.status(200).send({
                     error: false,
-                    result: user
+                    result: user,
+                    session: req.session
                 })
 
             } else {
@@ -113,6 +114,16 @@ module.exports.User = {
 
         }
 
-    }
+    },
+
+    logout: async (req, res) => {
+        // Session to undefined:
+        // req.session.destroy() // express-session
+        req.session = null // cookie-session
+        res.status(200).send({
+            error: false,
+            message: 'Logout'
+        })
+    },
 }
 
