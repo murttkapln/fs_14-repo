@@ -20,4 +20,7 @@ router.route('/:userId')
     .put(User.update)
     .delete(User.delete)
 
+// Login
+router.post('/',User.login)
+
     module.exports = router
