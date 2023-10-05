@@ -23,7 +23,7 @@ app.use(session({
     secret: process.env.SECRET_KEY || 'secret_keys_for_cookies',
     // name: cookie, // defaul: req.session'
     maxAge: 1000 * 60 * 60* 24 // 1 day (miliseconds)
-})
+}))
 
 /* ------------------------------------------------------- */
 app.use(express.json())
