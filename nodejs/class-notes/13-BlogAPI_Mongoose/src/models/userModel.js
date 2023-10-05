@@ -4,6 +4,9 @@
 ------------------------------------------------------- */
 
 const mongoose = require("mongoose");
+const passwordEncrypt = require('../helpers/passwordEncrypt')
+
+
 
 const userSchema = new mongoose.Schema(
   {
@@ -13,7 +16,7 @@ const userSchema = new mongoose.Schema(
       unique: true,
       required: [true, "Email  field must be required"],
       validate: [
-        (email) => email.includes("@")  && email.includes("."), // ValidationCheck
+        (email) => email.includes("@") && email.includes("."), // ValidationCheck
         "Email is not true format",
       ], // ErrorMessage
     },
@@ -21,6 +24,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: true,
+      set: (password)=> passwordEncrypt(password)
     },
     firsName: String,
     lastName: String,
