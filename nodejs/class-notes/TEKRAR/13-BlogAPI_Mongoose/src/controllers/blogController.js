@@ -43,14 +43,21 @@ module.exports.BlogPost = {
         })
     },
     update:async (req,res)=>{
-        res.send({
+        // const data = await BlogPost.findByIdAndUpdate({_id:req.params.postId}, new: true) // return newData
+        const data = await BlogPost.updateOne({_id:req.params.postId}, req.body)
+        res.status(202).send({
+            error:false,
+            body: req.body,
+            result: data,
+            newData: await BlogPost.findOne({_id: req.params.postId})
 
         })
     },
     delete:async (req,res)=>{
-        res.send({
+        const data = await BlogPost.findOne({_id:req.params.postId})
+        res.sendStatus((data.deletedCount >=1) ? 204 : 404)
 
-        })
+        
     },
 
 }
