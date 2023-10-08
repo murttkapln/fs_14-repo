@@ -10,16 +10,15 @@
 
 const express = require('express')
 const app = express()
+
 require('dotenv').config()
 const PORT = process.env.PORT || 8000
 /* ------------------------------------------------------- */
+app.use(express.json())
 
-/* ------------------------------------------------------- */
-// Routes:
-
-
-
-
+app.all('/',(req,res)=>{
+    res.send('WELCOME TO BLOG API')
+})
 /* ------------------------------------------------------- */
 
 
@@ -29,11 +28,10 @@ const PORT = process.env.PORT || 8000
 
 
 
-
-
-
+//? Conntect to MongoDB with Mongoose
+require('./src/dbConnection')
 /* ------------------------------------------------------- */
-
-
+//? Error Handler:
+app.use(require('./src/errorHandler'))
 
 app.listen(PORT, () => console.log('Running: http://127.0.0.1:' + PORT))
