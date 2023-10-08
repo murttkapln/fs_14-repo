@@ -4,15 +4,3 @@
 ------------------------------------------------------- */
 
 
-// Catch Errors:
-
-module.exports = (err,req,res,next)=>{
-   const errorStatusCode = res.errorStatusCode ?? 500
-   res.status(errorStatusCode).send({
-    error: true,
-    msessage: err.msessage,
-    cause: err.cause,
-    body: req.body, // sending json data
-
-   })
-}
