@@ -1,106 +1,76 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
-    EXPRESSJS - BLOG Project with Mongoose
+EXPRESSJS - BLOG Project with Mongoose
 ------------------------------------------------------- */
+//***************   MODEL CREATE  *******************
 
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-/* ------------------------------------------------------- *
-https://mongoosejs.com/docs/models.html
+/* ---------------------------------------------------  *
+//? _id: AUTO CREATED
 
 const nameSchema = new mongoose.Schema({
-    
-    // _id: // AUTO CREATED
 
-    // fieldName: String // Shorthand Using
-    fieldName: {
+    //fieldName = String // Shorthand Using
+    fieldName:{
         type: String, // Veri tipi
-        defualt: null, // Default bir değer atayabiliriz.
-        trim: true, // Gelen veriyi trim'den geçir: trim(data)
-        select: true, // Data çağrıldığında gelsin mi?
-        index: false, // Daha hızlı erişim olsun mu?
-        unique: false, // Benzersiz kayıt olsun mu?
-        required: [true, 'Error-Message'], // JSON data içinde gelmesi zorunlu mu?
-        enum: [[0, 1, 2, 3], 'Error-Message'], // Pattern/Constraint/Limit/Choices
-        validate: [function(data) { return true }, 'Error-Message'], // Veriyi filtreden geçiren fonksiyon.
-        get: function(data) { return data }, // Veri çağırırken çalıştırılacak fonksiyon
-        set: function(data) { return data }, // Veri kaydederken çalıştırılacak fonksiyon
-    }
+        default: null, // Default bir değer atayabiliriz.
+        trim: true,// Gelern veriyi trim'den geçir: trim(data)
+        select: true, // Shown/UnShow
+        index: false, //  Daha hızlı erişim olsun mu?
+        unique:false, // Benzersiz  kayıt olsun mu?
+        // required: true,
+        required: [true, 'Error-Message'],// JSON data içinde gelmesi zorunlu mu?
+        enum : [[0,1,2,3],'Error-Message'],// Pattern/Constraint/Limit,Choices
+        validate: [function() {return false}, 'Error-Message'],// Veriyi filtreden geçiren fonksiyon.
+        get: function(data) {return false},//Veriyi Çağırırken çalıştırılacak fonks.
+        set: function(data) {return false}, // Veriyi kaydederken çalıştırılacak fonks.
 
-}, {
-    collection: 'collectionName', // Tablo ismi ne olsun?
-    timestamps: true, // Create and Manage 'createdAt' and 'updatedAt'
+
+    },
+},{
+    collection:'Collection', // tablo adı ne olsun?
+    timestamps: true, // Create and manage 'createdAt and updatedAt'
 })
 
-/* ------------------------------------------------------- */
-// ------------------------------------------
-// BlogCategory
-// ------------------------------------------
+/* -------------------------------------------------------  */
 
-const blogCategorySchema = new mongoose.Schema({
-
-    name: {
-        type: String,
-        trim: true,
-        required: true
-    }
-
-}, {
-    collection: 'blogCategories',
-    timestamps: true
-})
-
-// ------------------------------------------
-// BlogPost
-// ------------------------------------------
-const blogPostSchema = new mongoose.Schema({
-
-    // _id
-
-    userId: {
-        type: mongoose.Schema.ObjectId, // Relational ObjectId
-        ref: 'User', // ModelName
-        required: true,
-    },
-
-    blogCategoryId: {
-        type: mongoose.Schema.ObjectId, // Relational ObjectId
-        ref: 'BlogCategory', // ModelName
-        required: true,
-    },
+const blogPostSchema = new mongoose.Schema(
+  {
+    //_id
 
     title: {
-        type: String,
-        trim: true,
-        required: true
+      type: String,
+      trim: true,
+      required: true,
     },
-
     content: {
-        type: String,
-        trim: true,
-        required: true
+      type: String,
+      trim: true,
+      required: true,
     },
-
     published: {
-        type: Boolean,
-        default: true
+      type: Boolean,
+      default: true,
     },
-
     // createdAt
-    // updatedAt
+    //updatedAt   // otomatik olarak eklenecek
+  },
+  {
+    collection: "BlogPosts",
+    timestamps: true,
+  }
+);
 
-}, { collection: 'blogPosts', timestamps: true })
-
+//? Alternatif 
 // const BlogPostModel = mongoose.model('BlogPost', blogPostSchema)
+
 // module.exports = {
-//     // BlogCategory:
-//     BlogPost: BlogPostModel
+//     // BlogCategory,
+//     Blogpost: blogPostModel
 // }
 
-// ------------------------------------------
-// Export
-// ------------------------------------------
 module.exports = {
-    BlogCategory: mongoose.model('BlogCategory', blogCategorySchema),
+    // BlogCategory:
     BlogPost: mongoose.model('BlogPost', blogPostSchema)
 }
