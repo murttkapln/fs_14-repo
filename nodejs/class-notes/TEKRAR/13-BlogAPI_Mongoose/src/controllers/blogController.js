@@ -78,7 +78,15 @@ module.exports.BlogCategory = {
 // -------------------------------------------------------
 module.exports.BlogPost = {
   list: async (req, res) => {
-    const data = await BlogPost.find();
+    const data = await BlogPost.find().populate('blogCategoryId'); // Get Primary Data
+    res.status(200).send({
+      error: false,
+      count: data.length,
+      result: data,
+    });
+  },
+  listCategoryPosts: async (req, res) => {
+    const data = await BlogPost.find({blogCategoryId: req.params.categoryId}).populate('blogCategoryId'); // Get Primary Data
     res.status(200).send({
       error: false,
       count: data.length,
@@ -102,7 +110,7 @@ module.exports.BlogPost = {
   read: async (req, res) => {
     //req.params.postId
     //    const data =await BlogPost.findById(req.params?.postId) // mongoose'a özel
-    const data = await BlogPost.findOne({ _id: req.params.postId });
+    const data = await BlogPost.findOne({ _id: req.params.postId }).populate('blogCategoryId'); // Get Primary Data
     res.status(200).send({
       error: false,
       result: data,

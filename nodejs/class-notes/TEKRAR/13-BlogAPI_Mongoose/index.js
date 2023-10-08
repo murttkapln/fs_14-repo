@@ -29,7 +29,7 @@ app.use('/blog',require('./src/routes/blogRoute'))
 /* ------------------------------------------------------- */
 
 //? synchronization
-// require('./src/sync')()
+require('./src/sync')()
 
 /* ------------------------------------------------------- */
 //? Error Handler:
