@@ -16,9 +16,16 @@ const PORT = process.env.PORT || 8000
 /* ------------------------------------------------------- */
 app.use(express.json())
 
-app.all('/',(req,res)=>{
+//? Conntect to MongoDB with Mongoose
+require('./src/dbConnection') // DB connection Route'a göre yukarıda olmalı. 
+
+//? HomePage
+app.all('/',(req,res)=>{ // ana URL'e gelen tüm metodlara izin verir.
     res.send('WELCOME TO BLOG API')
 })
+
+//? Routes:
+app.use('/blog',require('./src/routes/blogRoute'))
 /* ------------------------------------------------------- */
 
 
@@ -28,8 +35,8 @@ app.all('/',(req,res)=>{
 
 
 
-//? Conntect to MongoDB with Mongoose
-require('./src/dbConnection')
+
+
 /* ------------------------------------------------------- */
 //? Error Handler:
 app.use(require('./src/errorHandler'))

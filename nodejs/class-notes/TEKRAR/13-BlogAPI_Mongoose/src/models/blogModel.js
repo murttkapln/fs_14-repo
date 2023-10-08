@@ -2,11 +2,14 @@
 /* -------------------------------------------------------
 EXPRESSJS - BLOG Project with Mongoose
 ------------------------------------------------------- */
+//***************   MODEL CREATE  *******************
 
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
+
+/* ---------------------------------------------------  *
+//? _id: AUTO CREATED
 
 const nameSchema = new mongoose.Schema({
-    //? _id: AUTO CREATED
 
     //fieldName = String // Shorthand Using
     fieldName:{
@@ -29,3 +32,45 @@ const nameSchema = new mongoose.Schema({
     collection:'Collection', // tablo adı ne olsun?
     timestamps: true, // Create and manage 'createdAt and updatedAt'
 })
+
+/* -------------------------------------------------------  */
+
+const blogPostSchema = new mongoose.Schema(
+  {
+    //_id
+
+    title: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    content: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    published: {
+      type: Boolean,
+      default: true,
+    },
+    // createdAt
+    //updatedAt   // otomatik olarak eklenecek
+  },
+  {
+    collection: "BlogPosts",
+    timestamps: true,
+  }
+);
+
+//? Alternatif 
+// const BlogPostModel = mongoose.model('BlogPost', blogPostSchema)
+
+// module.exports = {
+//     // BlogCategory,
+//     Blogpost: blogPostModel
+// }
+
+module.exports = {
+    // BlogCategory:
+    BlogPost: mongoose.model('BlogPost', blogPostSchema)
+}
