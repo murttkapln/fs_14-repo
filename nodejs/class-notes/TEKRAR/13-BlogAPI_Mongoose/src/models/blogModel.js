@@ -60,6 +60,12 @@ const blogPostSchema = new mongoose.Schema(
   {
     //_id
 
+    blogCategoryId: {
+      type:mongoose.Schema.ObjectId, // Relational ObjectId
+      required: true,
+      ref: 'BlogCategory' // ModelName 
+    },
+
     title: {
       type: String,
       trim: true,

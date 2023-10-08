@@ -28,17 +28,12 @@ app.all('/',(req,res)=>{ // ana URL'e gelen tüm metodlara izin verir.
 app.use('/blog',require('./src/routes/blogRoute'))
 /* ------------------------------------------------------- */
 
-
-
-
-
-
-
-
-
+//? synchronization
+// require('./src/sync')()
 
 /* ------------------------------------------------------- */
 //? Error Handler:
 app.use(require('./src/errorHandler'))
 
+//? PORT
 app.listen(PORT, () => console.log('Running: http://127.0.0.1:' + PORT))
