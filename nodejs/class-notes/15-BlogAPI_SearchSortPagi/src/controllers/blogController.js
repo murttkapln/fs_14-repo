@@ -20,7 +20,8 @@ module.exports.BlogCategory = {
 
     list: async (req, res) => {
 
-        const data = await BlogCategory.find()
+        // const data = await BlogCategory.find()
+        const data = await req.getModelList(BlogCategory)
 
         res.status(200).send({
             error: false,
@@ -84,6 +85,7 @@ module.exports.BlogPost = {
 
     list: async (req, res) => {
 
+        /*
         // Searching & Sorting & Pagination:
 
         // SEARCHING: URL?search[key1]=value1&search[key2]=value2
@@ -116,6 +118,9 @@ module.exports.BlogPost = {
         // RUN:
         // const data = await BlogPost.find().populate('blogCategoryId') // get Primary Data
         const data = await BlogPost.find(search).sort(sort).skip(skip).limit(limit).populate('blogCategoryId')
+        */
+
+        const data = await req.getModelList(BlogPost, 'blogCategoryId')
 
         res.status(200).send({
             error: false,
