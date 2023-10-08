@@ -6,7 +6,25 @@ EXPRESSJS - BLOG Project with Mongoose
 const router = require('express').Router()
 
 //? Call Controllers:
-const { BlogPost } = require("../controllers/blogController");
+const { BlogPost,BlogCategory } = require("../controllers/blogController");
+
+
+// -------------------------------------------------------
+//******  BLOG CATEGORY    ********
+// -------------------------------------------------------
+
+router
+.route("/category")
+.get(BlogCategory.list)
+.post(BlogCategory.create);
+
+router
+  .route("/category/:categoryId")
+  .get(BlogCategory.read)
+  .put(BlogCategory.update)
+  .delete(BlogCategory.delete);
+
+
 
 // -------------------------------------------------------
 //******  BLOGPOST    ********
