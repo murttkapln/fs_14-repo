@@ -16,6 +16,15 @@ const {User} = require('../controllers/userController')
 //******    USER    ********
 // -------------------------------------------------------
 
+//? Login:
+router.post('/login',User.login)
+
+//? Logout:
+router.all('/logout',User.logout)
+
+
+
+
 router
 .route("/")
 .get(User.list)
@@ -26,5 +35,8 @@ router
   .get(User.read)
   .put(User.update)
   .delete(User.delete);
+
+
+
 
   module.exports = router
