@@ -5,6 +5,7 @@ EXPRESSJS - BLOG Project with Mongoose
 //***************   MODEL CREATE  *******************
 
 const mongoose = require('mongoose')
+const passwordEncrypt = require('../helpers/passwordEncrypt')
 
 const UserSchema = new mongoose.Schema({
     email:{
@@ -13,7 +14,7 @@ const UserSchema = new mongoose.Schema({
         unique: true,
         required: [true, 'Email field must be required'],
         validate: [(email)=> (email.includes('@') && email.includes('.')), // ValidationCheck
-         'Email type is incorrect.'] // ErrorMessaage
+         'Email type is incorrect.'] // if false=> ErrorMessage
         
         
     },
@@ -21,6 +22,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         trim: true,
         required: true,
+        set:(password)=> passwordEncrypt(password)
     },
     firstName:String,
     lastName:String,

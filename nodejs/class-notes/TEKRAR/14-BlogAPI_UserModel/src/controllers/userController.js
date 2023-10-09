@@ -11,8 +11,10 @@
 
 
 //? Catch async-errors and send to errorHandler:
+require('express-async-errors')
 
 
+//? Call Models:
 const User = require('../models/userModel')
 
 
@@ -51,7 +53,7 @@ module.exports.User = {
     update: async (req, res) => {
       // const data = await User.findByIdAndUpdate(req.params.userId, req.body, { new: true }) // return new-data with mongoose
   
-      const data = await User.updateOne({ _id: req.params.userId }, req.body);
+      const data = await User.updateOne({ _id: req.params.userId }, req.body, {runValidators:true});
       res.status(202).send({
         error: false,
         body: req.body,
