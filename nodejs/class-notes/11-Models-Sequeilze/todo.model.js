@@ -9,8 +9,9 @@
 const { Sequelize, DataTypes } = require('sequelize')
 // Where is DB (DB Connection Details):
 // const sequelize = new Sequelize('postgres://postgres:12345678@localhost:5432/todoCH14') // $ npm i pg pg-hstore
+const sequelize = new Sequelize('postgres://postgres:123456@localhost:5432/todo') // ? kendi şifrem
 // const sequelize = new Sequelize('sqlite:./db.sqlite3')
-const sequelize = new Sequelize('sqlite:' + (process.env.SQLITE || './db.sqlite3'))
+// const sequelize = new Sequelize('sqlite:' + (process.env.SQLITE || './db.sqlite3'))
 
 // sequelize.define('tableName', { columns })
 const Todo = sequelize.define('todo', {
@@ -34,7 +35,7 @@ const Todo = sequelize.define('todo', {
     description: DataTypes.TEXT, // ShortHand Using.
 
     priority: { // 1: High, 0: Normal, -1: Low
-        type: DataTypes.TINYINT, // postgres: INTEGER
+        type: DataTypes.INTEGER, // postgres: INTEGER
         allowNull: false,
         defaultValue: 0, // set default value.
     },
@@ -54,7 +55,7 @@ const Todo = sequelize.define('todo', {
 //! SYNC MUST RUN ONCE!
 // sequelize.sync() // CREATE TABLE
 // sequelize.sync({ force: true }) // DROP & CREATE
-sequelize.sync({ alter: true }) // TO BACKUP & DROP & CREATE & FROM BACKUP
+// sequelize.sync({ alter: true }) // TO BACKUP & DROP & CREATE & FROM BACKUP
 
 // Connect:
 sequelize.authenticate()

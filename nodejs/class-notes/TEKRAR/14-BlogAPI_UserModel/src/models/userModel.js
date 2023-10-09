@@ -12,6 +12,10 @@ const UserSchema = new mongoose.Schema({
         trim: true,
         unique: true,
         required: [true, 'Email field must be required'],
+        validate: [(email)=> (email.includes('@') && email.includes('.')), // ValidationCheck
+         'Email type is incorrect.'] // ErrorMessaage
+        
+        
     },
     password:{
         type: String,

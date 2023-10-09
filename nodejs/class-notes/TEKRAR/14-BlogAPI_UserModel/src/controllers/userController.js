@@ -40,7 +40,7 @@ module.exports.User = {
       });
     },
     read: async (req, res) => {
-      //req.params.postId
+      //req.params.userId
       //    const data =await User.findById(req.params?.userId) // mongoose'a özel
       const data = await User.findOne({ _id: req.params.userId });
       res.status(200).send({

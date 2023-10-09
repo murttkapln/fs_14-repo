@@ -25,11 +25,12 @@ app.all('/',(req,res)=>{ // ana URL'e gelen tüm metodlara izin verir.
 })
 
 //? Routes:
+app.use('/user', require('./src/routes/userRoute'))
 app.use('/blog',require('./src/routes/blogRoute'))
 /* ------------------------------------------------------- */
 
 //? synchronization
-require('./src/sync')()
+// require('./src/sync')()
 
 /* ------------------------------------------------------- */
 //? Error Handler:
