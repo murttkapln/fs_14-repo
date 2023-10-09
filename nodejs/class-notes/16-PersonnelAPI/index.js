@@ -51,6 +51,9 @@ app.all('/',(req,res)=>{
     })
 })
 
+// departments:
+app.use('/department', require('./src/routes/department.router'))
+
 
 
 
