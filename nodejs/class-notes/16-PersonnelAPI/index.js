@@ -14,28 +14,28 @@ const app = express()
 /* ------------------------------------------------------- */
 // Required Modules:
 
-// envVariables to process.env
-
+// envVariables to process.env:
 require('dotenv').config()
-const PORT = process.env.PORT || 80000
+const PORT = process.env?.PORT || 8000
 
-//? asyncErrors to errorHandler:
+// asyncErrors to errorHandler:
 require('express-async-errors')
+
 /* ------------------------------------------------------- */
-// Configurations:
+// Configrations:
 
 // Connect to DB:
-const {dbConnection} = require('./src/configs/dbConnection')
+const { dbConnection } = require('./src/configs/dbConnection')
 dbConnection()
+
 /* ------------------------------------------------------- */
 // Middlewares:
 
 // Accept JSON:
-app.use('/',express.json())
+app.use(express.json())
 
 // SessionsCookies:
-app.use(require('cookie-session')({secret: process.env.SECRET_KEY}))
-
+app.use(require('cookie-session')({ secret: process.env.SECRET_KEY }))
 
 // res.getModelList():
 app.use(require('./src/middlewares/findSearchSortPage'))
@@ -44,20 +44,17 @@ app.use(require('./src/middlewares/findSearchSortPage'))
 // Routes:
 
 // HomePath:
-app.all('/',(req,res)=>{
+app.all('/', (req, res) => {
     res.send({
         error: false,
-        message: 'WELCOME TO PERSONNAL API'
+        message: 'Welcome to PERSONNEL API',
     })
 })
 
-// departments:
-app.use('/department', require('./src/routes/department.router'))
-
-
-
-
-
+// /departments
+app.use('/departments', require('./src/routes/department.router'))
+// /personnels
+app.use('/personnels', require('./src/routes/personnel.router'))
 
 /* ------------------------------------------------------- */
 

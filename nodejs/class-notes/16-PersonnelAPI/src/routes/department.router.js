@@ -5,7 +5,6 @@
 const router = require('express').Router()
 /* ------------------------------------------------------- */
 
-
 const department = require('../controllers/department.controller')
 
 // URL: /departments
@@ -20,7 +19,7 @@ router.route('/:id')
     .patch(department.update)
     .delete(department.delete)
 
-
+router.get('/:id/personnels', department.personnels)
 
 /* ------------------------------------------------------- */
 module.exports = router
