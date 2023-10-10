@@ -77,8 +77,24 @@ module.exports.BlogCategory = {
 //******  BLOGPOST    ********
 // -------------------------------------------------------
 module.exports.BlogPost = {
+  
   list: async (req, res) => {
-    const data = await BlogPost.find().populate('blogCategoryId'); // Get Primary Data
+
+    //? Seacrhing & Sorting & Pagination:
+//  SEARCHING: URL?search[key1]=value1&search[key2]=value2
+    const search = req.query?.search || {}
+    console.log(search);
+    const data = await BlogPost.find({title:{$regex: 'Test 10', $options:'i'}})
+
+     // https://www.mongodb.com/docs/manual/reference/operator/query/regex/
+
+
+
+
+
+
+
+    // const data = await BlogPost.find().populate('blogCategoryId'); // Get Primary Data
     res.status(200).send({
       error: false,
       count: data.length,
