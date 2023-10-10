@@ -19,7 +19,10 @@ const { BlogPost,BlogCategory } = require("../models/blogModel");
 
 module.exports.BlogCategory = {
   list: async (req, res) => {
-    const data = await BlogCategory.find();
+    // const data = await BlogCategory.find();
+
+    const data = await req.getModelList(BlogCategory)
+
     res.status(200).send({
       error: false,
       count: data.length,
@@ -79,22 +82,48 @@ module.exports.BlogCategory = {
 module.exports.BlogPost = {
   
   list: async (req, res) => {
+  
+  
 
-    //? Seacrhing & Sorting & Pagination:
-//  SEARCHING: URL?search[key1]=value1&search[key2]=value2
-    const search = req.query?.search || {}
-    console.log(search);
-    const data = await BlogPost.find({title:{$regex: 'Test 10', $options:'i'}})
-
+ /*/  
+   //******  Seacrhing & Sorting & Pagination: ******/
+// //?  SEARCHING: URL?search[key1]=value1&search[key2]=value2
+//     const search = req.query?.search || {}
+     // console.log(search);
+    
      // https://www.mongodb.com/docs/manual/reference/operator/query/regex/
+//     for(let key in search) search[key]= {$regex: search[key], $options: 'i'} // i: key insensitive
+
+//     //? SORTING: URL?sort[key1]=1&sort[key2]=-1 (1:ASC, -1: DESC)
+//     const sort = req.query?.sort || {}
+     // console.log(sort);
+
+//     //? PAGINATION: URL?page=1&limit=10
+    // const limit = req.query?.limit || 20
+    /*//!  Alternatif */
+     // let limit = req.query?.limit || (process.env.PAGE_SIZE || 20)
+     // limit = NUmber(limit)
+//     let limit = Number(req.query?.limit || (process.env?.PAGE_SIZE || 20))
+//     limit = limit > 0 ?limit: Number(process.env.PAGE_SIZE || 20)
+     // console.log('Limit',typeof limit, limit);
+
+//     let page = Number(req.query?.page || 1) 
+//     page = (page > 0 ? page: 1) -1 // BackEnd'de sayfa no her zaman -1'dir.
+    // console.log('page', typeof page, page);
+
+//     let skip = Number(req.query?.skip ||(page * limit))// İstenirse URL'de ?skip=10 gibi değer gönderilebilir.
+//     skip = skip > 0 ? skip:(page * limit)
+     // console.log('skip', typeof skip, skip);
+    
 
 
+// //? RUN:
+     // const data = await BlogPost.find().populate('blogCategoryId'); // Get Primary Data
+//     const data = await BlogPost.find(search).sort(sort).skip(skip).limit(limit).populate('blogCategoryId')
 
 
+const data = await req.getModelList(BlogPost, 'blogCategoryId')
 
-
-
-    // const data = await BlogPost.find().populate('blogCategoryId'); // Get Primary Data
     res.status(200).send({
       error: false,
       count: data.length,

@@ -20,8 +20,11 @@ const User = require('../models/userModel')
 
 
 module.exports.User = {
+  
     list: async (req, res) => {
-      const data = await User.find();
+      // const data = await User.find();
+  const data = await req.getModelList(User)
+
       res.status(200).send({
         error: false,
         count: data.length,

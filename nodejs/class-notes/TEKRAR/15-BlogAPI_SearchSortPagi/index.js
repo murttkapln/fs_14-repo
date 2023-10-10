@@ -34,6 +34,9 @@ app.use(express.json())
 //? Conntect to MongoDB with Mongoose
 require('./src/dbConnection') // DB connection Route'a göre yukarıda olmalı. 
 
+//? Searching & Sorting & Pagination:
+app.use(require('./src/middlewares/findeSearchSortPage'))
+
 //? HomePage
 app.all('/',(req,res)=>{ // ana URL'e gelen tüm metodlara izin verir.
     res.send('WELCOME TO BLOG API')
