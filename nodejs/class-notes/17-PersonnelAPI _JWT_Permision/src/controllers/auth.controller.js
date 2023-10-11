@@ -65,7 +65,7 @@ module.exports = {
             throw new Error('Please enter username and password.')
         }
         */
-        const checkUser = checkUserAndSetToken(req.body)
+        const checkUser = await checkUserAndSetToken(req.body)
         if (checkUser.error) {
             res.errorStatusCode = 401
             throw new Error(checkUser.message)
@@ -84,7 +84,7 @@ module.exports = {
 
             if (jwtData) {
 
-                const checkUser = await checkUserAndSetToken(req.body)
+                const checkUser = await checkUserAndSetToken(jwtData, false)
                 if (checkUser.error) {
                     res.errorStatusCode = 401
                     throw new Error(checkUser.message)

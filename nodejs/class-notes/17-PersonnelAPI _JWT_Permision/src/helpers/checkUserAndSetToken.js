@@ -2,16 +2,18 @@
 /* -------------------------------------------------------
     EXPRESS - Personnel API
 ------------------------------------------------------- */
+const jwt = require('jsonwebtoken')
+const Personnel = require('../models/personnel.model')
 
-module.exports = async function(userData) {
+module.exports = async function(userData, withRefresh = true) {
 
     const { username, password } = userData
     
     if (username && password) {
     
-        const user = await Personnel.findOne({ username, password })
+        const user = await Personnel.findOne({ username })
     
-        if (user) {
+        if (user && user.password == password) {
     
             if (user.isActive) {
             // Login OK
@@ -31,7 +33,7 @@ module.exports = async function(userData) {
                     username: user.username,
                     password: user.password
                 }
-                const refreshToken = jwt.sign(refreshData, process.env.REFRESH_KEY, { expiresIn: '3d' })
+                const refreshToken = withRefresh ? jwt.sign(refreshData, process.env.REFRESH_KEY, { expiresIn: '3d' }) : null
     
                 return {
                     error: false,
