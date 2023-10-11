@@ -19,7 +19,7 @@ router.all('/', (req, res) => {
 
 router.post('/login', auth.login)
 router.post('/refresh', auth.refresh)
-router.get('/logout', auth.logout)
+router.all('/logout', auth.logout)
 
 /* ------------------------------------------------------- */
 module.exports = router
