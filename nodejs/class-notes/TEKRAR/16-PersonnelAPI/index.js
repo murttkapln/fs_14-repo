@@ -23,19 +23,43 @@ const PORT = process.env.PORT
 require('express-async-errors')
 
 /* ------------------------------------------------------- */
+//**********  Configurations: ******************
+
+//? Connect to DB:
+const {dbConnection} = require('./src/configs/dbConnection')
+dbConnection()
+
+/* ------------------------------------------------------- */
+//**********  Middlewares: ******************
+//? Accept JSON:
+app.use('/', express.json())
+
+//? SessionsCookies:
+app.use(require('cookie-session')({secret: process.env.SECRET_KEY}))
+
+//? res.getModelList():
+app.use(require('./src/middlewares/findSearchSortPage'))
+
+/* ------------------------------------------------------- */
+//**********  ROUTES: ******************
+ //? Homepage:
+ app.all('/',(req,res)=>{
+    res.send({
+        error:false,
+        message: 'Welcome toPERSONNEL API'
+    })
+ })
 
 
-
-// continue from here...
 
 
 
 /* ------------------------------------------------------- */
 
-// errorHandler:
+//? errorHandler:
 app.use(require('./src/middlewares/errorHandler'))
 
-// RUN SERVER:
+//? RUN SERVER:
 app.listen(PORT, () => console.log('http://127.0.0.1:' + PORT))
 
 /* ------------------------------------------------------- */
