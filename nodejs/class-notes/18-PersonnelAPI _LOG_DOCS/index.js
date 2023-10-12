@@ -105,7 +105,7 @@ app.use(require('./src/middlewares/findSearchSortPage'))
 //     })
 //     next()
 // })
-app.use(require('./src/middlewares/authenticated'))
+app.use(require('./src/middlewares/authentication'))
 
 // Documentation Middlewares:
 // Swagger-UI:
