@@ -3,6 +3,7 @@
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 /*
+    $ npm init -y
     $ npm i express dotenv mongoose express-async-errors
     $ npm i jsonwebtoken morgan
 */
