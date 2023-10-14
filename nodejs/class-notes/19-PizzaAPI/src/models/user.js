@@ -4,46 +4,51 @@
 ------------------------------------------------------- */
 const { mongoose } = require('../configs/dbConnection')
 /* ------------------------------------------------------- */
-
-const mongoose = require('../configs/dbConnection')
-/* ------------------------------------------------------- */
-
-// User odel:
+// User Model:
 
 const passwordEncrypt = require('../helpers/passwordEncrypt')
+
 const UserSchema = new mongoose.Schema({
+
     username: {
         type: String,
         trim: true,
         required: true,
-        unique: true
+        unique: true,
     },
+
     password: {
         type: String,
         trim: true,
         required: true,
-        set: (password)=> passwordEncrypt(password)
+        set: (password) => passwordEncrypt(password)
     },
+
     email: {
         type: String,
         trim: true,
         required: [true, 'Email field must be required'],
-        unique: [true, 'Tehere is this email. Email field must be unique'],
+        unique: [true, 'There is this email. Email field must be unique'],
         validate: [
-            (email)=>email.includes('@') && email.includes('.'),
-            'Email type is not correct'
-        ],
-        isActive: {
-            type: Boolean,
-            default: true,
-        },
-    
-        isAdmin: {
-            type: Boolean,
-            default: false,
-        },
+            (email) => email.includes('@') && email.includes('.'),
+            'Email type is not correct.'
+        ]
     },
-},{collection: 'users', timestamps:true})
 
+    isActive: {
+        type: Boolean,
+        default: true,
+    },
 
-module.exports =mongoose.model('User', UserSchema)
+    isAdmin: {
+        type: Boolean,
+        default: false,
+    },
+
+}, {
+    collection: 'users',
+    timestamps: true
+})
+
+/* ------------------------------------------------------- */
+module.exports = mongoose.model('User', UserSchema)
