@@ -3,7 +3,6 @@
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 /*
-    $ npm init -y
     $ npm i express dotenv mongoose express-async-errors
     $ npm i jsonwebtoken morgan
 */
@@ -30,34 +29,12 @@ dbConnection()
 /* ------------------------------------------------------- */
 // Middlewares:
 
-// Accept JSON:
-app.use(express.json())
 
-// Run Logger:
-app.use(require('./src/middlewares/logger'))
-
-// res.getModelList():
-app.use(require('./src/middlewares/findSearchSortPage'))
 
 /* ------------------------------------------------------- */
 // Routes:
 
-// HomePath:
-app.all('/', (req, res) => {
-    res.send({
-        error: false,
-        message: 'Welcome to PIZZA API',
-        isLogin: req.isLogin,
-        user: req.user
-    })
-})
 
-// user:
-app.use('/users', require('./src/routes/user'))
-// pizza:
-app.use('/pizzas', require('./src/routes/pizza'))
-// topping:
-app.use('/toppings', require('./src/routes/topping'))
 
 /* ------------------------------------------------------- */
 

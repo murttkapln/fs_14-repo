@@ -6,9 +6,7 @@ const { mongoose } = require('../configs/dbConnection')
 /* ------------------------------------------------------- */
 // Topping Model:
 
-const passwordEncrypt = require('../helpers/passwordEncrypt')
-
-const ToopingSchema = new mongoose.Schema({
+const ToppingSchema = new mongoose.Schema({
 
     name: {
         type: String,

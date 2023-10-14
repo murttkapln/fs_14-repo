@@ -9,23 +9,26 @@ const { mongoose } = require('../configs/dbConnection')
 const OrderSchema = new mongoose.Schema({
 
     userId: {
-        
         type: mongoose.Schema.Types.ObjectId,
-        ref:'User',
+        ref: 'User',
         required: true,
     },
 
     pizzaId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        trim: true,
+        ref: 'Pizza',
+        required: true,
     },
 
     size: {
         type: String,
-        trim: true,
         required: true,
-        enum: ['Small', 'Medium', 'Large']
+        enum: ['Small', 'Medium', 'Large', 'XLarge']
+    },
+
+    quantity: {
+        type: Number,
+        required: true,
     },
 
     price: {
@@ -33,14 +36,9 @@ const OrderSchema = new mongoose.Schema({
         required: true,
     },
 
-    quantity : {
-        type: Number,
-        required: true
-    },
     totalPrice: {
-        type: Number
-    }
-
+        type: Number,
+    },
 
 }, {
     collection: 'orders',
@@ -48,4 +46,4 @@ const OrderSchema = new mongoose.Schema({
 })
 
 /* ------------------------------------------------------- */
-module.exports = mongoose.model('Order', OrderSchema)
+module.exports = mongoose.model('Order', OrderSchema)s
