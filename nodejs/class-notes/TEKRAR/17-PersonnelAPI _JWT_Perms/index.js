@@ -40,24 +40,48 @@ app.use(require('cookie-session')({secret: process.env.SECRET_KEY}))
 //? res.getModelList():
 app.use(require('./src/middlewares/findSearchSortPage'))
 
-//? Login/Logout Control Middleware:
-app.use(async(req,res,next)=>{
+//? Cookie:Login/Logout Control Middleware:
+// app.use(async(req,res,next)=>{
 
-    const Personnel = require('./src/models/personnel.model')
+//     const Personnel = require('./src/models/personnel.model')
 
-    req.isLogin = false
+//     req.isLogin = false
 
-    if(req.session?.id) {
-        const user = await Personnel.findOne({_id:req.params.id})
-        // if(user.password == req.session.password){
-        //     req.isLogin = true
-        // }
-        req.isLogin = user.password == req.session.password
-    }
-    console.log('isLogin', req.isLogin);
+//     if(req.session?.id) {
+//         const user = await Personnel.findOne({_id:req.params.id})
+//         // if(user.password == req.session.password){
+//         //     req.isLogin = true
+//         // }
+//         req.isLogin = user.password == req.session.password
+//     }
+//     console.log('isLogin', req.isLogin);
 
-    next()
-})
+//     next()
+// })
+
+// * Moved => middlewares/authentication.js
+
+// const jwt = require('jsonwebtoken')
+
+// app.use((req,res,next)=>{
+//     const auth = req.headers?.authorization || null // get Authorization
+//     const accessToken = auth ? auth.split(' ')[1] : null // get JWT
+
+//     jwt.verify(accessToken, process.env.SECRET_KEY, function(err,user){
+//         if(err){
+//             req.user = null
+//             console.log('JWT Login: NO');
+
+//         }else{
+//             //re.user = user
+//             req.user = user.isActive ? user : null
+//         }
+//     })
+//     next()
+// })
+
+
+app.use(require('./src/middlewares/authentication'))
 
 /* ------------------------------------------------------- */
 //**********  ROUTES: ******************
@@ -66,8 +90,9 @@ app.use(async(req,res,next)=>{
     res.send({
         error:false,
         message: 'Welcome toPERSONNEL API',
-        session: req.session,
+        // session: req.session,
         isLogin: req.isLogin,
+        user: req.user
     })
  })
 

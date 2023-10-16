@@ -21,7 +21,7 @@ module.exports = {
 
     create: async (req, res) => {
 
-        //? isLead Control:
+        // isLead Control:
         const isLead = req.body?.isLead || false
         if (isLead) {
             const xyz = await Personnel.updateMany({ departmentId: req.body.departmentId, isLead: true }, { isLead: false })
@@ -49,7 +49,7 @@ module.exports = {
 
     update: async (req, res) => {
 
-        //? isLead Control:
+        // isLead Control:
         const isLead = req.body?.isLead || false
         if (isLead) {
             const { departmentId } = await Personnel.findOne({ _id: req.params.id }, { departmentId: 1 })
@@ -75,7 +75,7 @@ module.exports = {
         })
     },
 
-    //? LOGIN & LOGOUT
+    // LOGIN & LOGOUT:
 
     login: async (req, res) => {
 

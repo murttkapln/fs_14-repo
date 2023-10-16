@@ -8,13 +8,11 @@ const Department = require('../models/department.model')
 module.exports = {
 
     list: async (req, res) => {
-        // console.log('isLogin', isLogin);
 
         // const data = await Department.find(search).sort(sort).skip(skip).limit(limit)
         const data = await res.getModelList(Department)
 
         res.status(200).send({
-            // isLogin: req.isLogin,
             error: false,
             detail: await res.getModelListDetails(Department),
             data // data: data
