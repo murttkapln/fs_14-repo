@@ -32,10 +32,20 @@ module.exports = {
 
                     }
 
+                    const accessToken = jwt.sign(accessData,process.env.ACCESS_KEY,{expiresIn: '30m'})
+
                     const refreshData = {
                         username: user.username,
                         password: user.password
                     }
+                    const refreshToken = jwt.sign(refreshData,process.env.REFRESH_KEY, {expiresIn: '3d'})
+                    res.send({
+                        error: false,
+                        token:{
+                            accessToken,
+                            refreshToken
+                        }
+                    })
 
                 }else {
                     res.errorStatusCode = 401
@@ -51,5 +61,11 @@ module.exports = {
         }
     },
     refresh: async(req,res)=>{},
-    logout: async(req,res)=>{},
+    
+    logout: async(req,res)=>{
+        res.send({
+            error:false,
+            message: 'No need any doing for logout. You must deleted Bearer Token from your Browser.'
+        })
+    },
 }

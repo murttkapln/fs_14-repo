@@ -71,6 +71,8 @@ app.use(async(req,res,next)=>{
     })
  })
 
+ //?  /auth:
+ app.use('/auth', require('./src/routes/auth.router'))
 
  //?  /departments:
  app.use('/departments', require('./src/routes/department.router'))
