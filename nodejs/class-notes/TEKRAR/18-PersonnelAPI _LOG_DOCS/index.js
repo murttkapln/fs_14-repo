@@ -31,6 +31,33 @@ dbConnection()
 
 /* ------------------------------------------------------- */
 //**********  Middlewares: ******************
+
+//? Logging:
+//* npm i morgan
+// https://expressjs.com/en/resources/middleware/morgan.html
+const morgan = require('morgan')
+// console.log(morgan);
+// app.use(morgan('combained'))
+//  app.use(morgan('IP:remote-addr TIME:[:date[clf]] REQ:":method :url HTTP/:http-version" RES::status :res[content-length] APP:":user-agent"'))
+
+
+ //? Write logs to file:
+// const fs = require('node:fs')
+// app.use(morgan('combined', {
+//     stream: fs.createWriteStream('./access.log', { flags: 'a' })
+// }))
+
+
+const fs = require('node:fs')
+const now = new Date()
+const today = now.toISOString().split('T')[0]
+app.use(morgan('combined', {
+    stream: fs.createWriteStream(`./logs/${today}`, { flags: 'a' })
+}))
+
+
+
+
 //? Accept JSON:
 app.use('/', express.json())
 
