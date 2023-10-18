@@ -2,17 +2,16 @@
 /* -------------------------------------------------------
    * EXPRESS - FLIGHT API
 ------------------------------------------------------- */
-const router = require('express').Router()
+const router = require("express").Router();
 /* ------------------------------------------------------- */
 // routes/auth:
 
-const auth = require('../controllers/auth.controller')
+const auth = require("../controllers/auth.controller");
 
 // URL: /auth
 
-router.post('/login', auth.login)
-router.post('/refresh', auth.refresh)
-router.get('/logout', auth.logout)
-
+router.post("/login", auth.login);
+router.post("/refresh", auth.refresh);
+router.get("/logout", auth.logout);
 /* ------------------------------------------------------- */
-module.exports = router
+module.exports = router;
