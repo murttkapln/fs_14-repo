@@ -29,6 +29,24 @@ dbConnection()
 // Middlewares:
 // Accept JSON
 app.use(express.json())
+/* ------------------------------------------------------- */
+
+// Routes:
+
+// HomePath:
+app.all('/',(req,res)=>{
+   res.send({
+      error:false,
+      message: 'Welcome to FLIGHT API'
+   })
+})
+
+// auth:
+app.use('/auth', require('./src/routes/auth.rotes'))
+// user:
+app.use('/users', require('./src/routes/user.routes'))
+
+
 
 /* ------------------------------------------------------- */
 // errorHandler:
