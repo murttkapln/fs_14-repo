@@ -55,7 +55,11 @@ app.use('/auth', require('./src/routes/auth.routes'))
 // user:
 app.use('/users', require('./src/routes/user.routes'))
 
+// flight:
+app.use('/flights', require('./src/routes/user.routes'))
 
+// document:
+// app.use('/documents', require('./src/routes/document.routes'))
 
 /* ------------------------------------------------------- */
 // errorHandler:
