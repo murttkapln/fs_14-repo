@@ -4,21 +4,21 @@
 ------------------------------------------------------- */
 const router = require('express').Router()
 /* ------------------------------------------------------- */
-// routes/passenger:
+// routes/reservation:
 
-const passenger = require('../controllers/passenger.controller')
+const reservation = require('../controllers/reservation.controller')
 
-// URL: /passengers
+// URL: /reservations
 
 router.route('/')
-    .get(passenger.list)
-    .post(passenger.create)
+    .get(reservation.list)
+    .post(reservation.create)
 
 router.route('/:id')
-    .get(passenger.read)
-    .put(passenger.update)
-    .patch(passenger.update)
-    .delete(passenger.delete)
+    .get(reservation.read)
+    .put(reservation.update)
+    .patch(reservation.update)
+    .delete(reservation.delete)
 
 /* ------------------------------------------------------- */
 module.exports = router

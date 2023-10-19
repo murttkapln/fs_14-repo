@@ -4,7 +4,7 @@
 ------------------------------------------------------- */
 // Flight Controller:
 
-const Flight = require('../models/flight')
+const Flight = require('../models/flight.model')
 
 module.exports = {
 

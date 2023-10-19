@@ -6,7 +6,7 @@ const router = require('express').Router()
 /* ------------------------------------------------------- */
 // routes/flight:
 
-const flight = require('../controllers/flight')
+const flight = require('../controllers/flight.controller')
 
 // URL: /flights
 
