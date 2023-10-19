@@ -49,7 +49,7 @@ const UserSchema = new mongoose.Schema(
           const emailRegexCheck =
             /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
           return emailRegexCheck.test(email);
-        },
+        },'Email type is not correct.'
       ],
       // validate: [validator.isEmail, 'Valid email is required'],
       // validate: [
