@@ -3,6 +3,8 @@
    * EXPRESS - FLIGHT API
 ------------------------------------------------------- */
 
+
+// UserController:
 const User = require('../models/user.model')
 
 module.exports = {

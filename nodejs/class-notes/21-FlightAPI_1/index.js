@@ -44,7 +44,9 @@ app.use('/users',require('./src/middlewares/findSearchSortPage'))
 app.all('/',(req,res)=>{
    res.send({
       error:false,
-      message: 'Welcome to FLIGHT API'
+      message: 'Welcome to FLIGHT API',
+      isLogin: req.isLogin,
+      user: req.user
    })
 })
 
