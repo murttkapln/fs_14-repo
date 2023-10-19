@@ -15,7 +15,7 @@ module.exports = {
   },
 
   isStaffOrAdmin: (req, res, next) => {
-    if (req.user && req.user.isStaff ||req.user.isAdmin) {
+    if ((req.user && req.user.isStaff) || req.user.isAdmin) {
       next();
     } else {
       res.errorStatusCode = 403;
