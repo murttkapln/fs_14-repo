@@ -1,8 +1,8 @@
-# PIZZA API
+# FLIGHT RESERVATION API
 
 ### ERD:
 
-![ERD](./erdPizzaAPI.png)
+![ERD](./erdFlightAPI.png)
 
 ### Installation:
 ```sh
