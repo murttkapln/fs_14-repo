@@ -1,80 +1,85 @@
-"use strict";
+"use strict"
 /* -------------------------------------------------------
-   * EXPRESS - FLIGHT API
+    NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
-
-const { mongoose } = require("../configs/dbConnection");
-
+const { mongoose } = require('../configs/dbConnection')
 /* ------------------------------------------------------- *
 {
-    "username": "test",
-    "password": "1234",
-    "email": "test@site.com",
-    "isActive": true,
-    "isStaff": false,
-    "isAdmin": false,
+  "username": "test",
+  "password": "1234",
+  "email": "test@site.com",
+  "isActive": true,
+  "isStaff": false,
+  "isAdmin": false
+}
+{
+  "username": "staff",
+  "password": "1234",
+  "email": "test1@site.com",
+  "isActive": true,
+  "isStaff": true,
+  "isAdmin": false
+}
+{
+  "username": "admin",
+  "password": "1234",
+  "email": "test2@site.com",
+  "isActive": true,
+  "isStaff": true,
+  "isAdmin": true
 }
 /* ------------------------------------------------------- */
+// User Model:
 
-// UserModel:
+const passwordEncrypt = require('../helpers/passwordEncrypt')
 
-const passwordEncrypt = require("../helpers/passwordEncrypt");
+const UserSchema = new mongoose.Schema({
 
-//* $ npm i validator
-const validator = require("validator");
-const UserSchema = new mongoose.Schema(
-  {
     username: {
-      type: String,
-      trim: true,
-      required: true,
-      unique: true,
+        type: String,
+        trim: true,
+        required: true,
+        unique: true
     },
 
     password: {
-      type: String,
-      trim: true,
-      required: true,
-      // select:false,
-      set: (password) => passwordEncrypt(password),
+        type: String,
+        trim: true,
+        required: true,
+        // select: false,
+        set: (password) => passwordEncrypt(password),
     },
 
     email: {
-      type: String,
-      trim: true,
-      required: [true, "Email field must be required"],
-      unique: [true, "There is this email. Email field must be unique"],
-      validate: [
-        (email) => {
-          const emailRegexCheck =
-            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-          return emailRegexCheck.test(email);
-        },'Email type is not correct.'
-      ],
-      // validate: [validator.isEmail, 'Valid email is required'],
-      // validate: [
-      //     (email) => email.includes('@') && email.includes('.'),
-      //     'Email type is not correct.'
-      // ]
+        type: String,
+        trim: true,
+        required: [true, 'Email field must be required.'],
+        unique: [true, 'There is this email. Email field must be unique.'],
+        validate: [
+            (email) =>  {
+                const emailRegexCheck = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+                return emailRegexCheck.test(email)
+            },
+            'Email type is not correct.'
+        ]
     },
 
     isActive: {
-      type: Boolean,
-      default: true,
+        type: Boolean,
+        default: true
     },
 
     isStaff: {
-      type: Boolean,
-      default: false,
+        type: Boolean,
+        default: false
     },
 
     isAdmin: {
-      type: Boolean,
-      default: false,
+        type: Boolean,
+        default: false
     },
-  },
-  { collection: "users", timestamps: true }
-);
+
+}, { collection: 'users', timestamps: true })
 
 /* ------------------------------------------------------- */
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model('User', UserSchema)
