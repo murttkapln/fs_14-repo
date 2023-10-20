@@ -31,10 +31,10 @@ dbConnection();
 app.use(express.json());
 
 // Check Authhentication:
-app.use("/auth/", require("./src/middlewares/authentication"));
+app.use( require("./src/middlewares/authentication"));
 
 // res.getModelList():
-app.use("/users", require("./src/middlewares/findSearchSortPage"));
+app.use(require("./src/middlewares/findSearchSortPage"));
 /* ------------------------------------------------------- */
 
 // Routes:
@@ -43,9 +43,9 @@ app.use("/users", require("./src/middlewares/findSearchSortPage"));
 app.all("/", (req, res) => {
   res.send({
     error: false,
-    message: "Welcome to FLIGHT API",
-    isLogin: req.isLogin,
-    user: req.user,
+    message: "Welcome to FLIGHT RESERVATION API",
+    documents: '/documents',
+    user: req.user
   });
 });
 
