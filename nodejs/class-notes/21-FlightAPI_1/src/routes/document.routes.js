@@ -6,6 +6,11 @@ const router = require('express').Router()
 /* ------------------------------------------------------- */
 // routes/document:
 
+//* $ npm i redoc-express
+
+//* $ npm i morgan
+//* $ npm i swagger-ui-express
+
 // URL: /documents
 
 router.all('/', (req, res) => {

@@ -49,9 +49,7 @@ app.all("/", (req, res) => {
   });
 });
 
-
-
-app.use('/',require('./src/routes/index.routes'))
+app.use("/", require("./src/routes/index.routes"));
 
 // // auth:
 // app.use("/auth", require("./src/routes/auth.routes"));

@@ -47,7 +47,7 @@ const UserSchema = new mongoose.Schema({
         trim: true,
         required: true,
         // select: false,
-        set: (password) => passwordEncrypt(password),
+        set: (password) => passwordEncrypt(password), // Db ye kaydedilmek üzere gelen veriyi fonksiyondan geçir
     },
 
     email: {

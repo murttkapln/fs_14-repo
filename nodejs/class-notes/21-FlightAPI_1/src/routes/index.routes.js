@@ -22,7 +22,7 @@ router.use("/passengers", require("./passenger.routes"));
 router.use("/reservations", require("./passenger.routes"));
 
 // document:
-// app.use('/documents', require('./src/routes/document.routes'))
+router.use('/documents', require('./document.routes'))
 
 /* ------------------------------------------------------- */
 module.exports = router;
