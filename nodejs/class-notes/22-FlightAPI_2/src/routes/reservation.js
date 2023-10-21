@@ -23,7 +23,6 @@ router.route('/:id')
     .patch(reservation.update)
     .delete(permissions.isAdmin, reservation.delete)
 
-
 router.get('/:id/passengers', reservation.passengers)
 
 /* ------------------------------------------------------- */

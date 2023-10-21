@@ -1,8 +1,8 @@
-"use strict";
+"use strict"
 /* -------------------------------------------------------
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
-const { mongoose } = require("../configs/dbConnection");
+const { mongoose } = require('../configs/dbConnection')
 /* ------------------------------------------------------- *
 {
     "flightNumber": "IS-AN-001",
@@ -25,20 +25,19 @@ const { mongoose } = require("../configs/dbConnection");
 /* ------------------------------------------------------- */
 // Flight Model:
 
-const FlightSchema = new mongoose.Schema(
-  {
-    flightNumber: {
-      // IS-AN-005
-      type: String,
-      trim: true,
-      required: true,
-      unique: true,
+const FlightSchema = new mongoose.Schema({
+
+    flightNumber: { // IS-AN-005
+        type: String,
+        trim: true,
+        required: true,
+        unique: true
     },
 
     airline: {
-      type: String,
-      trim: true,
-      required: true,
+        type: String,
+        trim: true,
+        required: true,
     },
 
     // departure: {
@@ -48,14 +47,14 @@ const FlightSchema = new mongoose.Schema(
     // },
 
     departure: {
-      type: String,
-      trim: true,
-      required: true,
+        type: String,
+        trim: true,
+        required: true
     },
 
     departureDate: {
-      type: Date,
-      required: true,
+        type: Date,
+        required: true,
     },
 
     // arrival: {
@@ -65,24 +64,27 @@ const FlightSchema = new mongoose.Schema(
     // },
 
     arrival: {
-      type: String,
-      trim: true,
-      required: true,
+        type: String,
+        trim: true,
+        required: true
     },
 
     arrivalDate: {
-      type: Date,
-      required: true,
+        type: Date,
+        required: true,
     },
 
     createdId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     },
-  },
-  { collection: "flights", timestamps: true }
-);
+
+}, { collection: 'flights', timestamps: true })
+
+// Mongoose Scheme Middleware:
+// https://mongoosejs.com/docs/middleware.html
+// Trigger: Wnen running init:
 
 const dateToLocaleString = require('../helpers/dateToLocaleString')
 
@@ -92,7 +94,8 @@ FlightSchema.pre('init', function(document) {
     // document.arrivalDateStr = document.arrivalDate.toLocaleString('tr-tr', { dateStyle: 'full', timeStyle: 'medium' })
     document.departureDateStr = dateToLocaleString(document.departureDate)
     document.arrivalDateStr = dateToLocaleString(document.arrivalDate)
+    document.__v = undefined
 })
 
 /* ------------------------------------------------------- */
-module.exports = mongoose.model("Flight", FlightSchema);
+module.exports = mongoose.model('Flight', FlightSchema)
