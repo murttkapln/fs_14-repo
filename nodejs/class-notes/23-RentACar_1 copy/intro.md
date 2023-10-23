@@ -1,5 +1,9 @@
 # RENT A CAR API
 
+### ERD:
+
+![ERD](./erdRentACarAPI.png)
+
 --- 
 
 ### Rent A Car Project 
@@ -9,8 +13,8 @@
   - can choose a car on the list and reserve that car, but can not reserve more than one car on a selected time period,
   - can not reserve cars which are reserved by other customers on selected time period.
   - can see the list of their reservations including past ones.
-  - can update reservations.
-  - can delete their reservations.
+  - can list, create, read their reservations.
+  - can not update, delete reservations.
 
 - Admins;
   - can make CRUD operations on Car table,
@@ -29,8 +33,8 @@
   * Tarih aralığı belirtip müsait araç listeleyebilir. Geçmiş tarihler listelenmez.
   * Seçilen tarih aralığında araç rezerve edilebilir, ancak aynı tarih aralığında ikinci bir araç kiralayamaz.
   * Rezerve edilmiş bir aracı, o tarihlerde rezerve edemez.
-  * Rezervasyonlarını listeyebilir.
-  * Rezervasyonlarını silebilir.
+  * Rezervasyonlarını listeyebilir, ekleyebilir, okuyabilir.
+  * Rezervasyonlarını güncelleyemez, silemez.
 * Yöneticiler:
   * Araba tablosu CRUD işlemleri
   * Müşteri (User) tablosu CRUD işlemleri
@@ -56,10 +60,10 @@
             auth.js
             car.js
             reservation.js
+            token.js
             user.js
         helpers/
             passwordEncrypt.js
-            setToken.js
             sync.js
         middlewares/
             authentication.js
@@ -70,6 +74,7 @@
         models/
             car.js
             reservation.js
+            token.js
             user.js
         routes/
             auth.js
@@ -77,7 +82,6 @@
             document.js
             index.js
             reservation.js
+            token.js
             user.js
 ```
-
-**<p align="center">&#9786; Happy Coding! &#9997;</p>**
