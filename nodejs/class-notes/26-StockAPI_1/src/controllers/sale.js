@@ -1,14 +1,15 @@
-"use strict";
+"use strict"
 /* -------------------------------------------------------
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 // Sale Controller:
 
-const Sale = require("../models/sale");
+const Sale = require('../models/sale')
 
 module.exports = {
-  list: async (req, res) => {
-    /*
+
+    list: async (req, res) => {
+        /*
             #swagger.tags = ["Sales"]
             #swagger.summary = "List Sales"
             #swagger.description = `
@@ -21,20 +22,20 @@ module.exports = {
             `
         */
 
-    const data = await res.getModelList(Sale);
+        const data = await res.getModelList(Sale, {}, ['brand_id', 'product_id'])
 
-    // res.status(200).send({
-    //     error: false,
-    //     details: await res.getModelListDetails(Sale),
-    //     data
-    // })
+        // res.status(200).send({
+        //     error: false,
+        //     details: await res.getModelListDetails(Sale),
+        //     data
+        // })
+        
+        // FOR REACT PROJECT:
+        res.status(200).send(data)
+    },
 
-    // FOR REACT PROJECT:
-    res.status(200).send(data);
-  },
-
-  create: async (req, res) => {
-    /*
+    create: async (req, res) => {
+        /*
             #swagger.tags = ["Sales"]
             #swagger.summary = "Create Sale"
             #swagger.parameters['body'] = {
@@ -50,34 +51,37 @@ module.exports = {
             }
         */
 
-    // Disallow setting admin/staff:
-    req.body.is_staff = false;
-    req.body.is_superadmin = false;
+        // Disallow setting admin/staff:
+        req.body.is_staff = false
+        req.body.is_superadmin = false
 
-    const data = await Sale.create(req.body);
+        // Auto add user_id to req.body:
+        req.body.user_id = req.user?._id
 
-    res.status(201).send({
-      error: false,
-      data,
-    });
-  },
+        const data = await Sale.create(req.body)
 
-  read: async (req, res) => {
-    /*
+        res.status(201).send({
+            error: false,
+            data
+        })
+    },
+
+    read: async (req, res) => {
+        /*
             #swagger.tags = ["Sales"]
             #swagger.summary = "Get Single Sale"
         */
 
-    const data = await Sale.findOne({ _id: req.params.id });
+        const data = await Sale.findOne({ _id: req.params.id }).populate(['brand_id', 'product_id'])
 
-    res.status(200).send({
-      error: false,
-      data,
-    });
-  },
+        res.status(200).send({
+            error: false,
+            data
+        })
+    },
 
-  update: async (req, res) => {
-    /*
+    update: async (req, res) => {
+        /*
             #swagger.tags = ["Sales"]
             #swagger.summary = "Update Sale"
             #swagger.parameters['body'] = {
@@ -93,28 +97,26 @@ module.exports = {
             }
         */
 
-    const data = await Sale.updateOne({ _id: req.params.id }, req.body, {
-      runValidators: true,
-    });
+        const data = await Sale.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
 
-    res.status(202).send({
-      error: false,
-      data,
-      new: await Sale.findOne({ _id: req.params.id }),
-    });
-  },
+        res.status(202).send({
+            error: false,
+            data,
+            new: await Sale.findOne({ _id: req.params.id })
+        })
+    },
 
-  delete: async (req, res) => {
-    /*
+    delete: async (req, res) => {
+        /*
             #swagger.tags = ["Sales"]
             #swagger.summary = "Delete Sale"
         */
 
-    const data = await Sale.deleteOne({ _id: req.params.id });
+        const data = await Sale.deleteOne({ _id: req.params.id })
 
-    res.status(data.deletedCount ? 204 : 404).send({
-      error: !data.deletedCount,
-      data,
-    });
-  },
-};
+        res.status(data.deletedCount ? 204 : 404).send({
+            error: !data.deletedCount,
+            data
+        })
+    },
+}

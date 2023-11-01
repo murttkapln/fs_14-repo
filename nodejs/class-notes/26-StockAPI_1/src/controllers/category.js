@@ -10,8 +10,8 @@ module.exports = {
 
     list: async (req, res) => {
         /*
-            #swagger.tags = ["Categorys"]
-            #swagger.summary = "List Categorys"
+            #swagger.tags = ["Categories"]
+            #swagger.summary = "List Categories"
             #swagger.description = `
                 You can send query with endpoint for search[], sort[], page and limit.
                 <ul> Examples:
@@ -36,7 +36,7 @@ module.exports = {
 
     create: async (req, res) => {
         /*
-            #swagger.tags = ["Categorys"]
+            #swagger.tags = ["Categories"]
             #swagger.summary = "Create Category"
             #swagger.parameters['body'] = {
                 in: 'body',
@@ -65,7 +65,7 @@ module.exports = {
 
     read: async (req, res) => {
         /*
-            #swagger.tags = ["Categorys"]
+            #swagger.tags = ["Categories"]
             #swagger.summary = "Get Single Category"
         */
 
@@ -79,7 +79,7 @@ module.exports = {
 
     update: async (req, res) => {
         /*
-            #swagger.tags = ["Categorys"]
+            #swagger.tags = ["Categories"]
             #swagger.summary = "Update Category"
             #swagger.parameters['body'] = {
                 in: 'body',
@@ -105,7 +105,7 @@ module.exports = {
 
     delete: async (req, res) => {
         /*
-            #swagger.tags = ["Categorys"]
+            #swagger.tags = ["Categories"]
             #swagger.summary = "Delete Category"
         */
 

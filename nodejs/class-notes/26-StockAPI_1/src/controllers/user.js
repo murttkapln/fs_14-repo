@@ -1,14 +1,15 @@
-"use strict";
+"use strict"
 /* -------------------------------------------------------
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 // User Controller:
 
-const User = require("../models/user");
+const User = require('../models/user')
 
 module.exports = {
-  list: async (req, res) => {
-    /*
+
+    list: async (req, res) => {
+        /*
             #swagger.tags = ["Users"]
             #swagger.summary = "List Users"
             #swagger.description = `
@@ -21,20 +22,22 @@ module.exports = {
             `
         */
 
-    const data = await res.getModelList(User);
+        const filters = (req.user?.is_superadmin) ? {} : { _id: req.user._id }
 
-    // res.status(200).send({
-    //     error: false,
-    //     details: await res.getModelListDetails(User),
-    //     data
-    // })
+        const data = await res.getModelList(User, filters)
 
-    // FOR REACT PROJECT:
-    res.status(200).send(data);
-  },
+        // res.status(200).send({
+        //     error: false,
+        //     details: await res.getModelListDetails(User),
+        //     data
+        // })
+        
+        // FOR REACT PROJECT:
+        res.status(200).send(data)
+    },
 
-  create: async (req, res) => {
-    /*
+    create: async (req, res) => {
+        /*
             #swagger.tags = ["Users"]
             #swagger.summary = "Create User"
             #swagger.parameters['body'] = {
@@ -50,34 +53,36 @@ module.exports = {
             }
         */
 
-    // Disallow setting admin/staff:
-    req.body.is_staff = false;
-    req.body.is_superadmin = false;
+        // Disallow setting admin/staff:
+        req.body.is_staff = false
+        req.body.is_superadmin = false
 
-    const data = await User.create(req.body);
+        const data = await User.create(req.body)
 
-    res.status(201).send({
-      error: false,
-      data,
-    });
-  },
+        res.status(201).send({
+            error: false,
+            data
+        })
+    },
 
-  read: async (req, res) => {
-    /*
+    read: async (req, res) => {
+        /*
             #swagger.tags = ["Users"]
             #swagger.summary = "Get Single User"
         */
 
-    const data = await User.findOne({ _id: req.params.id });
+        const filters = (req.user?.is_superadmin) ? { _id: req.params.id } : { _id: req.user._id }
 
-    res.status(200).send({
-      error: false,
-      data,
-    });
-  },
+        const data = await User.findOne(filters)
 
-  update: async (req, res) => {
-    /*
+        res.status(200).send({
+            error: false,
+            data
+        })
+    },
+
+    update: async (req, res) => {
+        /*
             #swagger.tags = ["Users"]
             #swagger.summary = "Update User"
             #swagger.parameters['body'] = {
@@ -93,28 +98,29 @@ module.exports = {
             }
         */
 
-    const data = await User.updateOne({ _id: req.params.id }, req.body, {
-      runValidators: true,
-    });
+        const filters = (req.user?.is_superadmin) ? { _id: req.params.id } : { _id: req.user._id }
+        req.body.is_superadmin = (req.user?.is_superadmin) ? req.body.is_superadmin : false
 
-    res.status(202).send({
-      error: false,
-      data,
-      new: await User.findOne({ _id: req.params.id }),
-    });
-  },
+        const data = await User.updateOne(filters, req.body, { runValidators: true })
 
-  delete: async (req, res) => {
-    /*
+        res.status(202).send({
+            error: false,
+            data,
+            new: await User.findOne(filters)
+        })
+    },
+
+    delete: async (req, res) => {
+        /*
             #swagger.tags = ["Users"]
             #swagger.summary = "Delete User"
         */
 
-    const data = await User.deleteOne({ _id: req.params.id });
+        const data = await User.deleteOne({ _id: req.params.id })
 
-    res.status(data.deletedCount ? 204 : 404).send({
-      error: !data.deletedCount,
-      data,
-    });
-  },
-};
+        res.status(data.deletedCount ? 204 : 404).send({
+            error: !data.deletedCount,
+            data
+        })
+    },
+}

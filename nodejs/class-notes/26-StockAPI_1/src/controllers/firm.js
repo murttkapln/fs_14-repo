@@ -1,14 +1,15 @@
-"use strict";
+"use strict"
 /* -------------------------------------------------------
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 // Firm Controller:
 
-const Firm = require("../models/firm");
+const Firm = require('../models/firm')
 
 module.exports = {
-  list: async (req, res) => {
-    /*
+
+    list: async (req, res) => {
+        /*
             #swagger.tags = ["Firms"]
             #swagger.summary = "List Firms"
             #swagger.description = `
@@ -21,20 +22,20 @@ module.exports = {
             `
         */
 
-    const data = await res.getModelList(Firm);
+        const data = await res.getModelList(Firm)
 
-    // res.status(200).send({
-    //     error: false,
-    //     details: await res.getModelListDetails(Firm),
-    //     data
-    // })
+        // res.status(200).send({
+        //     error: false,
+        //     details: await res.getModelListDetails(Firm),
+        //     data
+        // })
+        
+        // FOR REACT PROJECT:
+        res.status(200).send(data)
+    },
 
-    // FOR REACT PROJECT:
-    res.status(200).send(data);
-  },
-
-  create: async (req, res) => {
-    /*
+    create: async (req, res) => {
+        /*
             #swagger.tags = ["Firms"]
             #swagger.summary = "Create Firm"
             #swagger.parameters['body'] = {
@@ -50,34 +51,34 @@ module.exports = {
             }
         */
 
-    // Disallow setting admin/staff:
-    req.body.is_staff = false;
-    req.body.is_superadmin = false;
+        // Disallow setting admin/staff:
+        req.body.is_staff = false
+        req.body.is_superadmin = false
 
-    const data = await Firm.create(req.body);
+        const data = await Firm.create(req.body)
 
-    res.status(201).send({
-      error: false,
-      data,
-    });
-  },
+        res.status(201).send({
+            error: false,
+            data
+        })
+    },
 
-  read: async (req, res) => {
-    /*
+    read: async (req, res) => {
+        /*
             #swagger.tags = ["Firms"]
             #swagger.summary = "Get Single Firm"
         */
 
-    const data = await Firm.findOne({ _id: req.params.id });
+        const data = await Firm.findOne({ _id: req.params.id })
 
-    res.status(200).send({
-      error: false,
-      data,
-    });
-  },
+        res.status(200).send({
+            error: false,
+            data
+        })
+    },
 
-  update: async (req, res) => {
-    /*
+    update: async (req, res) => {
+        /*
             #swagger.tags = ["Firms"]
             #swagger.summary = "Update Firm"
             #swagger.parameters['body'] = {
@@ -93,28 +94,26 @@ module.exports = {
             }
         */
 
-    const data = await Firm.updateOne({ _id: req.params.id }, req.body, {
-      runValidators: true,
-    });
+        const data = await Firm.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
 
-    res.status(202).send({
-      error: false,
-      data,
-      new: await Firm.findOne({ _id: req.params.id }),
-    });
-  },
+        res.status(202).send({
+            error: false,
+            data,
+            new: await Firm.findOne({ _id: req.params.id })
+        })
+    },
 
-  delete: async (req, res) => {
-    /*
+    delete: async (req, res) => {
+        /*
             #swagger.tags = ["Firms"]
             #swagger.summary = "Delete Firm"
         */
 
-    const data = await Firm.deleteOne({ _id: req.params.id });
+        const data = await Firm.deleteOne({ _id: req.params.id })
 
-    res.status(data.deletedCount ? 204 : 404).send({
-      error: !data.deletedCount,
-      data,
-    });
-  },
-};
+        res.status(data.deletedCount ? 204 : 404).send({
+            error: !data.deletedCount,
+            data
+        })
+    },
+}
