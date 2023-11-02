@@ -1,15 +1,14 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 // Category Controller:
 
-const Category = require('../models/category')
+const Category = require("../models/category");
 
 module.exports = {
-
-    list: async (req, res) => {
-        /*
+  list: async (req, res) => {
+    /*
             #swagger.tags = ["Categories"]
             #swagger.summary = "List Categories"
             #swagger.description = `
@@ -22,98 +21,84 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Category)
+    const data = await res.getModelList(Category);
 
-        // res.status(200).send({
-        //     error: false,
-        //     details: await res.getModelListDetails(Category),
-        //     data
-        // })
-        
-        // FOR REACT PROJECT:
-        res.status(200).send(data)
-    },
+    // res.status(200).send({
+    //     error: false,
+    //     details: await res.getModelListDetails(Category),
+    //     data
+    // })
 
-    create: async (req, res) => {
-        /*
+    // FOR REACT PROJECT:
+    res.status(200).send(data);
+  },
+
+  create: async (req, res) => {
+    /*
             #swagger.tags = ["Categories"]
             #swagger.summary = "Create Category"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: {
-                    "Categoryname": "test",
-                    "password": "1234",
-                    "email": "test@site.com",
-                    "first_name": "test",
-                    "last_name": "test",
-                }
+                schema: { $ref: '#/definitions/Category' }
             }
         */
 
-        // Disallow setting admin/staff:
-        req.body.is_staff = false
-        req.body.is_superadmin = false
+    const data = await Category.create(req.body);
 
-        const data = await Category.create(req.body)
+    res.status(201).send({
+      error: false,
+      data,
+    });
+  },
 
-        res.status(201).send({
-            error: false,
-            data
-        })
-    },
-
-    read: async (req, res) => {
-        /*
+  read: async (req, res) => {
+    /*
             #swagger.tags = ["Categories"]
             #swagger.summary = "Get Single Category"
         */
 
-        const data = await Category.findOne({ _id: req.params.id })
+    const data = await Category.findOne({ _id: req.params.id });
 
-        res.status(200).send({
-            error: false,
-            data
-        })
-    },
+    res.status(200).send({
+      error: false,
+      data,
+    });
+  },
 
-    update: async (req, res) => {
-        /*
+  update: async (req, res) => {
+    /*
             #swagger.tags = ["Categories"]
             #swagger.summary = "Update Category"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: {
-                    "Categoryname": "test",
-                    "password": "1234",
-                    "email": "test@site.com",
-                    "first_name": "test",
-                    "last_name": "test",
-                }
+                schema: { $ref: '#/definitions/Category' }
             }
         */
 
-        const data = await Category.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
+    const data = await Category.updateOne({ _id: req.params.id }, req.body, {
+      runValidators: true,
+    });
 
-        res.status(202).send({
-            error: false,
-            data,
-            new: await Category.findOne({ _id: req.params.id })
-        })
-    },
+    res.status(202).send({
+      error: false,
+      data,
+      new: await Category.findOne({ _id: req.params.id }),
+    });
+  },
 
-    delete: async (req, res) => {
-        /*
+  delete: async (req, res) => {
+    /*
             #swagger.tags = ["Categories"]
             #swagger.summary = "Delete Category"
         */
 
-        const data = await Category.deleteOne({ _id: req.params.id })
+    const data = await Category.deleteOne({ _id: req.params.id });
 
-        res.status(data.deletedCount ? 204 : 404).send({
-            error: !data.deletedCount,
-            data
-        })
-    },
-}
+    res.status(data.deletedCount ? 204 : 404).send({
+      error: !data.deletedCount,
+      data,
+    });
+  },
+};

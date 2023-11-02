@@ -1,15 +1,14 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 // Product Controller:
 
-const Product = require('../models/product')
+const Product = require("../models/product");
 
 module.exports = {
-
-    list: async (req, res) => {
-        /*
+  list: async (req, res) => {
+    /*
             #swagger.tags = ["Products"]
             #swagger.summary = "List Products"
             #swagger.description = `
@@ -22,98 +21,90 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Product, {}, ['category_id', 'brand_id'])
+    const data = await res.getModelList(Product, {}, [
+      "category_id",
+      "brand_id",
+    ]);
 
-        // res.status(200).send({
-        //     error: false,
-        //     details: await res.getModelListDetails(Product),
-        //     data
-        // })
-        
-        // FOR REACT PROJECT:
-        res.status(200).send(data)
-    },
+    // res.status(200).send({
+    //     error: false,
+    //     details: await res.getModelListDetails(Product),
+    //     data
+    // })
 
-    create: async (req, res) => {
-        /*
+    // FOR REACT PROJECT:
+    res.status(200).send(data);
+  },
+
+  create: async (req, res) => {
+    /*
             #swagger.tags = ["Products"]
             #swagger.summary = "Create Product"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: {
-                    "Productname": "test",
-                    "password": "1234",
-                    "email": "test@site.com",
-                    "first_name": "test",
-                    "last_name": "test",
-                }
+                schema: { $ref: '#/definitions/Product' }
             }
         */
 
-        // Disallow setting admin/staff:
-        req.body.is_staff = false
-        req.body.is_superadmin = false
+    const data = await Product.create(req.body);
 
-        const data = await Product.create(req.body)
+    res.status(201).send({
+      error: false,
+      data,
+    });
+  },
 
-        res.status(201).send({
-            error: false,
-            data
-        })
-    },
-
-    read: async (req, res) => {
-        /*
+  read: async (req, res) => {
+    /*
             #swagger.tags = ["Products"]
             #swagger.summary = "Get Single Product"
         */
 
-        const data = await Product.findOne({ _id: req.params.id }).populate(['category_id', 'brand_id'])
+    const data = await Product.findOne({ _id: req.params.id }).populate([
+      "category_id",
+      "brand_id",
+    ]);
 
-        res.status(200).send({
-            error: false,
-            data
-        })
-    },
+    res.status(200).send({
+      error: false,
+      data,
+    });
+  },
 
-    update: async (req, res) => {
-        /*
+  update: async (req, res) => {
+    /*
             #swagger.tags = ["Products"]
             #swagger.summary = "Update Product"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: {
-                    "Productname": "test",
-                    "password": "1234",
-                    "email": "test@site.com",
-                    "first_name": "test",
-                    "last_name": "test",
-                }
+                schema: { $ref: '#/definitions/Product' }
             }
         */
 
-        const data = await Product.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
+    const data = await Product.updateOne({ _id: req.params.id }, req.body, {
+      runValidators: true,
+    });
 
-        res.status(202).send({
-            error: false,
-            data,
-            new: await Product.findOne({ _id: req.params.id })
-        })
-    },
+    res.status(202).send({
+      error: false,
+      data,
+      new: await Product.findOne({ _id: req.params.id }),
+    });
+  },
 
-    delete: async (req, res) => {
-        /*
+  delete: async (req, res) => {
+    /*
             #swagger.tags = ["Products"]
             #swagger.summary = "Delete Product"
         */
 
-        const data = await Product.deleteOne({ _id: req.params.id })
+    const data = await Product.deleteOne({ _id: req.params.id });
 
-        res.status(data.deletedCount ? 204 : 404).send({
-            error: !data.deletedCount,
-            data
-        })
-    },
-}
+    res.status(data.deletedCount ? 204 : 404).send({
+      error: !data.deletedCount,
+      data,
+    });
+  },
+};

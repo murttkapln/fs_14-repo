@@ -1,15 +1,14 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 // Purchase Controller:
 
-const Purchase = require('../models/purchase')
+const Purchase = require("../models/purchase");
 
 module.exports = {
-
-    list: async (req, res) => {
-        /*
+  list: async (req, res) => {
+    /*
             #swagger.tags = ["Purchases"]
             #swagger.summary = "List Purchases"
             #swagger.description = `
@@ -22,101 +21,95 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Purchase, {}, ['firm_id', 'brand_id', 'product_id'])
+    const data = await res.getModelList(Purchase, {}, [
+      "firm_id",
+      "brand_id",
+      "product_id",
+    ]);
 
-        // res.status(200).send({
-        //     error: false,
-        //     details: await res.getModelListDetails(Purchase),
-        //     data
-        // })
-        
-        // FOR REACT PROJECT:
-        res.status(200).send(data)
-    },
+    // res.status(200).send({
+    //     error: false,
+    //     details: await res.getModelListDetails(Purchase),
+    //     data
+    // })
 
-    create: async (req, res) => {
-        /*
+    // FOR REACT PROJECT:
+    res.status(200).send(data);
+  },
+
+  create: async (req, res) => {
+    /*
             #swagger.tags = ["Purchases"]
             #swagger.summary = "Create Purchase"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: {
-                    "Purchasename": "test",
-                    "password": "1234",
-                    "email": "test@site.com",
-                    "first_name": "test",
-                    "last_name": "test",
-                }
+                schema: { $ref: '#/definitions/Purchase' }
             }
         */
 
-        // Disallow setting admin/staff:
-        req.body.is_staff = false
-        req.body.is_superadmin = false
+    // Auto add user_id to req.body:
+    req.body.user_id = req.user?._id;
 
-        // Auto add user_id to req.body:
-        req.body.user_id = req.user?._id
+    const data = await Purchase.create(req.body);
 
-        const data = await Purchase.create(req.body)
+    res.status(201).send({
+      error: false,
+      data,
+    });
+  },
 
-        res.status(201).send({
-            error: false,
-            data
-        })
-    },
-
-    read: async (req, res) => {
-        /*
+  read: async (req, res) => {
+    /*
             #swagger.tags = ["Purchases"]
             #swagger.summary = "Get Single Purchase"
         */
 
-        const data = await Purchase.findOne({ _id: req.params.id }).populate(['firm_id', 'brand_id', 'product_id'])
+    const data = await Purchase.findOne({ _id: req.params.id }).populate([
+      "firm_id",
+      "brand_id",
+      "product_id",
+    ]);
 
-        res.status(200).send({
-            error: false,
-            data
-        })
-    },
+    res.status(200).send({
+      error: false,
+      data,
+    });
+  },
 
-    update: async (req, res) => {
-        /*
+  update: async (req, res) => {
+    /*
             #swagger.tags = ["Purchases"]
             #swagger.summary = "Update Purchase"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: {
-                    "Purchasename": "test",
-                    "password": "1234",
-                    "email": "test@site.com",
-                    "first_name": "test",
-                    "last_name": "test",
-                }
+                schema: { $ref: '#/definitions/Purchase' }
             }
         */
 
-        const data = await Purchase.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
+    const data = await Purchase.updateOne({ _id: req.params.id }, req.body, {
+      runValidators: true,
+    });
 
-        res.status(202).send({
-            error: false,
-            data,
-            new: await Purchase.findOne({ _id: req.params.id })
-        })
-    },
+    res.status(202).send({
+      error: false,
+      data,
+      new: await Purchase.findOne({ _id: req.params.id }),
+    });
+  },
 
-    delete: async (req, res) => {
-        /*
+  delete: async (req, res) => {
+    /*
             #swagger.tags = ["Purchases"]
             #swagger.summary = "Delete Purchase"
         */
 
-        const data = await Purchase.deleteOne({ _id: req.params.id })
+    const data = await Purchase.deleteOne({ _id: req.params.id });
 
-        res.status(data.deletedCount ? 204 : 404).send({
-            error: !data.deletedCount,
-            data
-        })
-    },
-}
+    res.status(data.deletedCount ? 204 : 404).send({
+      error: !data.deletedCount,
+      data,
+    });
+  },
+};
