@@ -1,14 +1,14 @@
-import * as React from "react"
-import Box from "@mui/material/Box"
-import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid"
-import { useSelector } from "react-redux"
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever"
-import { btnStyle } from "../styles/globalStyles"
-import useStockCall from "../hooks/useStockCall"
+import * as React from "react";
+import Box from "@mui/material/Box";
+import { DataGrid, GridActionsCellItem, GridToolbar } from "@mui/x-data-grid";
+import { useSelector } from "react-redux";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { btnStyle } from "../styles/globalStyles";
+import useStockCall from "../hooks/useStockCall";
 
 export default function ProductTable() {
-  const { products } = useSelector((state) => state.stock)
-  const { deleteStockData } = useStockCall()
+  const { products } = useSelector((state) => state.stock);
+  const { deleteStockData } = useStockCall();
 
   const columns = [
     {
@@ -20,6 +20,7 @@ export default function ProductTable() {
     },
     {
       field: "category",
+      valueGetter: (params) => params.row.category_id?.name,
       headerName: "Category",
       flex: 2,
       headerAlign: "center",
@@ -28,6 +29,7 @@ export default function ProductTable() {
     },
     {
       field: "brand",
+      valueGetter: (params) => params.row.brand_id?.name,
       headerName: "Brand",
       flex: 2,
       headerAlign: "center",
@@ -64,7 +66,7 @@ export default function ProductTable() {
         />,
       ],
     },
-  ]
+  ];
 
   //? api'Den gelmeyen colum bilgileri icin getActions veya renderCell islevleri kullanilabilir.
   //? bu islevler aslinda isimsiz bir fonksiyon cagirirlar ve bu fonksiyon aldigi parametre (params) ile bir cok veriye (rows,columns gibi) erisebilir.
@@ -80,5 +82,5 @@ export default function ProductTable() {
         slots={{ toolbar: GridToolbar }}
       />
     </Box>
-  )
+  );
 }

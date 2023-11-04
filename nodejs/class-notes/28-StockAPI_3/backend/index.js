@@ -30,7 +30,9 @@ dbConnection();
 app.use(express.json());
 
 // CORS Middleware:
-//* $ npm i cors
+// https://expressjs.com/en/resources/middleware/cors.html
+// npm i cors
+
 // const cors = require('cors')
 // Default using:
 // app.use(cors())
@@ -51,10 +53,15 @@ app.use(express.json());
     app.use(cors(corsOptions))
 */
 // app.use(cors({
-//     "origin": ["http://localhost:3000", "http://localhost:4173", "http://localhost:5173"], //"http://localhost:5173", //true, //false // "*",
-     // "origin": function() { },
+//     "origin": ["http://localhost:3000", "http://localhost:4173", "http://localhost:5173"], //"http://localhost:5173", // true // false // "*",
+//     // "origin": function (origin, callback) { },
 //     "methods": "GET, HEAD, PUT, PATCH, POST, DELETE",
 // }))
+/*
+    app.get('*', cors({ origin: 'onlyget.com' }))
+    app.all('*', cors({ origin: 'allmethods.com' }))
+*/
+
 // app.use(require('cors')()) // Run with defaults.
 app.use(
   require("cors")({
