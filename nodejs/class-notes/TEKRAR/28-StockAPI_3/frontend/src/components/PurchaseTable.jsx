@@ -21,6 +21,7 @@ export default function PurchaseTable({ handleOpen, setInfo }) {
     },
     {
       field: "firm",
+      valueGetter: (params) => params.row.firm_id?.name,
       headerName: "Firm",
       flex: 2,
       minWidth: 100,

@@ -40,7 +40,17 @@
     "application/json"
   ],
   "paths": {
-    "/auth/login": {
+    "/account/register": {
+      "post": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/account/auth/login": {
       "post": {
         "tags": [
           "Authentication"
@@ -74,7 +84,7 @@
         }
       }
     },
-    "/auth/refresh": {
+    "/account/auth/refresh": {
       "post": {
         "tags": [
           "Authentication"
@@ -109,7 +119,7 @@
         }
       }
     },
-    "/auth/logout": {
+    "/account/auth/logout": {
       "get": {
         "tags": [
           "Authentication"
@@ -141,7 +151,7 @@
           "Users"
         ],
         "summary": "List Users",
-        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
           "200": {
             "description": "OK"
@@ -338,13 +348,13 @@
         }
       }
     },
-    "/brands/": {
+    "/stock/brands/": {
       "get": {
         "tags": [
           "Brands"
         ],
         "summary": "List Brands",
-        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
           "200": {
             "description": "OK"
@@ -374,7 +384,7 @@
         }
       }
     },
-    "/brands/{id}": {
+    "/stock/brands/{id}": {
       "get": {
         "tags": [
           "Brands"
@@ -475,13 +485,13 @@
         }
       }
     },
-    "/categories/": {
+    "/stock/categories/": {
       "get": {
         "tags": [
           "Categories"
         ],
         "summary": "List Categories",
-        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
           "200": {
             "description": "OK"
@@ -511,7 +521,7 @@
         }
       }
     },
-    "/categories/{id}": {
+    "/stock/categories/{id}": {
       "get": {
         "tags": [
           "Categories"
@@ -612,13 +622,13 @@
         }
       }
     },
-    "/firms/": {
+    "/stock/firms/": {
       "get": {
         "tags": [
           "Firms"
         ],
         "summary": "List Firms",
-        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
           "200": {
             "description": "OK"
@@ -648,7 +658,7 @@
         }
       }
     },
-    "/firms/{id}": {
+    "/stock/firms/{id}": {
       "get": {
         "tags": [
           "Firms"
@@ -749,13 +759,13 @@
         }
       }
     },
-    "/products/": {
+    "/stock/products/": {
       "get": {
         "tags": [
           "Products"
         ],
         "summary": "List Products",
-        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
           "200": {
             "description": "OK"
@@ -785,7 +795,7 @@
         }
       }
     },
-    "/products/{id}": {
+    "/stock/products/{id}": {
       "get": {
         "tags": [
           "Products"
@@ -886,13 +896,13 @@
         }
       }
     },
-    "/purchases/": {
+    "/stock/purchases/": {
       "get": {
         "tags": [
           "Purchases"
         ],
         "summary": "List Purchases",
-        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
           "200": {
             "description": "OK"
@@ -922,7 +932,7 @@
         }
       }
     },
-    "/purchases/{id}": {
+    "/stock/purchases/{id}": {
       "get": {
         "tags": [
           "Purchases"
@@ -1023,13 +1033,13 @@
         }
       }
     },
-    "/sales/": {
+    "/stock/sales/": {
       "get": {
         "tags": [
           "Sales"
         ],
         "summary": "List Sales",
-        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
           "200": {
             "description": "OK"
@@ -1059,7 +1069,7 @@
         }
       }
     },
-    "/sales/{id}": {
+    "/stock/sales/{id}": {
       "get": {
         "tags": [
           "Sales"
