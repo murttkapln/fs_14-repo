@@ -16,33 +16,33 @@ const PORT = process.env.PORT || 8000;
 // https://www.npmjs.com/package/ejs
 // https://github.com/mde/ejs/wiki/Using-EJS-with-Express
 
-app.set('view engine', 'ejs')
+app.set("view engine", "ejs");
 // Default folder: './views'
-app.set('views', './public')
+app.set("views", "./public");
 
 /* ------------------------------------------------------- */
 // Accept json data & convert to object:
-app.use(express.json())
+app.use(express.json());
+// Accept form data & convert to object:
+app.use(express.urlencoded({ extended: true }));
 
 // Router:
 
-app.all('/', (req, res) => {
+app.all("/", (req, res) => {
+  // call ejs file in ./views/
+  // res.render('index.ejs')
+  res.render("index");
+});
 
-    // call ejs file in ./views/
-    // res.render('index.ejs')
-    res.render('index')
-
-})
-
-app.use('/view', require('./app/routes/todoTemplate'))
-app.use('/api', require('./app/routes/todo'))
+app.use("/view", require("./app/routes/todoTemplate"));
+app.use("/api", require("./app/routes/todo"));
 
 // DatabaseConnection:
-const { dbConnection } = require('./app/dbConnection')
-dbConnection() // sequelize.sync() must run after model defines.
+const { dbConnection } = require("./app/dbConnection");
+dbConnection(); // sequelize.sync() must run after model defines.
 
 // errorHandler (Catch Errors):
-app.use(require('./app/errorHandler'))
+app.use(require("./app/errorHandler"));
 
 /* ------------------------------------------------------- */
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
