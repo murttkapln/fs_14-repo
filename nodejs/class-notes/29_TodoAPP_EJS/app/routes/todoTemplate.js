@@ -2,10 +2,10 @@
 /* -------------------------------------------------------
     EXPRESSJS - TODO Project with Sequelize
 ------------------------------------------------------- */
-const router = require("express").Router();
+const router = require('express').Router()
 
 // Call TODO Controller:
-const todoTemplate = require("../controllers/todoTemplate");
+const todoTemplate = require('../controllers/todoTemplate')
 
 // router.route('/')
 //     .get(todoTemplate.list) // LIST
@@ -16,13 +16,16 @@ const todoTemplate = require("../controllers/todoTemplate");
 //     .put(todoTemplate.update) // UPDATE
 //     .delete(todoTemplate.delete) // DELETE
 
-router.get("/", todoTemplate.list);
+router.get('/', todoTemplate.list)
 
-router.get("/create", todoTemplate.create);
-router.post("/create", todoTemplate.create);
+router.get('/create', todoTemplate.create) // Form View
+router.post('/create', todoTemplate.create) // Form Processing
 
-router.get("/:id", todoTemplate.read);
+router.get('/:id', todoTemplate.read)
 
-router.get("/:id/delete", todoTemplate.delete);
+router.get('/:id/update', todoTemplate.update) // Form View
+router.post('/:id/update', todoTemplate.update) // Form Processing
 
-module.exports = router;
+router.get('/:id/delete', todoTemplate.delete)
+
+module.exports = router
