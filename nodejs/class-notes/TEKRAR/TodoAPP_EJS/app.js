@@ -27,10 +27,9 @@ app.set('views', './public')
 app.use(express.json())
 
 // Accept form data & convert to object:
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true})) // Allow array-form-elements
 
 // Router:
-
 app.all('/', (req,res)=>{
     // Call ejs file in ./views/
     // res.render('index.ejs')

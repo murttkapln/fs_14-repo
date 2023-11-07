@@ -42,9 +42,12 @@ module.exports = {
 
         if(req.method == 'POST'){
 
+            // console.log(req.body);
             // Save:
-            console.log(req.body);
-            // const data = await Todo.create(req.body)
+            const data = await Todo.create(req.body)
+
+            // Redirect to home:
+        res.redirect('/view')
 
         }else {
             // Template:
@@ -76,16 +79,30 @@ module.exports = {
 
     update: async (req, res) => {
 
-        // Model.update({ newData }, { filter })
-        const isUpdated = await Todo.update(req.body, { where: { id: req.params.id } })
-        // isUpdated return: [ 1 ] or [ 0 ]
-        res.status(202).send({
-            error: false,
-            body: req.body, // Send Data
-            message: 'Updated',
-            isUpdated: Boolean(isUpdated[0]),
-            result: await Todo.findByPk(req.params.id)
-        })
+        if(req.method == 'POST'){
+
+            // console.log(req.body);
+            // Update:
+            const isUpdated = await Todo.update(req.body, { where: { id: req.params.id } })
+
+            // Redirect to home:
+        res.redirect('/view')
+
+        }else { // GET
+            const data = await Todo.findByPk(req.params.id)
+
+            // Template:
+            res.render('todoUpdate', {todo:data})
+        }
+
+        // const isUpdated = await Todo.update(req.body, { where: { id: req.params.id } })
+        // res.status(202).send({
+        //     error: false,
+        //     body: req.body, // Send Data
+        //     message: 'Updated',
+        //     isUpdated: Boolean(isUpdated[0]),
+        //     result: await Todo.findByPk(req.params.id)
+        // })
     },
 
     delete: async (req, res) => {
