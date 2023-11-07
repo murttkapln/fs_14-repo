@@ -16,5 +16,15 @@ module.exports = (err, req, res, next) => {
 
   };
 
-  res.status(errorStatusCode).send(data)
+//   console.log(req.url);
+
+if(req.url.startsWith('/api')){
+
+    res.status(errorStatusCode).send(data)
+    
+}else {
+
+    res.render('error', {data})
+}
+
 };
