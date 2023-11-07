@@ -26,6 +26,9 @@ app.set('views', './public')
 // Accept json data & convert to object:
 app.use(express.json())
 
+// Accept form data & convert to object:
+app.use(express.urlencoded({extended: true}))
+
 // Router:
 
 app.all('/', (req,res)=>{
