@@ -7,6 +7,13 @@ require('express-async-errors')
 
 const Todo = require('../models/todo')
 
+const priority = {
+    "1": "High",
+    "0": "Normal",
+    "-1": "Low"
+
+}
+
 module.exports = {
 
     list: async (req, res) => {
@@ -24,37 +31,46 @@ module.exports = {
 
         // Send data to template:
         console.log(data);
-        res.render('todoList', {data})
+        res.render('todoList', {data, priority})
     },
 
     // CRUD METHODS:
 
     create: async (req, res) => {
 
-        // const data = await Todo.create({
-        //     title: 'Test Title',
-        //     description: 'Test Description',
+        console.log(req.method);
+
+        if(req.method == 'POST'){
+
+            // Save:
+            console.log(req.body);
+            // const data = await Todo.create(req.body)
+
+        }else {
+            // Template:
+            res.render('todoCreate')
+        }
+
+        // const data = await Todo.create(req.body)
+        // res.status(201).send({
+        //     error: false,
+        //     body: req.body, // Send Data
+        //     message: 'Created',
+        //     result: data // Receive Data
         // })
-        // console.log( typeof req.body, req.body )
-        const data = await Todo.create(req.body)
-        res.status(201).send({
-            error: false,
-            body: req.body, // Send Data
-            message: 'Created',
-            result: data // Receive Data
-        })
     },
 
     read: async (req, res) => {
 
-        // https://sequelize.org/docs/v6/core-concepts/model-querying-finders/
-        // const data = await Todo.findOne({ where: { id: req.params.id } })
-        
         const data = await Todo.findByPk(req.params.id)
-        res.status(200).send({
-            error: false,
-            result: data
-        })
+        // res.status(200).send({
+        //     error: false,
+        //     result: data
+        // })
+
+         // Send data to template:
+         console.log(data);
+        res.render('todoRead', {todo:data, priority})
     
     },
 
@@ -77,15 +93,14 @@ module.exports = {
         // Model.destroy({ filter })
         const isDeleted = await Todo.destroy({ where: { id: req.params.id } })
         // isDeleted return: 1 or 0
-        if (isDeleted) {
-            res.sendStatus(204)
-        } else {
-            res.sendStatus(404)
-        }
-        // res.status(204).send({
-        //     error: false,
-        //     message: 'Deleted',
-        //     isDeleted: Boolean(isDeleted)
-        // })
+        // if (isDeleted) {
+        //     res.sendStatus(204)
+        // } else {
+        //     res.sendStatus(404)
+        // }
+
+        // Redirect to home:
+        res.redirect('/view')
+       
     }
 }
