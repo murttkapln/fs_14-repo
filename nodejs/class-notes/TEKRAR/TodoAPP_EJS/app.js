@@ -10,11 +10,31 @@ require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 
 /* ------------------------------------------------------- */
+
+// TEMPLATE:
+//* npm i ejs
+// https://ejs.co/
+// https://www.npmjs.com/package/ejs
+// https://github.com/mde/ejs/wiki/Using-EJS-with-Express
+
+app.set('view engine', 'ejs')
+// Default folder: './views'
+app.set('views', './public')
+
+
+/* ------------------------------------------------------- */
 // Accept json data & convert to object:
 app.use(express.json())
 
 // Router:
-app.use(require('./app/routes/todo'))
+
+app.all('/', (req,res)=>{
+    // Call ejs file in ./views/
+    // res.render('index.ejs')
+    res.render('index')
+})
+app.use('/view',require('./app/routes/todoTemplate'))
+app.use('/api',require('./app/routes/todo'))
 
 // DatabaseConnection:
 const { dbConnection } = require('./app/dbConnection')
