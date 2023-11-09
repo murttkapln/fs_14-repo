@@ -64,7 +64,9 @@ module.exports.User = {
         } else {
 
             // Display login form:
-            res.render('loginForm',{ user: req.session?.user})
+            res.render('loginForm', {
+                user: req.session?.user,
+            })
         }
 
     },
@@ -72,10 +74,14 @@ module.exports.User = {
     logout: async (req, res) => {
         // Set session to null:
         req.session = null
-        res.status(200).send({
-            error: false,
-            message: 'Logout OK'
-        })
+        
+        // res.status(200).send({
+        //     error: false,
+        //     message: 'Logout OK'
+        // })
+
+        // Go to Home:
+        res.redirect('/')
     },
 }
 

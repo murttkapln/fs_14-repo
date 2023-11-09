@@ -1,5 +1,4 @@
-{%- include('incHeader', {user} )%}
-
+{%- include('incHeader', { user }) %}
 </div>
 <!-- main start -->
 <main class="container">
@@ -8,31 +7,69 @@
             <p>
                 <a class="btn btn-sm btn-secondary" href="/">Go Home</a>
             </p>
-            <h1>LOGIN</h1>
+            <h1>{%= post?.title %}</h1>
             <form action="" method="POST">
                 <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th># {%= post?.id %}</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr>
-                            <td>E-Mail</td>
-                            <td><input type="text" name="email" required class="form-control" value="test@test.com"></td>
+                            <td>Category</td>
+                            <td>
+                                <select name="blogCategoryId" class="form-select">
+                                    {% for (let category of categories) { %}
+                                    <option value="{%= category.id %}" {%= (category.id == post?.blogCategoryId.id ? 'selected' : '') %}>{%= category.name %}</option>
+                                    {% } %}
+                                </select>
+                            </td>
                         </tr>
                         <tr>
-                            <td>Password</td>
-                            <td><input type="password" name="password" required class="form-control" value="12345678"></td>
+                            <td>Title</td>
+                            <td><input type="text" name="title" required class="form-control" value="{%= post?.title %}"></td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td><label><input type="checkbox" name="rememberMe" value="1"> Remember Me</label></td>
+                            <td>Content</td>
+                            <td>
+                                <textarea id="tinymceEditor" name="content" class="form-control">{%= post?.content %}</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Published</td>
+                            <td>
+                                <select name="published" class="form-select">
+                                    <option value="0" {%= (post?.published ? '' : 'selected') %}>No</option>
+                                    <option value="1" {%= (post?.published ? 'selected' : '') %}>Yes</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Created</td>
+                            <td>{%= post?.createdAt.toUTCString() %}</td>
                         </tr>
                     </tbody>
                 </table>
                 <p>
-                    <button class="btn btn-primary" type="submit">Login</button>
+                    <button class="btn btn-primary" type="submit">SUBMIT</button>
                 </p>
             </form>
         </div>
     </div>
 </main>
 <!-- main end -->
+<!-- Script element sourcing TinyMCE -->
+<script type="application/javascript" src= "/tinymce/tinymce.min.js"></script>
+<!-- Script element sourcing the TinyMCE configuration -->
+<script type="application/javascript">
+    // https://www.tiny.cloud/docs/configure
+    tinymce.init({
+        selector: 'textarea#tinymceEditor',
+        plugins: 'lists link image table code wordcount',
+        height: 750
+    });
+</script>
 
 {%- include('incFooter') %}
