@@ -94,7 +94,6 @@ out
 # Nuxt.js build / generate output
 .nuxt
 
-
 # Gatsby files
 .cache/
 # Comment in the public line in if your project uses Gatsby and not Next.js
@@ -102,7 +101,6 @@ out
 # public
 
 # vuepress build output
-.vuepress/dist
 
 # vuepress v2.x temp and cache directory
 .temp

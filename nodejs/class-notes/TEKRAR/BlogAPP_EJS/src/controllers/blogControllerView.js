@@ -31,8 +31,18 @@ module.exports.BlogPost = {
         //     result: data,
         // })
 
+        const categories = await BlogCategory.find()
+        const recentPosts = await BlogPost.find().sort({careatedAt: 'desc'}).limit(3)
+
         // output: HTML
-        res.render('index')
+        res.render('index', {
+            posts: data,
+            details: await res.getModelListDetails(BlogPost),
+            categories,
+            recentPosts,
+            // pageUrl: req.url
+            pageUrl: req.url.replace(/[?|&]page=([^&]+)/gi, '') // clean 'page' queries from url.
+        })
     },
 
     listCategoryPosts: async (req, res) => {
