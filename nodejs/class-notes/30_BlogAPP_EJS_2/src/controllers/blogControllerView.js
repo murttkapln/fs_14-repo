@@ -39,11 +39,13 @@ module.exports.BlogPost = {
         // Output: HTML
         // res.render('index', {
         res.render('postList', {
+            user: req.session?.user,
             details: await res.getModelListDetails(BlogPost),
             posts: data,
             categories,
             recentPosts,
             // pageUrl: req.url,
+            // convert "?key=value&page=1&&page=2" to "?key=value"
             pageUrl: req.url.replace(/[?|&]page=([^&]+)/gi, '') // clean 'page' queries from url.
         })
     },
@@ -67,6 +69,7 @@ module.exports.BlogPost = {
         } else {
 
             res.render('postForm', {
+                user: req.session?.user,
                 categories: await BlogCategory.find(),
                 post: null
             })
@@ -83,6 +86,7 @@ module.exports.BlogPost = {
         // })
 
         res.render('postRead', {
+            user: req.session?.user,
             post: data
         })
 
@@ -106,6 +110,7 @@ module.exports.BlogPost = {
         } else {
 
             res.render('postForm', {
+                user: req.session?.user,
                 categories: await BlogCategory.find(),
                 post: await BlogPost.findOne({ _id: req.params.postId }).populate('blogCategoryId')
             })

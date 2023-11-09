@@ -23,6 +23,6 @@ module.exports = (err, req, res, next) => {
         
     } else {
 
-        res.render('error', { data })
+        res.render('error', { user,data })
     }
 }
