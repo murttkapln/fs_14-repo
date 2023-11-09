@@ -91,6 +91,6 @@ module.exports = async () => {
     }
 
     // End:
-    console.log('* Synchronised *')
+    console.log('* Synchronized *')
     /* Finished */
 }
