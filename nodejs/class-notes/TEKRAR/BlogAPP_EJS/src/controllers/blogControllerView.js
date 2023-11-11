@@ -34,6 +34,9 @@ module.exports.BlogPost = {
         const categories = await BlogCategory.find()
         const recentPosts = await BlogPost.find().sort({careatedAt: 'desc'}).limit(3)
 
+        // Add '?' parameters to url if there is not:
+        if(!req.url.includes('?'))
+
         // output: HTML
         res.render('index', {
             posts: data,

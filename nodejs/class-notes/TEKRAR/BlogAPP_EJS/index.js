@@ -42,7 +42,7 @@ app.set('views', './public')
 app.use(express.urlencoded({extended:true}))
 
 // Call staticFiles:
-app.use('/assets', express.static('/public/assets'))
+app.use('/assets', express.static('./public/assets'))
 
 
 
