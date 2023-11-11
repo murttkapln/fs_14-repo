@@ -1,89 +1,36 @@
-{%- include('partials/header') -%} // call header
+{%- include('partials/header') -%}
 
-<!-- content start -->
-<div class="pb-5">
-  <div class="row"></div>
-  <div class="d-flex flex-wrap justify-content-center pt-5">
-    {% for (let pizza of pizzas) { %}
-    <div class="card m-3 shadow" style="max-width: 640px">
-      <div class="row">
-        <div class="col-md-6">
-          {% if (pizza?.image) { %}
-          <img
-            src="{%= pizza.image %}"
-            class="img-fluid rounded-start"
-            style="width: 350px; height: 275px"
-          />
-          {% } %}
-        </div>
-        <div class="col-md-6">
-          <div class="card-body">
-            <h4 class="card-title">{%= pizza.name %}</h4>
-            <div class="card-text">
-              <ul>
-                {% for (let topping of pizza.toppings) { %}
-                <li>{%= topping.name %}</li>
-                {% } %}
-              </ul>
-              <strong> {%= pizza.price %} $</strong>
+    <!-- content start -->
+    <div class="pb-5">
+        <div class="mx-auto d-flex justify-content-center align-items-center pt-5">
+            <div class="card w-50">
+                <div class="card-body">
+                    <h2>User Register</h2>
+                    <hr>
+                    <form action="" method="POST">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Username</td>
+                                    <td><input type="text" name="username" required class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>Password</td>
+                                    <td><input type="password" name="password" required class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>E-Mail</td>
+                                    <td><input type="email" name="email" required class="form-control"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="OK">
+                    </form>
+                </div>
             </div>
-            <div class="pt-3">
-              <a
-                href="/orders/create?pizza={%= pizza.id %}"
-                class="btn btn-warning"
-                >Order</a
-              >
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-    {% } %}
-  </div>
-  <!-- Pagination -->
-  {% if (details.pages) { %}
-  <nav class="p-3 text-center" aria-label="Pagination">
-    {% if (details.pages.previous) { %}
-    <a class="btn btn-primary" href="{%= pageUrl %}&page=1">&laquo;</a>
-    <a
-      class="btn btn-primary me-2"
-      href="{%= pageUrl %}&page={%= details.pages.previous %}"
-      >&larr;</a
-    >
-    {% } else { %}
-    <span class="btn btn-light disabled me-2">&laquo;</span>
-    <span class="btn btn-light disabled me-2">&larr;</span>
-    {% } %} {% for (let pageNo = 1; pageNo <= details.pages.total; pageNo++) {
-    %}
-    <a
-      class="btn btn-{%= pageNo == details.pages.current ? 'primary' : 'secondary' %}"
-      href="{%= pageUrl %}&page={%= pageNo %}"
-      >{%= pageNo %}</a
-    >
-    {% } %} {% if (details.pages.next) { %}
-    <a
-      class="btn btn-primary me-2"
-      href="{%= pageUrl %}&page={%= details.pages.next %}"
-      >&rarr;</a
-    >
-    <a
-      class="btn btn-primary"
-      href="{%= pageUrl %}&page={%= details.pages.total %}"
-      >&raquo;</a
-    >
-    {% } else { %}
-    <span class="btn btn-light disabled me-2">&rarr;</span>
-    <span class="btn btn-light disabled me-2">&raquo;</span>
-    {% } %}
-  </nav>
-  {% } %}
-  <!-- totalRecords -->
-  <p class="text-center">
-    <span class="p-2 bg-dark text-white"
-      >Total {%= details.totalRecords %} Records</span
-    >
-  </p>
-</div>
-<!-- content end -->
+    <!-- content end -->
 
-{%- include('partials/footer') -%} // call footer
+{%- include('partials/footer') -%}

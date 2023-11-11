@@ -22,7 +22,7 @@ module.exports = {
     list: async (req, res) => {
 
         // only self-records:
-        //! const filter = req.session?.user && !req.session?.user.isAdmin ? { userId: req.session.user.id } : {}
+        const filter = req.session?.user && !req.session.user?.isAdmin ? { userId: req.session.user.id } : {}
 
         // const data = await res.getModelList(Order, {}, ['userId', 'pizzaId'])
         const data = await res.getModelList(Order, filter, [
@@ -39,6 +39,7 @@ module.exports = {
         // Add '?' parameters to url if there is not:
         if (!req.originalUrl.includes('?')) req.originalUrl += '?'
 
+        // console.log(data)
         res.render('orderList', {
             details: await res.getModelListDetails(Order, filter),
             orders: data,
