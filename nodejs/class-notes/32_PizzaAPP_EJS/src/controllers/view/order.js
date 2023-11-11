@@ -15,14 +15,14 @@
 const Pizza = require('../../models/pizza')
 const Order = require('../../models/order')
 
-//! const pizzaSizes = ['Small', 'Medium', 'Large', 'XLarge']
+const pizzaSizes = ['Small', 'Medium', 'Large', 'XLarge']
 
 module.exports = {
 
     list: async (req, res) => {
 
         // only self-records:
-        const filter = req.session?.user && !req.session.user?.isAdmin ? { userId: req.session.user.id } : {}
+        const filter = req.session?.user?.isAdmin ? {} : { userId: req.session.user.id }
 
         // const data = await res.getModelList(Order, {}, ['userId', 'pizzaId'])
         const data = await res.getModelList(Order, filter, [
@@ -52,7 +52,9 @@ module.exports = {
         if (req.method == 'POST') {
 
             // Add userId from session:
-            //! req.body.userId = req.session.user.id
+            req.body.userId = req.session.user.id
+            // Add pizzaId from req.query:
+            req.body.pizzaId = req.query.pizza
 
             // Calculatings:
             req.body.quantity = req.body?.quantity || 1 // default: 1
@@ -77,7 +79,7 @@ module.exports = {
                 order: null,
                 pizzas: null,
                 pizza: await Pizza.findOne({ _id: req.query.pizza }),
-                //! pizzaSizes,
+                pizzaSizes,
             })
         }
     },
@@ -126,10 +128,11 @@ module.exports = {
 
         } else {
 
+            console.log(await Order.findOne({ _id: req.params.id }))
             res.render('orderForm', {
                 order: await Order.findOne({ _id: req.params.id }),
                 pizzas: await Pizza.find(),
-                //! pizzaSizes,
+                pizzaSizes,
             })
         }
 

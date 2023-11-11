@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- *
@@ -12,114 +12,130 @@
 ------------------------------------------------------- */
 // Order Controller:
 
-const Pizza = require('../../models/pizza')
-const Order = require('../../models/order')
+const Pizza = require("../../models/pizza");
+const Order = require("../../models/order");
+
+//! const pizzaSizes = ['Small', 'Medium', 'Large', 'XLarge']
 
 module.exports = {
+  list: async (req, res) => {
+    // only self-records:
+    const filter = req.session?.user?.isAdmin
+      ? {}
+      : { userId: req.session.user.id };
 
-    list: async (req, res) => {
-        /*
-            #swagger.tags = ["Orders"]
-            #swagger.summary = "List Orders"
-            #swagger.description = `
-                You can send query with endpoint for search[], sort[], page and limit.
-                <ul> Examples:
-                    <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>
-                    <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>
-                    <li>URL/?<b>page=2&limit=1</b></li>
-                </ul>
-            `
-        */
+    // const data = await res.getModelList(Order, {}, ['userId', 'pizzaId'])
+    const data = await res.getModelList(Order, filter, [
+      "userId",
+      { path: "pizzaId", populate: "toppings" },
+    ]);
 
-        // const data = await res.getModelList(Order, {}, ['userId', 'pizzaId'])
-        const data = await res.getModelList(Order, {}, [
-            'userId',
-            { path: 'pizzaId', populate: 'toppings' }
-        ])
+    // res.status(200).send({
+    //     error: false,
+    //     details: await res.getModelListDetails(Order),
+    //     data
+    // })
 
-        res.status(200).send({
-            error: false,
-            details: await res.getModelListDetails(Order),
-            data
-        })
-    },
+    // Add '?' parameters to url if there is not:
+    if (!req.originalUrl.includes("?")) req.originalUrl += "?";
 
-    create: async (req, res) => {
-        /*
-            #swagger.tags = ["Orders"]
-            #swagger.summary = "Create Order"
-        */
+    // console.log(data)
+    res.render("orderList", {
+      details: await res.getModelListDetails(Order, filter),
+      orders: data,
+      pageUrl: req.originalUrl.replace(/[?|&]page=([^&]+)/gi, ""),
+    });
+  },
 
-        // Calculatings:
-        req.body.quantity = req.body?.quantity || 1 // default: 1
-        if (!req.body?.price) {
-            const dataPizza = await Pizza.findOne({ _id: req.body.pizzaId }, { _id: 0, price: 1 })
-            req.body.price = dataPizza.price
-        }
-        req.body.totalPrice = req.body.price * req.body.quantity
+  create: async (req, res) => {
+    if (req.method == "POST") {
+      // Add userId from session:
+      //! req.body.userId = req.session.user.id
 
-        const data = await Order.create(req.body)
+      // Calculatings:
+      req.body.quantity = req.body?.quantity || 1; // default: 1
+      if (!req.body?.price) {
+        const dataPizza = await Pizza.findOne(
+          { _id: req.body.pizzaId },
+          { _id: 0, price: 1 }
+        );
+        req.body.price = dataPizza.price;
+      }
+      req.body.totalPrice = req.body.price * req.body.quantity;
 
-        res.status(201).send({
-            error: false,
-            data
-        })
-    },
+      const data = await Order.create(req.body);
 
-    read: async (req, res) => {
-        /*
-            #swagger.tags = ["Orders"]
-            #swagger.summary = "Get Single Order"
-        */
+      // res.status(201).send({
+      //     error: false,
+      //     data
+      // })
 
-        const data = await Order.findOne({ _id: req.params.id }).populate([
-            'userId',
-            { path: 'pizzaId', populate: 'toppings' }
-        ])
+      res.redirect("/orders/" + data.id);
+    } else {
+      res.render("orderForm", {
+        order: null,
+        pizzas: null,
+        pizza: await Pizza.findOne({ _id: req.query.pizza }),
+        //! pizzaSizes,
+      });
+    }
+  },
 
-        res.status(200).send({
-            error: false,
-            data
-        })
+  read: async (req, res) => {
+    const data = await Order.findOne({ _id: req.params.id }).populate([
+      "userId",
+      { path: "pizzaId", populate: "toppings" },
+    ]);
 
-    },
+    // res.status(200).send({
+    //     error: false,
+    //     data
+    // })
 
-    update: async (req, res) => {
-        /*
-            #swagger.tags = ["Orders"]
-            #swagger.summary = "Update Order"
-        */
+    res.render("orderRead", {
+      order: data,
+    });
+  },
 
-        // Calculatings:
-        req.body.quantity = req.body?.quantity || 1 // default: 1
-        if (!req.body?.price) {
-            const dataOrder = await Order.findOne({ _id: req.params.id }, { _id: 0, price: 1 })
-            req.body.price = dataOrder.price
-        }
-        req.body.totalPrice = req.body.price * req.body.quantity
+  update: async (req, res) => {
+    if (req.method == "POST") {
+      // Calculatings:
+      req.body.quantity = req.body?.quantity || 1; // default: 1
+      if (!req.body?.price) {
+        const dataOrder = await Order.findOne(
+          { _id: req.params.id },
+          { _id: 0, price: 1 }
+        );
+        req.body.price = dataOrder.price;
+      }
+      req.body.totalPrice = req.body.price * req.body.quantity;
 
-        const data = await Order.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
+      console.log(req.body);
 
-        res.status(202).send({
-            error: false,
-            data,
-            new: await Order.findOne({ _id: req.params.id })
-        })
+      const data = await Order.updateOne({ _id: req.params.id }, req.body, {
+        runValidators: true,
+      });
 
-    },
+      // res.status(202).send({
+      //     error: false,
+      //     data,
+      //     new: await Order.findOne({ _id: req.params.id })
+      // })
 
-    delete: async (req, res) => {
-        /*
-            #swagger.tags = ["Orders"]
-            #swagger.summary = "Delete Order"
-        */
+      res.redirect("/orders/" + req.params.id);
+    } else {
+      res.render("orderForm", {
+        order: await Order.findOne({ _id: req.params.id }),
+        pizzas: await Pizza.find(),
+        //! pizzaSizes,
+      });
+    }
+  },
 
-        const data = await Order.deleteOne({ _id: req.params.id })
+  delete: async (req, res) => {
+    const data = await Order.deleteOne({ _id: req.params.id });
 
-        res.status(data.deletedCount ? 204 : 404).send({
-            error: !data.deletedCount,
-            data
-        })
-
-    },
-}
+    // Go to home:
+    res.redirect("/orders");
+  },
+};
