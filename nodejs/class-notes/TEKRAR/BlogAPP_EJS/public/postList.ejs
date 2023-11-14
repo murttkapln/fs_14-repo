@@ -1,3 +1,8 @@
+<!--
+    No need send parameter; can use variables in here, to in included ejs:
+    true -> include('incHeader')
+    false -> include('incHeader', { user })
+-->
 {%- include('incHeader') %}
 
         <!-- Blog Categories -->
@@ -13,9 +18,11 @@
     <main class="container">
         <div class="row g-5">
             <div class="col-md-8">
+                {% if (user) { %}
                 <div class="admin-area text-end">
                     <a class="btn btn-primary" href="/post/create">New Post</a>
                 </div>
+                {% } %}
                 <h3 class="pb-4 fst-italic border-bottom">
                     Welcome to my blog site.
                 </h3>
@@ -26,19 +33,25 @@
                         <a href="/post/{%= post._id %}" class="link-body-emphasis text-decoration-none">{%= post.title %}</a>
                     </h2>
                     <p class="blog-post-meta">{%= post.createdAt.toUTCString() %}</p>
-                    {%- post.content.substring(0, 500) %} ...read more...
+                    {%- post.content.replace(/<(.|\n)*?>/g, '').substring(0, 600) %} ...read more...
+                    {% if (user) { %}
                     <div class="admin-area text-end">
                         <a class="btn btn-sm btn-primary" href="/post/{%= post._id %}/update">Update</a>
                         <a class="btn btn-sm btn-danger" href="/post/{%= post._id %}/delete" onclick="return confirm('Are you sure?')">Delete</a>
                     </div>
+                    {% } %}
                 </article>
                 {% } %}
                 <!-- Pagination -->
                 <nav class="blog-pagination" aria-label="Pagination">
+                    <a class="btn btn-outline-primary rounded-pill" href="{%= pageUrl %}&page=1">&laquo;</a>
+                    <a class="btn btn-outline-primary rounded-pill" href="{%= pageUrl %}&page={%= details.pages.previous %}">&lt;</a>
                     {% for (let pageNo = 1; pageNo <= details.pages.total; pageNo++) { %}
                     <a class="btn btn-{%= (pageNo == details.pages.current ? 'primary' : 'outline-secondary') %} rounded-pill" 
                         href="{%= pageUrl %}&page={%= pageNo %}">{%= pageNo %}</a>
                     {% } %}
+                    <a class="btn btn-outline-primary rounded-pill" href="{%= pageUrl %}&page={%= details.pages.next %}">&gt;</a>
+                    <a class="btn btn-outline-primary rounded-pill" href="{%= pageUrl %}&page={%= details.pages.total %}">&raquo;</a>
                 </nav>
                 <p class="text-end p-2 border-top">Total {%= details.totalRecords %} Posts</p>
             </div>
@@ -51,7 +64,7 @@
                             {% for (let recentPost of recentPosts) { %}
                             <li>
                                 <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top"
-                                    href="/post/:id">
+                                    href="/post/{%= recentPost.id %}">
                                     <div class="col-lg-8">
                                         <h5>{%= recentPost.title %}</h5>
                                         <p class="my-2">{%= recentPost.content.replace(/<(.|\n)*?>/g, '').substring(0, 100) %} ...</p>

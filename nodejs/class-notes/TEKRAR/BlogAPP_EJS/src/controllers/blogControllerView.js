@@ -39,11 +39,13 @@ module.exports.BlogPost = {
         // Output: HTML
         // res.render('index', {
         res.render('postList', {
+            user: req.session?.user,
             details: await res.getModelListDetails(BlogPost),
             posts: data,
             categories,
             recentPosts,
             // pageUrl: req.url,
+            // convert "?key=value&page=2" to "?key=value"
             pageUrl: req.url.replace(/[?|&]page=([^&]+)/gi, '') // clean 'page' queries from url.
         })
     },

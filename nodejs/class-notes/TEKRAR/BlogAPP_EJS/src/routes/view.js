@@ -10,9 +10,6 @@ const {
   BlogPost: blogPostView,
 } = require("../controllers/blogControllerView");
 
-router.all("/", (req, res) => {
-  res.redirect("/post");
-});
 
 // router.all("/", blogPostView.list);
 // router.all("/create", blogPostView.create);
@@ -20,10 +17,24 @@ router.all("/", (req, res) => {
 // router.all("/:postId/update", blogPostView.update);
 // router.all("/:postId/delete", blogPostView.delete);
 
+router.all("/", (req, res) => {
+  res.redirect("/post");
+});
+
+
 router.all("/post", blogPostView.list);
 router.all("/post/create", blogPostView.create);
 router.all("/post/:postId", blogPostView.read);
 router.all("/post/:postId/update", blogPostView.update);
 router.all("/post/:postId/delete", blogPostView.delete);
+
+
+
+// USER:
+
+const {User: userView} = require('../controllers/userControllerView')
+
+router.all('/login', userView.login)
+router.all('/logout', userView.logout)
 
 module.exports = router;
