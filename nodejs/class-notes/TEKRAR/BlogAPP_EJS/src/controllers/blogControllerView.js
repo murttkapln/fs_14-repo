@@ -55,6 +55,9 @@ module.exports.BlogPost = {
     create: async (req, res) => {
 
         if (req.method == 'POST') {
+
+            // Add userId from session:
+            req.body.userId = req.session.user.id
         
             const data = await BlogPost.create(req.body)
     
@@ -69,8 +72,9 @@ module.exports.BlogPost = {
         } else {
 
             res.render('postForm', {
+                user: req.session?.user,
                 categories: await BlogCategory.find(),
-                post: null
+                post: null,
             })
         }
     },
@@ -85,7 +89,8 @@ module.exports.BlogPost = {
         // })
 
         res.render('postRead', {
-            post: data
+            user: req.session?.user,
+            post: data,
         })
 
     },
@@ -108,8 +113,9 @@ module.exports.BlogPost = {
         } else {
 
             res.render('postForm', {
+                user: req.session?.user,
                 categories: await BlogCategory.find(),
-                post: await BlogPost.findOne({ _id: req.params.postId }).populate('blogCategoryId')
+                post: await BlogPost.findOne({ _id: req.params.postId }).populate('blogCategoryId'),
             })
 
         }
