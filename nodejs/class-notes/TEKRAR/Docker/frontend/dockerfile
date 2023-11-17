@@ -10,18 +10,19 @@ WORKDIR /frontend
 COPY . .
 
 # When build images:
+RUN npm i -g pnpm
+RUN pnpm i
 
-RUN npm install
 # When build containers:
 # CMD npm start
 CMD [ "npm", "start" ]
 
 # Optional:
-EXPOSE 8000
+EXPOSE 5173
 
 # --------------------------------
 # $ cd / frontend
 # $ docker build -t frontend .
-# $ docker run -p 8000:8000 --name frontend frontend
-# $ docker run -d -p 8000:8000 --name frontend frontend # daemon !! arka planda çalıştır
+# $ docker run -p 5173:5173 --name frontend frontend
+# $ docker run -d -p 5173:5173 --name frontend frontend # daemon !! arka planda çalıştır
 # $ Browser: http://localhost:8000
