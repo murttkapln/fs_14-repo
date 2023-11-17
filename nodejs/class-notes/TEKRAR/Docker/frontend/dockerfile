@@ -25,4 +25,5 @@ EXPOSE 5173
 # $ docker build -t frontend .
 # $ docker run -p 5173:5173 --name frontend frontend
 # $ docker run -d -p 5173:5173 --name frontend frontend # daemon !! arka planda çalıştır
+# $ docker run -d -p 80:5173 --name frontend80 murttkapln/frontend 
 # $ Browser: http://localhost:5173
