@@ -26,6 +26,12 @@ services:
       - 8000:8000
     restart: on-failure # hata anında tekrar çalıştır.
 
+    volumes:
+          # fiziksel yollar (externaş:internal)
+      - $PWD/backend/logs:/backend/logs
+      - $PWD/backend/upload:/backend/upload
+
+
     # --------------------------------
 # $ docker compose up # compose çalıştır.
 # $ docker compose up -d --build # compose daemon aç ve tekrar build et.
