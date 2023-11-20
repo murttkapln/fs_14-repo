@@ -1,7 +1,6 @@
 const User = require("../models/user");
 
 const passwordEncrypt = require("../helpers/passwordEncrypt");
-const token = require('./token')
 
 module.exports = {
   login: async (req, res) => {
