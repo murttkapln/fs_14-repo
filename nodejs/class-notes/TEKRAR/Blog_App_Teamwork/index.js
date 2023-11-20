@@ -16,6 +16,9 @@ require("dotenv").config();
 
 const PORT = process.env.PORT || 8000;
 
+// asyncErrors to errorHandler:
+require("express-async-errors");
+
 /* ------------------------------------------------------- */
 // Middlewares:
 
@@ -38,3 +41,7 @@ app.use(require("./src/middlewares/errorHandler"));
 
 // RUN SERVER:
 app.listen(PORT, () => console.log("Running On 127.0.0.1:") + PORT);
+
+/* ------------------------------------------------------- */
+// Syncronization (must be in commentLine):
+// require('./src/helpers/sync')() // !!! It clear database.
