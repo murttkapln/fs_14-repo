@@ -30,6 +30,9 @@ app.use(express.json());
 // Connect To MOngoDB with mongoose:
 require('./src/configs/dbConnection')
 
+// findSearchSortPage:
+app.use(require('./src/middlewares/findSearchSortPage'))
+
 // HomePage
 app.all("/", (req, res) => {
   res.send({

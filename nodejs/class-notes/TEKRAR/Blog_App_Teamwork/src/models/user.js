@@ -65,12 +65,10 @@ const UserSchema = new mongoose.Schema({
   image: {
       type: String,
       trim: true,
-      required: false
   },
   bio: {
       type: String,
       trim: true,
-      required: false
   },
   isAdmin: {
       type: Boolean,

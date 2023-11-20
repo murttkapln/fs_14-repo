@@ -1,14 +1,16 @@
 "use strict";
 /* -------------------------------------------------------
-    EXPRESSJS - BLOG-API Project with Mongoose
+    EXPRESS_JS - BLOG-API Router
 ------------------------------------------------------- */
 const router = require("express").Router();
 /* ------------------------------------------------------- */
-// routes/user:
+// routes/users:
 const user = require("../controllers/user");
+const auth = require("../controllers/auth");
 
-// URL
+// user routes
 router.route("/").get(user.list).post(user.create);
+
 router
   .route("/:id")
   .get(user.read)
@@ -16,6 +18,8 @@ router
   .patch(user.update)
   .delete(user.delete);
 
-/* ------------------------------------------------------- */
+// auth routes
+router.route("/auth/login").post(auth.login);
 
+/* ------------------------------------------------------- */
 module.exports = router;
