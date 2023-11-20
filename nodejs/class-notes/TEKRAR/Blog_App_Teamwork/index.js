@@ -39,7 +39,7 @@ app.all("/", (req, res) => {
 });
 
 // Routes:
-require('./src/routes')
+app.use(require('./src/routes'))
 
 // ErrorHandler:
 app.use(require("./src/middlewares/errorHandler"));

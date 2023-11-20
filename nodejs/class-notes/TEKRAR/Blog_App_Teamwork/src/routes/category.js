@@ -6,7 +6,7 @@ const router = require("express").Router();
 /* ------------------------------------------------------- */
 // routes/category:
 
-const category = require("../models/category");
+const category = require("../controllers/category");
 
 // URL
 
