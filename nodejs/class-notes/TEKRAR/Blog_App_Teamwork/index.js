@@ -5,6 +5,7 @@
 
 
 const express = require("express");
+const { dbConnection } = require("./src/configs/dbConnection");
 const app = express()
 
 
@@ -15,6 +16,7 @@ const app = express()
 require("dotenv").config();
 
 const PORT = process.env.PORT || 8000;
+const HOST = process.env.HOST || '127.0.0.1';
 
 // asyncErrors to errorHandler:
 require("express-async-errors");
@@ -26,11 +28,14 @@ require("express-async-errors");
 app.use(express.json());
 
 // Connect To MOngoDB with mongoose:
-require('./src/config/dbConnection')
+require('./src/configs/dbConnection')
 
 // HomePage
-app.call("/", (req, res) => {
-  res.send("Welcome To Blog Api");
+app.all("/", (req, res) => {
+  res.send({
+    error: false,
+    message: 'Welcome to BlogApi'
+  });
 });
 
 // Routes:
@@ -40,7 +45,7 @@ require('./src/routes')
 app.use(require("./src/middlewares/errorHandler"));
 
 // RUN SERVER:
-app.listen(PORT, () => console.log("Running On 127.0.0.1:") + PORT);
+app.listen(PORT, HOST, () => console.log(`http://${HOST}:${PORT}`))
 
 /* ------------------------------------------------------- */
 // Syncronization (must be in commentLine):

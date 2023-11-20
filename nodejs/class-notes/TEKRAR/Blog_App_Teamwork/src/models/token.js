@@ -31,6 +31,11 @@ const TokenSchema = new mongoose.Schema(
   },
   { collection: "tokens", timestamps: true }
 );
+/* ------------------------------------------------------- */
+// FOR REACT PROJECT:
+TokenSchema.pre("init", function (data) {
+  data.id = data._id;
+});
 
 /* ------------------------------------------------------- */
 module.exports = mongoose.model("Token", TokenSchema);

@@ -3,7 +3,7 @@
     EXPRESSJS - BLOG-API Project with Mongoose
 ------------------------------------------------------- */
 
-const { mongoose } = require("../config/dbConnection");
+const { mongoose } = require("../configs/dbConnection");
 /* ------------------------------------------------------- */
 
 // Category Model:
