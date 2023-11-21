@@ -3,11 +3,8 @@
     EXPRESSJS - BLOG-API Project with Mongoose
 ------------------------------------------------------- */
 
-
 const express = require("express");
-const { dbConnection } = require("./src/configs/dbConnection");
 const app = express()
-
 
 /* ------------------------------------------------------- */
 // Required Modules:
@@ -22,18 +19,27 @@ const HOST = process.env.HOST || '127.0.0.1';
 require("express-async-errors");
 
 /* ------------------------------------------------------- */
-// Middlewares:
+//*                    CONFIGURATIONS:
+
+// DB Connection:
+require('./src/configs/dbConnection')
+
+
+/* ------------------------------------------------------- */
+//* --------------- Middlewares: -------------
 
 // Accept JSON:
 app.use(express.json());
 
-// Connect To MOngoDB with mongoose:
-require('./src/configs/dbConnection')
+// Authentication
+app.use(require('./src/middlewares/authentication'))
 
-// findSearchSortPage:
+// res.getModelList():
 app.use(require('./src/middlewares/findSearchSortPage'))
 
+/* ------------------------------------------------------- */
 // HomePage
+
 app.all("/", (req, res) => {
   res.send({
     error: false,
@@ -41,12 +47,13 @@ app.all("/", (req, res) => {
   });
 });
 
+/* ------------------------------------------------------- */
 // Routes:
 app.use(require('./src/routes'))
-
+/* ------------------------------------------------------- */
 // ErrorHandler:
 app.use(require("./src/middlewares/errorHandler"));
-
+/* ------------------------------------------------------- */
 // RUN SERVER:
 app.listen(PORT, HOST, () => console.log(`http://${HOST}:${PORT}`))
 

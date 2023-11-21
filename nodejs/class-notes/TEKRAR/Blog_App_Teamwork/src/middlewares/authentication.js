@@ -1,5 +1,10 @@
+"use strict"
+/* -------------------------------------------------------
+    EXPRESSJS - BLOG-API Project with Mongoose
+------------------------------------------------------- */
 
 
+// Authentication:
 
 const Token = require('../models/token')
 

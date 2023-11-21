@@ -6,20 +6,23 @@
 const { mongoose } = require("../configs/dbConnection");
 /* ------------------------------------------------------- */
 
-// Category Model:
+// Vİew Model:
 
-const CategorySchema = new mongoose.Schema(
+const ViewSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      trim: true,
+    post_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Blog",
       required: true,
-      unique: true,
+    },
+    viewedBy: {
+      type: Array,
+      default: [],
     },
   },
-  { collection: "categories", timestamps: true }
+  { collection: "views", timestamps: ture }
 );
 
 /* ------------------------------------------------------- */
 
-module.exports = mongoose.model('Category', CategorySchema)
+module.exports = mongoose.model('View', ViewSchema)

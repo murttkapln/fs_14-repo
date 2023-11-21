@@ -12,10 +12,8 @@ const router = require('express').Router()
 router.use('/users', require('./user'))
 
 // Categories:
-router.use('/categories', require('./category'))
+router.use('/api', require('./blogComLikCat'))
 
-// tokens:
-router.use('/tokens', require('./token'))
 
 
 
