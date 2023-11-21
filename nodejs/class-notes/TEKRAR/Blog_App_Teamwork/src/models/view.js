@@ -20,7 +20,7 @@ const ViewSchema = new mongoose.Schema(
       default: [],
     },
   },
-  { collection: "views", timestamps: ture }
+  { collection: "views", timestamps: true }
 );
 
 /* ------------------------------------------------------- */
