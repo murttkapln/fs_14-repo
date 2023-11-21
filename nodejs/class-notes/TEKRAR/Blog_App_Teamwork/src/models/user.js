@@ -29,7 +29,8 @@
 const { mongoose } = require("../configs/dbConnection");
 /* ------------------------------------------------------- */
 
-const { default: isEmail } = require("validator/lib/isEmail");
+const { isEmail } = require("validator"); // for validate process: npm i validator
+const passwordEncrypt = require('../helpers/passwordEncrypt')
 
 const UserSchema = new mongoose.Schema({
   username: {
