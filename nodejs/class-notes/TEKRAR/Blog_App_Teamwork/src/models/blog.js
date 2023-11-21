@@ -1,26 +1,27 @@
 "use strict";
-const { Category } = require("@mui/icons-material");
 /* -------------------------------------------------------
-    EXPRESSJS - BLOG-API Project with Mongoose
+    NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
+const { Schema, model } = require("mongoose");
+/* ------------------------------------------------------- *
 
-const { mongoose } = require("../configs/dbConnection");
-const category = require("./category");
 /* ------------------------------------------------------- */
-
 // Blog Model:
 
-/* {
-    "title": "title 2",
-    "content": "content 2",
-    "image": "image 2",
-    "category": "655c6d7f0a6fe58b8a9dcc5f",
-    "author": "655b56275a51b6c4beaaa772",
-    "status": "p"
-} */
+/* 
+{
+  "title": "title 2",
+  "content": "content 2",
+  "image": "image 2",
+  "category": "655c6d7f0a6fe58b8a9dcc5f",
+  "author": "655b56275a51b6c4beaaa772",
+  "status": "p"
+}
+*/
 
-/* ------------------------------------------------------- */
-const BlogSchema = new mongoose.Schema(
+const Category = require("./category");
+
+const BlogSchema = new Schema(
   {
     title: {
       type: String,
@@ -36,7 +37,7 @@ const BlogSchema = new mongoose.Schema(
       trim: true,
     },
     category: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Category",
       required: true,
     },
@@ -58,10 +59,10 @@ const BlogSchema = new mongoose.Schema(
       default: 0,
     },
     comments: [],
-    comments_count: {
+    comment_count: {
       type: Number,
       default: function () {
-        return this.comments.lenght;
+        return this.comments.length;
       },
       transform: function () {
         return this.comments.length;
@@ -74,27 +75,26 @@ const BlogSchema = new mongoose.Schema(
     likes: {
       type: Number,
       default: function () {
-        return this.likes_n.lenght;
+        return this.likes_n.length;
       },
       transform: function () {
         return this.likes_n.length;
       },
     },
   },
-  { collation: "blogs", timestamps: true }
+  { collection: "blogs", timestamps: true }
 );
-/* ------------------------------------------------------- */
 
-BlogSchema.pre('save', async function (next){
-    
-    // category alanına bağlı kategori bilgisini al:
-    const category = await Category.findOne(this.category)
-    
-    // category_name'i belirle:
-    this.category_name = category ? category.name : 'Default Category'
-    
-    // sonraki adıma geç
-    next()
-})
+BlogSchema.pre("save", async function (next) {
+  // category alanına bağlı kategori bilgisini al
+  const category = await Category.findOne(this.category);
+
+  // category_name'i belirle
+  this.category_name = category ? category.name : "Default Category";
+
+  // sonraki adıma geç
+  next();
+});
+
 /* ------------------------------------------------------- */
-module.exports = mongoose.model('Blog', BlogSchema)
+module.exports = model("Blog", BlogSchema);
