@@ -4,6 +4,7 @@
 ------------------------------------------------------- */
 
 const express = require("express");
+const { dbConnection } = require("./src/configs/dbConnection");
 const app = express()
 
 /* ------------------------------------------------------- */
@@ -23,6 +24,7 @@ require("express-async-errors");
 
 // DB Connection:
 require('./src/configs/dbConnection')
+dbConnection()
 
 
 /* ------------------------------------------------------- */
