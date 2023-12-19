@@ -5,6 +5,24 @@
 
 const Personnel = require('../models/personnel.model')
 
+
+// {
+//     "departmentId": "..........",
+//     "username": "test2",
+//     "password": "1234",
+//     "firstName": "firstName",
+//     "lastName": "lastName",
+//     "phone": "123456789",
+//     "email": "emailqsite.com",
+//     "title": "title",
+//     "salary": "2500",
+//     "description": "description",
+//     "isActive": true,
+//     "isAdmin": true,
+//     "isLead": true,
+//     "startedAt": "2023-10-15 13:14:15"
+// }
+
 module.exports = {
 
     list: async (req, res) => {

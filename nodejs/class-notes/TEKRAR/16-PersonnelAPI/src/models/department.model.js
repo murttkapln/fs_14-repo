@@ -5,12 +5,12 @@
 const { mongoose } = require('../configs/dbConnection')
 /* ------------------------------------------------------- */
 const DepartmentSchema = new mongoose.Schema({
-    name:{
+    name: {
         type: String,
-        trim:true,
-        required:true,
-        unique: true
+        trim: true,
+        required: true,
+        uniqe: true
     }
-},{collection: 'departments', timestamps: true})
+},{ collection: "departments",timestamps:true }) 
 
-module.exports = mongoose.model('Department', DepartmentSchema)
+module.exports = mongoose('Department', DepartmentSchema)
