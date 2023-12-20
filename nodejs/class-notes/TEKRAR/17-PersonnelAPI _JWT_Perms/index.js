@@ -89,7 +89,7 @@ app.use(require('./src/middlewares/authentication'))
  app.all('/',(req,res)=>{
     res.send({
         error:false,
-        message: 'Welcome toPERSONNEL API',
+        message: 'Welcome to PERSONNEL API',
         // session: req.session,
         isLogin: req.isLogin,
         user: req.user
