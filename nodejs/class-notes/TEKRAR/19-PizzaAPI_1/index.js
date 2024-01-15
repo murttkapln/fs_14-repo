@@ -51,6 +51,18 @@ app.all("/", (req, res) => {
   });
 });
 
+
+// auth:
+app.use('/auth', require('./src/routes/auth'))
+// user:
+app.use('/users', require('./src/routes/user'))
+// toppings:
+app.use('/toppings', require('./src/routes/topping'))
+// pizzas:
+app.use('/pizzas', require('./src/routes/pizza'))
+// orders:
+app.use('/orders', require('./src/routes/order'))
+
 /* ------------------------------------------------------- */
 
 // errorHandler:

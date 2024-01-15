@@ -23,7 +23,7 @@ module.exports = {
     const data = await res.getModelList(User);
     res.status(200).send({
       error: false,
-      details: res.getModelListDetails(USer),
+      details: await res.getModelListDetails(User),
       data,
     });
   },
@@ -39,15 +39,38 @@ module.exports = {
       data,
     });
   },
-  read: async (req,res) => {
-     /*
+  read: async (req, res) => {
+    /*
             #swagger.tags = ['Users']
             #swagger.summary = "Get Single User"
         */
-    const data = await User.findOne({_id: req.params.id})
+    const data = await User.findOne({ _id: req.params.id });
     res.status(200).send({
-        error: false,
-        data
-    })
-  }
+      error: false,
+      data,
+    });
+  },
+  update: async (req, res) => {
+    /*
+      #swagger.tags = ['Users']
+      #swagger.summary = ['Update  User']
+    */
+    const data = await User.updateOne({ _id: req.params.id }, req.body); // 1. parametre güncellenecek olan kaydı verir. 2. parametre ise güncellenmek üzere olan veriyi tanımlar.
+    res.status(202).send({
+      error: false,
+      data,
+      new: await User.findOne({ _id: req.params.id }),
+    });
+  },
+  delete: async (req, res) => {
+    /*
+        #swager.tags = ['Users']
+        #swager.summary = 'Delete User' 
+      */
+    const data = await User.deleteOne({ _id: req.params.id });
+    res.status(data.deletedCount ? 204 : 404).send({
+      error: !data.deletedCount,
+      data,
+    });
+  },
 };
