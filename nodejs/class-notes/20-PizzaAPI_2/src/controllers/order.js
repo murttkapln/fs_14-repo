@@ -1,15 +1,15 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 // Order Controller:
 
-const Order = require('../models/order')
+const Order = require("../models/order");
+const Pizza = require("../models/pizza");
 
 module.exports = {
-
-    list: async (req, res) => {
-        /*
+  list: async (req, res) => {
+    /*
             #swagger.tags = ["Orders"]
             #swagger.summary = "List Orders"
             #swagger.description = `
@@ -22,72 +22,99 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Order)
+    // const data = await res.getModelList(Order,{}, ['userId', 'pizzaId']);
+    const data = await res.getModelList(Order,{}, [ // iç içe populate
+        'userId',
+        {path:'pizzaId', populate: 'toppings'} // Pizza'nın içindeki malzemeleri de göstermesi için .
+        ]);
 
-        res.status(200).send({
-            error: false,
-            details: await res.getModelListDetails(Order),
-            data
-        })
-    },
+    res.status(200).send({
+      error: false,
+      details: await res.getModelListDetails(Order),
+      data,
+    });
+  },
 
-    create: async (req, res) => {
-        /*
+  create: async (req, res) => {
+    /*
             #swagger.tags = ["Orders"]
             #swagger.summary = "Create Order"
         */
 
-        const data = await Order.create(req.body)
+    // Calculatings:
+    req.body.quantity = req.body?.quantity || 1; // default: 1
 
-        res.status(201).send({
-            error: false,
-            data
-        })
-    },
+    if (!req.body?.price) {
 
-    read: async (req, res) => {
-        /*
+      const dataPizza = await Pizza.findOne({ _id: req.body?.pizzaId },{_id: 0, price:1});
+      req.body.price = dataPizza.price;
+    }
+
+    req.body.totalPrice = (req.body.price * req.body.quantity).toFixed(2);
+
+    const data = await Order.create(req.body);
+
+    res.status(201).send({
+      error: false,
+      data,
+    });
+  },
+
+  read: async (req, res) => {
+    /*
             #swagger.tags = ["Orders"]
             #swagger.summary = "Get Single Order"
         */
 
-        const data = await Order.findOne({ _id: req.params.id })
+    const data = await Order.findOne({ _id: req.params.id }).populate([ // iç içe populate
+    'userId',
+    {path:'pizzaId', populate: 'toppings'} // Pizza'nın içindeki malzemeleri de göstermesi için .
+    ]);
 
-        res.status(200).send({
-            error: false,
-            data
-        })
+    res.status(200).send({
+      error: false,
+      data,
+    });
+  },
 
-    },
-
-    update: async (req, res) => {
-        /*
+  update: async (req, res) => {
+    /*
             #swagger.tags = ["Orders"]
             #swagger.summary = "Update Order"
         */
 
-        const data = await Order.updateOne({ _id: req.params.id }, req.body)
+    // Calculatings:
+    req.body.quantity = req.body?.quantity || 1; // default: 1
 
-        res.status(202).send({
-            error: false,
-            data,
-            new: await Order.findOne({ _id: req.params.id })
-        })
+    if (!req.body?.price) {
 
-    },
+      const dataOrder = await Order.findOne({ _id: req.params.id },{_id: 0, price:1});
+      req.body.price = dataOrder.price;
+    }
 
-    delete: async (req, res) => {
-        /*
+    req.body.totalPrice = (req.body.price * req.body.quantity).toFixed(2);
+
+
+    const data = await Order.updateOne({ _id: req.params.id }, req.body);
+
+    res.status(202).send({
+      error: false,
+      data,
+      new: await Order.findOne({ _id: req.params.id }),
+    });
+  },
+
+  delete: async (req, res) => {
+    /*
             #swagger.tags = ["Orders"]
             #swagger.summary = "Delete Order"
         */
 
-        const data = await Order.deleteOne({ _id: req.params.id })
+    const data = await Order.deleteOne({ _id: req.params.id });
 
-        res.status(data.deletedCount ? 204 : 404).send({
-            error: !data.deletedCount,
-            data
-        })
-
-    },
-}
+    res.status(data.deletedCount ? 204 : 404).send({
+      error: !data.deletedCount,
+      data,
+    });
+  },
+};
