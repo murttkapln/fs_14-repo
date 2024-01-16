@@ -8,7 +8,10 @@ module.exports = {
 
     isLogin: (req,res,next) => {
 
+        return next() // bu komut permissions'ı yok sayar. Otomatik olarak herşeye izin verir. Test yapmak amaçlı.
+
         if (req.isLogin){
+
             return next()
 
         }else {
@@ -22,7 +25,7 @@ module.exports = {
     isAdmin:  (req,res,next) => {
         
         if(req.isLogin && req.user.isAdmin) {
-            next()
+            return next()
             
         }else {
             res.errorStatusCode = 403
