@@ -35,28 +35,6 @@ dbConnection()
 // Accept JSON:
 app.use(express.json())
 
-// accessToken Control:
-app.use(require('./src/middlewares/authentication'))
-// const jwt = require('jsonwebtoken')
-// app.use( (req, res, next) => {
-
-//     // const accessToken = req.headers?.authorization.replaceAll('Bearer ')
-//     const auth = req.headers?.authorization // Bearer ...token...
-//     const accessToken = auth ? auth.split(' ')[1] : null // ['Bearer', '...token...']
-
-//     req.isLogin = false
-//     req.user = null
-
-//     jwt.verify(accessToken, process.env.ACCESS_KEY, function (err, userData) {
-//         if (userData) {
-//             req.isLogin = true
-//             req.user = userData
-//         }
-//     })
-//     next()
-// } )
-
-
 // Run Logger:
 app.use(require('./src/middlewares/logger'))
 
@@ -72,7 +50,7 @@ app.all('/', (req, res) => {
         error: false,
         message: 'Welcome to PIZZA API',
         isLogin: req.isLogin,
-        user: req.userData
+        user: req.user
     })
 })
 
