@@ -10,9 +10,9 @@ const auth = require('../controllers/auth')
 
 // URL: /auth
 
-router.route('/login, auth.login')
+router.post('/login, auth.login')
 router.post('/refresh, auth.refresh')
-router.route('/logout, auth.logout')
+router.get('/logout, auth.logout')
 
 
 /* ------------------------------------------------------- */
