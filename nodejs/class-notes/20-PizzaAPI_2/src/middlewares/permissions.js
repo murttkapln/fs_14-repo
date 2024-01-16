@@ -8,7 +8,7 @@ module.exports = {
 
     isLogin: (req,res,next) => {
 
-        return next() // bu komut permissions'ı yok sayar. Otomatik olarak herşeye izin verir. Test yapmak amaçlı.
+        return next() // bu komut isLogin permissions'a izin verir. otomatik abir sonraki işleme bakar.
 
         if (req.isLogin){
 
@@ -23,6 +23,8 @@ module.exports = {
     } ,
     
     isAdmin:  (req,res,next) => {
+
+        return next() // atla
         
         if(req.isLogin && req.user.isAdmin) {
             return next()
