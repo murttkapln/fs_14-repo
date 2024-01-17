@@ -26,7 +26,7 @@ const { mongoose } = require("../configs/dbConnection");
 /* ------------------------------------------------------- */
 // Reservation Model:
 
-const reservationSchema = new mongoose.Schema(
+const ReservationSchema = new mongoose.Schema(
   {
     flightId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -40,7 +40,7 @@ const reservationSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { collection: "reservations", reservationSchema }
+  { collection: "reservations", timestamps: true }
 );
 /* ------------------------------------------------------- */
-module.exports = mongoose.Model("Reservation", reservationSchema);
+module.exports = mongoose.model("Reservation", ReservationSchema);
