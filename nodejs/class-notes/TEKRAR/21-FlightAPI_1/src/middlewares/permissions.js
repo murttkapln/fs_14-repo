@@ -13,8 +13,8 @@ module.exports = {
       throw new Error("NoPermission: You must login.");
     }
   },
-  isStaff: (req, res, next) => {
-    if (req.user && req.user.isStaff) {
+  isStaffOrAdmin: (req, res, next) => {
+    if (req.user && (req.user.isStaff || req.user.isAdmin)) {
       next();
     } else {
       res.errorStatusCode = 403;
