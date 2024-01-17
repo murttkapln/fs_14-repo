@@ -6,9 +6,12 @@ const router = require("express").Router();
 /* ------------------------------------------------------- */
 // routes/reservation:
 
+const {isStaffOrAdmin, isAdmin} = require('../middlewares/permissions')
 const reservation = require("../controllers/reservation");
 
 // URL: /reservations
+
+router.use(isStaffOrAdmin)
 
 router.route("/")
 .get(reservation.list)
@@ -19,7 +22,7 @@ router
   .get(reservation.read)
   .put(reservation.update)
   .patch(reservation.update)
-  .delete(reservation.delete);
+  .delete(isAdmin,reservation.delete);
 
 /* ------------------------------------------------------- */
 module.exports = router;
