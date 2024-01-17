@@ -51,18 +51,19 @@ app.all('/', (req, res) => {
     })
 })
 
-// auth:
-app.use('/auth', require('./src/routes/auth'))
-// users:
-app.use('/users', require('./src/routes/user'))
-// flights:
-app.use('/flights', require('./src/routes/flight'))
-// passengers:
-app.use('/passengers', require('./src/routes/passenger'))
-// reservations:
-app.use('/reservations', require('./src/routes/reservation'))
-// document:
-app.use('/documents', require('./src/routes/document'))
+app.use('/', require('./src/routes/'))
+// // auth:
+// app.use('/auth', require('./src/routes/auth'))
+// // users:
+// app.use('/users', require('./src/routes/user'))
+// // flights:
+// app.use('/flights', require('./src/routes/flight'))
+// // passengers:
+// app.use('/passengers', require('./src/routes/passenger'))
+// // reservations:
+// app.use('/reservations', require('./src/routes/reservation'))
+// // document:
+// app.use('/documents', require('./src/routes/document'))
 
 /* ------------------------------------------------------- */
 

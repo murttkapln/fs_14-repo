@@ -11,16 +11,16 @@ const { mongoose } = require("../configs/dbConnection");
     "departureDate": "2020-10-01 10:00:00",
     "arrival": "ANKARA",
     "arrivalDate": "2020-10-01 12:00:00",
-    "createdId": "652ceaa1bae9cde5e8a97522"
+    "createdId": "653281dce02460f34199fe95"
 }
 {
-  "flightNumber": "IS-AN-002",
-  "airline": "THY",
-  "departure": "ISTANBUL",
-  "departureDate": "2020-10-01 23:00:00",
-  "arrival": "ANTALYA",
-  "arrivalDate": "2020-10-02 03:00:00",
-  "createdId": "65317b1c29b1267920ddf30d"
+    "flightNumber": "IS-AN-002",
+    "airline": "THY",
+    "departure": "ISTANBUL",
+    "departureDate": "2020-10-01 23:00:00",
+    "arrival": "ANTALYA",
+    "arrivalDate": "2020-10-02 03:00:00",
+    "createdId": "653281dce02460f34199fe95"
 }
 /* ------------------------------------------------------- */
 // Flight Model:
