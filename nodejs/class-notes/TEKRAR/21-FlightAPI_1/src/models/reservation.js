@@ -1,9 +1,8 @@
-"use strict";
-const { mongo } = require("mongoose");
+"use strict"
 /* -------------------------------------------------------
 	NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
-const { mongoose } = require("../configs/dbConnection");
+const { mongoose } = require('../configs/dbConnection')
 /* ------------------------------------------------------- *
 {
 	"flightId": "652cebb3bae9cde5e8a9753b",
@@ -26,30 +25,30 @@ const { mongoose } = require("../configs/dbConnection");
 /* ------------------------------------------------------- */
 // Reservation Model:
 
-const ReservationSchema = new mongoose.Schema(
-  {
-    flightId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Flight",
-      required: true,
-    },
+const ReservationSchema = new mongoose.Schema({
+
+	flightId: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Flight',
+		required: true,
+	},
 
 	// passengers: [
 	// 	{
 	// 		type: mongoose.Schema.Types.ObjectId,
-	// 		ref: 'User',
-	// 		required: true
+	// 		ref: 'Passenger',
+	// 		required: true,
 	// 	}
 	// ],
-	
-    passengers: [],
-    createdId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
-  },
-  { collection: "reservations", timestamps: true }
-);
+	passengers: [],
+
+	createdId: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User',
+		required: true,
+	},
+
+}, { collection: 'reservations', timestamps: true })
+
 /* ------------------------------------------------------- */
-module.exports = mongoose.model("Reservation", ReservationSchema);
+module.exports = mongoose.model('Reservation', ReservationSchema)
