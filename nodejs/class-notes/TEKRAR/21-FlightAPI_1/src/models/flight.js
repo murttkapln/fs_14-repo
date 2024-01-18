@@ -78,6 +78,7 @@ FlightSchema.pre('init',function(document){
     // document.arrivalDateStr = document.arrivalDate.toLocaleString('tr-tr', { dateStyle: 'full', timeStyle: 'medium' })
   document.departureDateStr = dateToLocalString(document.departureDate)
   document.arrivalDateStr = dateToLocalString(document.arrivalDate)
+  document.__v = undefined
 
 })
 
