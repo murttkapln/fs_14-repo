@@ -65,6 +65,18 @@ const FlightSchema = new mongoose.Schema(
   { collection: "flights", timestamps: true }
 );
 
+// Mongoose Schema Midleware:
+// https://mongoosejs.com/docs/middleware.html
+// Trigger: Wnen running init:
+// ? Veriyi ekrana basmadan önce yapılacak olan işlemi yazıyoruz.
+
+FlightSchema.pre('init',function(data){
+   // https://www.w3schools.com/jsref/jsref_tolocalestring.asp
+    data.departureDateStr = data.departureDate.toLocaleString('tr-tr', { dateStyle: 'full', timeStyle: 'medium' })
+    data.arrivalDateStr = data.arrivalDate.toLocaleString('tr-tr', { dateStyle: 'full', timeStyle: 'medium' })
+})
+
+
 /* ------------------------------------------------------- */
 
 module.exports = mongoose.model("Flight", FlightSchema);
