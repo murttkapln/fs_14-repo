@@ -6,8 +6,8 @@
     "description": "Flight Reservation Management System",
     "termsOfService": "http://www.clarusway.com",
     "contact": {
-      "name": "Clarusway",
-      "email": "qadir@clarusway.com"
+      "name": "Murat Kaplan",
+      "email": "murttkapln@gmail.com"
     },
     "license": {
       "name": "ISC Licence"
@@ -117,7 +117,7 @@
           "Users"
         ],
         "summary": "List Users",
-        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
           "200": {
             "description": "OK"
@@ -260,6 +260,18 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "createdId": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -332,7 +344,7 @@
           "Flights"
         ],
         "summary": "List Flights",
-        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
           "200": {
             "description": "OK"
@@ -351,7 +363,8 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Flight"
+              "type": "object",
+              "properties": {}
             }
           }
         ],
@@ -401,7 +414,8 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Flight"
+              "type": "object",
+              "properties": {}
             }
           }
         ],
@@ -423,6 +437,18 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "createdId": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -452,7 +478,8 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Flight"
+              "type": "object",
+              "properties": {}
             }
           }
         ],
@@ -469,7 +496,7 @@
           "Passengers"
         ],
         "summary": "List Passengers",
-        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
           "200": {
             "description": "OK"
@@ -488,7 +515,8 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Passenger"
+              "type": "object",
+              "properties": {}
             }
           }
         ],
@@ -538,7 +566,8 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Passenger"
+              "type": "object",
+              "properties": {}
             }
           }
         ],
@@ -560,6 +589,18 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "createdId": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -589,7 +630,8 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Passenger"
+              "type": "object",
+              "properties": {}
             }
           }
         ],
@@ -606,7 +648,7 @@
           "Reservations"
         ],
         "summary": "List Reservations",
-        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
+        "description": "\r  You can send query with endpoint for search[], sort[], page and limit.\r  <ul> Examples:\r   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>\r   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>\r   <li>URL/?<b>page=2&limit=1</b></li>\r  </ul>\r  ",
         "responses": {
           "200": {
             "description": "OK"
@@ -625,7 +667,41 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Reservation"
+              "type": "object",
+              "properties": {
+                "flightId": {
+                  "type": "string",
+                  "example": "...Flight.objectId..."
+                },
+                "passengers": {
+                  "type": "array",
+                  "example": [
+                    "...Passenger.objectId...",
+                    {
+                      "firstName": "string",
+                      "lastName": "string",
+                      "email": "string:email"
+                    }
+                  ],
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "firstName": {
+                        "type": "string",
+                        "example": "string"
+                      },
+                      "lastName": {
+                        "type": "string",
+                        "example": "string"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "string:email"
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         ],
@@ -697,6 +773,18 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "createdId": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -733,6 +821,28 @@
         "responses": {
           "202": {
             "description": "Accepted"
+          }
+        }
+      }
+    },
+    "/reservations/{id}/passengers": {
+      "get": {
+        "tags": [
+          "Reservations"
+        ],
+        "summary": "List Passengers of Reservation",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -809,7 +919,7 @@
               "type": "boolean",
               "example": true
             },
-            "unique": {
+            "uniqe": {
               "type": "boolean",
               "example": true
             }
@@ -848,17 +958,17 @@
               "type": "array",
               "example": [
                 true,
-                "Email field must be required"
+                "Email field must be required."
               ],
               "items": {
                 "type": "string"
               }
             },
-            "unique": {
+            "uniqe": {
               "type": "array",
               "example": [
                 true,
-                "There is this email. Email field must be unique"
+                "There is this email. Email field must be unique."
               ],
               "items": {
                 "type": "string"
@@ -978,9 +1088,6 @@
             "required": {
               "type": "boolean",
               "example": true
-            },
-            "get": {
-              "type": "function"
             }
           }
         },
@@ -1009,9 +1116,6 @@
             "required": {
               "type": "boolean",
               "example": true
-            },
-            "get": {
-              "type": "function"
             }
           }
         },
@@ -1076,19 +1180,18 @@
             },
             "enum": {
               "type": "array",
-              "example": [
-                "",
-                "M",
-                "F"
-              ],
               "items": {
-                "type": "string"
+                "properties": {
+                  "1": {
+                    "type": "string"
+                  },
+                  "2": {
+                    "type": "string"
+                  }
+                }
               }
             },
-            "default": {
-              "type": "string",
-              "example": ""
-            }
+            "default": {}
           }
         },
         "email": {
@@ -1102,11 +1205,34 @@
               "example": true
             },
             "required": {
-              "type": "boolean",
-              "example": true
+              "type": "array",
+              "example": [
+                true,
+                "Email field must be required."
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "uniqe": {
+              "type": "array",
+              "example": [
+                true,
+                "There is this email. Email field must be unique."
+              ],
+              "items": {
+                "type": "string"
+              }
             },
             "validate": {
-              "type": "function"
+              "type": "array",
+              "example": [
+                null,
+                "Email type is not correct."
+              ],
+              "items": {
+                "type": "string"
+              }
             }
           }
         },
