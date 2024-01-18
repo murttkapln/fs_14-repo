@@ -70,10 +70,15 @@ const FlightSchema = new mongoose.Schema(
 // Trigger: Wnen running init:
 // ? Veriyi ekrana basmadan önce yapılacak olan işlemi yazıyoruz.
 
-FlightSchema.pre('init',function(data){
+const dateToLocalString = require('../helpers/dateToLocaleString')
+
+FlightSchema.pre('init',function(document){
    // https://www.w3schools.com/jsref/jsref_tolocalestring.asp
-    data.departureDateStr = data.departureDate.toLocaleString('tr-tr', { dateStyle: 'full', timeStyle: 'medium' })
-    data.arrivalDateStr = data.arrivalDate.toLocaleString('tr-tr', { dateStyle: 'full', timeStyle: 'medium' })
+    // document.departureDateStr = document.departureDate.toLocaleString('tr-tr', { dateStyle: 'full', timeStyle: 'medium' })
+    // document.arrivalDateStr = document.arrivalDate.toLocaleString('tr-tr', { dateStyle: 'full', timeStyle: 'medium' })
+  document.departureDateStr = dateToLocalString(document.departureDate)
+  document.arrivalDateStr = dateToLocalString(document.arrivalDate)
+
 })
 
 
