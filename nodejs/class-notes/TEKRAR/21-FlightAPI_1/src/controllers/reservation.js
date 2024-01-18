@@ -55,7 +55,7 @@ module.exports = {
 
         // req.body.createdId = req.user._id
 
-        /* Check ID or OBJECT for passengers */
+        /* Check ID or OBJECT for passengers *
 
         let passengersInfos = req.body?.passengers || [],
             passengerIds = [],
@@ -96,7 +96,7 @@ module.exports = {
         }
         /* Check ID or OBJECT for passengers */
         
-        /* Check ID or OBJECT for passengers *
+        /* Check ID or OBJECT for passengers */
 
         let passengerInfos = req.body?.passengers || [],
             passengerIds = [],
