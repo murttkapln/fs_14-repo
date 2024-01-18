@@ -38,7 +38,7 @@ module.exports = {
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: {}
+                schema: { $ref : '#/definitions/Flight'}
             }
         */
 
@@ -72,7 +72,7 @@ module.exports = {
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: {}
+                schema: { $ref : '#/definitions/Flight'}
             }
         */
 
