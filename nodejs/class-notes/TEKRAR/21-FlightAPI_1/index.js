@@ -1,7 +1,6 @@
 "use strict"
 /* -------------------------------------------------------
     NODEJS EXPRESS | CLARUSWAY FullStack Team
-            *-----FLIGHT API-----*
 ------------------------------------------------------- */
 const express = require('express')
 const app = express()
@@ -54,22 +53,23 @@ app.all('/', (req, res) => {
 //? Move to routes/index.js:
 // // auth:
 // app.use('/auth', require('./src/routes/auth'))
-// // users:
+// // user:
 // app.use('/users', require('./src/routes/user'))
-// // flights:
+// // flight:
 // app.use('/flights', require('./src/routes/flight'))
-// // passengers:
+// // passenger:
 // app.use('/passengers', require('./src/routes/passenger'))
-// // reservations:
+// // reservation:
 // app.use('/reservations', require('./src/routes/reservation'))
 // // document:
 // app.use('/documents', require('./src/routes/document'))
 
-// Routes: 
-// app.use('/',require('./src/routes/index.js'))
-// app.use('/',require('./src/routes/index'))
+// Routes:
+// app.use('/', require('./src/routes/index.js'))
+// app.use('/', require('./src/routes/index'))
 // app.use('/', require('./src/routes/'))
-app.use(require('./src/routes'))
+app.use(require('./src/routes/'))
+
 /* ------------------------------------------------------- */
 
 // errorHandler:
