@@ -19,7 +19,7 @@ Project aims to create survey form within html and css.
 ```
 001-survey-form (folder)
 |
-|----readme.md         # Given to the students (Definition of the project)          
+|----readme.md             
 |----solution
         |----index.html  
         |----style.css   
@@ -98,5 +98,5 @@ Functionally create a Survey Form as in the image above
 -  [Background Image Url](./background_image.jpg)
 
 
-<center> &#8987; Happy Coding  &#9997; </center>
+
 

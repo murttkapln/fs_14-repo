@@ -1,0 +1,50 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap') */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* background-image: url(./netflix_background.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  color: #ffffff;
+}
+
+#container {
+  width: 1240px;
+  height: 1036px;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: auto;
+  margin-top: 30px;
+}
+
+#title {
+  font-family: "Bowlby One SC", sans-serif;
+  /* font-weight: 500; */
+  letter-spacing: 0.5em;
+}
+span {
+  color: #ff0000;
+}
+
+#description {
+  font-family: "Sorts Mill Goudy", serif;
+  /* font-weight: 500; */
+  font-style: italic;
+}
+
+#header {
+  text-align: center;
+}
+
+#survey-form-container {
+    width: 500px;
+    height: 800px;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin: auto;
+    padding: 30px 40px;
+    margin-bottom:  30px;
+}
