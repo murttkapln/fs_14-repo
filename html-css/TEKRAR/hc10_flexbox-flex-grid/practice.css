@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: monospace;
+    align-items: center;
+    font-weight: bold;
+}
+
+header {
+    background-color: #f8f5f1;
+    padding: 4rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+section.img {
+    flex: 1;
+}
+section.text {
+    flex: 2;
+    flex-basis: 300px;
+}
+section.img img {
+    width: 100%;
+    min-width: 300px;
+}
+section.text h1,p {
+    line-height: 2;
+}
+section.text button {
+    background-color: crimson;
+    width: 7rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: .5rem;
+    opacity: .9;
+    &:hover {
+        opacity: 1;
+        transition: .5s;
+    }
+}

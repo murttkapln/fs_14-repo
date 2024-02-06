@@ -35,37 +35,42 @@ ul.nav li {
   text-align: center;
   font: bolder;
 
-  
   display: flex;
   gap: 1rem;
   justify-content: left;
   flex-wrap: wrap;
 }
 
-.container *{
-    background-color: crimson;
-    width: 7rem;
-    padding: 0.5rem;
-    border-radius: 5px;
-    cursor: pointer;
+.container * {
+  background-color: crimson;
+  width: 7rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.container header{
-    flex-basis: 100%; /*! bir itemin kapsayacağı alanı belirler %, rem, px gibi değerler alabilir */
+.container header {
+  flex-basis: 100%; /*! bir itemin kapsayacağı alanı belirler %, rem, px gibi değerler alabilir */
 }
 
 .container footer {
-    flex-basis: 100%;
+  flex-basis: 100%;
+  flex: 100%; /*! Birimi olan tek değer varsa bu flex-basis'e işaret eder (width/height & px/rem)*/
 }
 
 .container main {
-    flex-grow: 3; /*! bir itemin diğerlerine göre büyüme oranıdır.*/
+  /* flex-grow: 3; /*! bir itemin diğerlerine göre büyüme oranıdır. */
+  flex: 3; /*? flex-grow: 3 || flex-basis: 0 */
 }
 
 .container .left {
-flex-grow: 1;
+  flex-grow: 1;
 }
 
 .container .right {
-    flex-grow: 2;
+  flex-grow: 2;
+  /* flex: 2 2 10%  /*! >>>   flex-grow | flex-shrink | flex-basis  */
+  /* flex: 2 2 /*! >>> flex-grow | flex-shrink */
+  /* flex: 2 30px /*! >>> flex-grow | flex-basis */
+  /* flex: 2; */ /*! >>> flex-grow */
 }
