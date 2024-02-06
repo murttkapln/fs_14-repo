@@ -1,0 +1,71 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul.nav {
+  background-color: cadetblue;
+  list-style-type: none;
+  padding: 1rem;
+  text-align: center;
+  /* height: 50vh */ /*ign-items'a örnek amaçlı */
+
+  display: flex;
+  /* flex-direction: row;   /*! --default */
+  justify-content: right;
+  gap: 1rem 2rem; /*! --ilk değer satırlar arası 2. değer sütünlar arası boşluk değeri */
+  flex-wrap: wrap;
+  /* align-items: center; */
+  align-content: center; /*! çok satırlı verilerin dikeyde hizalanması için kullanılır*/
+}
+
+ul.nav li {
+  background-color: chocolate;
+  width: 7rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.container {
+  margin-top: 2rem;
+  background-color: cornflowerblue;
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  font: bolder;
+
+  
+  display: flex;
+  gap: 1rem;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+
+.container *{
+    background-color: crimson;
+    width: 7rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container header{
+    flex-basis: 100%; /*! bir itemin kapsayacağı alanı belirler %, rem, px gibi değerler alabilir */
+}
+
+.container footer {
+    flex-basis: 100%;
+}
+
+.container main {
+    flex-grow: 3; /*! bir itemin diğerlerine göre büyüme oranıdır.*/
+}
+
+.container .left {
+flex-grow: 1;
+}
+
+.container .right {
+    flex-grow: 2;
+}
