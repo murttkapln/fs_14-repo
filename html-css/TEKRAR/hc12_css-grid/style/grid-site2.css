@@ -51,10 +51,11 @@ footer {
 @media screen and (max-width: 400px) {
   .grid {
     grid-template-areas:
-      "header header header header"
-      "nav nav nav nav"
-      "aside aside aside aside"
-      " main main main main"
-      "footer footer footer footer";
+      "header"
+      "nav"
+      "aside"
+      "main"
+      "footer";
+    grid-template-columns: 1fr;
   }
 }
