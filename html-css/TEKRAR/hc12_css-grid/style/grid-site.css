@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.grid {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 200px 100px 1fr 100px;
+
+  text-align: center;
+}
+
+header {
+  grid-column: span 12;
+}
+header img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+nav {
+  grid-column: span 12;
+  background-color: plum;
+}
+aside {
+  grid-column: span 3;
+  background-color: yellow;
+}
+
+main {
+  grid-column: span 9;
+  background-color: yellowgreen;
+}
+footer {
+  grid-column: span 12;
+  background-color: plum;
+}
