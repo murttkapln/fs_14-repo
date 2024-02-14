@@ -32,6 +32,7 @@ header img {
 nav {
   grid-area: nav;
   background-color: plum;
+  list-style-type: none;
 }
 aside {
   grid-area: aside;
