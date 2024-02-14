@@ -10,6 +10,8 @@
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 200px 100px 1fr 100px;
 
+
+  min-width: 100px;
   text-align: center;
 }
 
@@ -33,8 +35,16 @@ aside {
 main {
   grid-column: span 9;
   background-color: yellowgreen;
+  overflow: auto;
 }
 footer {
   grid-column: span 12;
   background-color: plum;
+}
+
+@media screen and (max-width: 400px) {
+    aside, main {
+        grid-column: span 12;
+    }
+    
 }
