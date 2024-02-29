@@ -1,6 +1,13 @@
 body {
-    text-align: center;
-    font-family: tahoma;
-    height: 100vh;
-    background: linear-gradient(to top left, #5e0674, #c0ceee);
-  }
+  text-align: center;
+  font-family: tahoma;
+  height: 100vh;
+  background: linear-gradient(to top left, #5e0674, #c0ceee);
+}
+.par {
+  background-color: red;
+  color: white;;
+}
+.center {
+  border: 5px solid black
+}
