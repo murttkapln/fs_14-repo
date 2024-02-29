@@ -4,7 +4,3 @@ body {
     height: 100vh;
     background: linear-gradient(to top left, #5e0674, #c0ceee);
   }
-
-  .list {
-    list-style-type: none;
-  }
