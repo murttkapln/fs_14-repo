@@ -6,8 +6,11 @@ body {
 }
 .par {
   background-color: red;
-  color: white;;
+  color: white;
 }
 .center {
   border: 5px solid black
+}
+.list {
+  list-style-type: none;
 }
