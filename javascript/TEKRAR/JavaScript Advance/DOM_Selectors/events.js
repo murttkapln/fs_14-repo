@@ -90,3 +90,5 @@ document.querySelector("#input").addEventListener("keydown", (e) => {
     console.log(e.code);
   (e.code === "Backspace" || e.code === "Delete") && removeButton.click();
 });
+
+
