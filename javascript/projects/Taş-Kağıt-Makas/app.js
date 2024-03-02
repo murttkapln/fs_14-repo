@@ -13,6 +13,12 @@ const messagePar = document.querySelector(".message");
 const scoreCardSection = document.querySelector(".score-card");
 const yourScoreSpan = document.getElementById("your-score");
 const pcScoreSpan = document.getElementById("pc-score");
+const topScoreSpan = document.getElementById("top-score");
+console.log(topScoreSpan.textContent);
+// localStorage.setItem("top score", topScoreSpan.textContent)
+// localStorage.setItem("high score",0)
+// let newScore = Math.abs(Number(pcScoreSpan.textContent)-Number(yourScoreSpan.textContent))
+// console.log(newScore);
 
 //? Modal
 const modalCardSection = document.querySelector(".modal-card");
@@ -91,6 +97,7 @@ const calculateResult = () => {
     }
   }
   if (pcScoreSpan.textContent === "10" || yourScoreSpan.textContent === "10") {
+    topScore();
     openModal();
   }
 };
@@ -114,6 +121,25 @@ const youWin = () => {
   yourScoreSpan.textContent++;
 };
 
+//? Top Score
+const topScore = () => {
+  let newScore = Math.abs(
+    Number(pcScoreSpan.textContent) - Number(yourScoreSpan.textContent)
+  );
+
+  //? localeStorage:
+  if (newScore > +localStorage.getItem("high score")) {
+    // console.log(+newScore);
+    // console.log(+localStorage.getItem("high score"));
+    localStorage.setItem("high score", newScore);
+    localStorage.setItem(
+      "top score",
+      `${yourScoreSpan.textContent}:${pcScoreSpan.textContent}`
+    );
+  }
+  topScoreSpan.textContent = localStorage.getItem("top score");
+};
+
 const openModal = () => {
   modalCardSection.classList.add("show");
   if (yourScoreSpan.textContent === "10") {
@@ -128,6 +154,11 @@ const openModal = () => {
     playAgainBtn.style.color = RED;
   }
 };
+
+/* //! Local Storage 'a veri yazma
+localStorage.setItem("highScore", 5); //? veri yazma
+console.log(localStorage.getItem("highScore")); //? veri okuma */
+
 //! Ilkel Yontem
 //? Resimler
 /* const rockImg = document.getElementById("rock");
