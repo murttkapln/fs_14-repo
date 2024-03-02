@@ -8,10 +8,17 @@ const pcCoiceDiv = document.getElementById("pc-choice");
 
 //? message
 const messagePar = document.querySelector(".message");
-const pcScoreSpan = document.getElementById("pc-score");
 
 //? Score
 const scoreCardSection = document.querySelector(".score-card");
+const yourScoreSpan = document.getElementById("your-score");
+const pcScoreSpan = document.getElementById("pc-score");
+
+//? Modal
+const modalCardSection = document.querySelector(".modal-card");
+const finalMessagePar = document.getElementById("final-message");
+
+const playAgainBtn  = document.getElementById("play-again")
 
 //* ------ Variables ------- */
 let userSelectionImg = document.createElement("img");
@@ -53,6 +60,7 @@ selectionArticles.addEventListener("click", (e) => {
 const createPcSelection = () => {
   const pcArr = ["rock", "paper", "scissor"];
   pcRandom = pcArr[Math.floor(Math.random() * 3)];
+  pcRandom="rock"
   pcSelectImg.src = `./assets/${pcRandom}.png`;
   pcSelectImg.alt = `${pcRandom}`;
   pcCoiceDiv.appendChild(pcSelectImg);
@@ -75,6 +83,9 @@ const calculateResult = () => {
       pcRandom === "scissor" ? youLost() : youWin();
     }
   }
+  if (pcScoreSpan.textContent === "10" || yourScoreSpan.textContent === "10") {
+    openModal();
+  }
 };
 
 const draw = () => {
@@ -84,13 +95,26 @@ const draw = () => {
 };
 
 const youLost = () => {
-  messagePar.textContent = "You Lost 😢😢😢";
+  messagePar.textContent = "You Lost";
   scoreCardSection.style.color = RED;
   messagePar.style.backgroundColor = RED;
   pcScoreSpan.textContent++;
 };
-const youWin = () => {};
+const youWin = () => {
+  messagePar.textContent = "You Win";
+  scoreCardSection.style.color = GREEN;
+  messagePar.style.backgroundColor = GREEN;
+  yourScoreSpan.textContent++;
+};
 
+const openModal = () => {
+  modalCardSection.classList.add("show");
+  if (yourScoreSpan.textContent === "10") {
+    finalMessagePar.textContent = "👏 You Win 👏";
+    document.querySelector(".modal").style.backgroundColor = GREEN
+    playAgainBtn.style.color = GREEN    
+  }
+};
 //! Ilkel Yontem
 //? Resimler
 /* const rockImg = document.getElementById("rock");

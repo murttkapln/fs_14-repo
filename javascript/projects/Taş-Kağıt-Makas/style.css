@@ -109,7 +109,7 @@ section.modal-card {
   display: none;
   width: 90%;
 }
-.modal-card .show {
+.modal-card.show {
   position: fixed;
   top: 50%;
   left: 50%;
