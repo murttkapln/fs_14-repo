@@ -183,12 +183,13 @@ console.log("BYE"); */
 /*     let not; 
     do  {
         not = prompt("0-100 arasında bir rakam gir");
-        if (not < 0 || not > 100){
-            alert("Not 0-100 asrasında olmalı")
-        }
+        // if (not < 0 || not > 100){
+        //     alert("Not 0-100 asrasında olmalı")
+        // }
+        alert("Not 0-100 asrasında olmalı")
     }while (not < 0 || not > 100)
-    console.log("Notunuz:", not);
- */
+    console.log("Notunuz:", not); */
+
 //? Gues Number App yap
 
 // let sayac = 5;
@@ -196,18 +197,20 @@ console.log("BYE"); */
 // const randomNumber = Math.trunc(Math.random() * 100);
 // console.log(randomNumber);
 
-// do {
-//   if (number < 0 || number > 100) {
-//     number = +prompt("Keep gueshing");
-//     alert("Number must be between in 0-100");
-//   } else if (randomNumber < number) {
-//     console.log(`You've guessed to high`);
-//   } else if (randomNumber > number) {
-//     console.log(`You've guessed too low`);
-//   } else {
-//     console.log(`Conguraculations 👏👏👏`);
-//   }
-// } while (number != randomNumber);
+do {
+  const number = +prompt("Give ur guess")
+  const randomNumber = Math.random()
+  if (number < 0 || number > 100) {
+    number = +prompt("Keep gueshing");
+    alert("Number must be between in 0-100");
+  } else if (randomNumber < number) {
+    console.log(`You've guessed to high`);
+  } else if (randomNumber > number) {
+    console.log(`You've guessed too low`);
+  } else {
+    console.log(`Conguraculations 👏👏👏`);
+  }
+} while (number != randomNumber);
 
 // **************************************************
 // -----------------FUNCTIONS--------------------------
