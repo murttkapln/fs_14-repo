@@ -8,14 +8,15 @@ const pcCoiceDiv = document.getElementById("pc-choice");
 
 //? message
 const messagePar = document.querySelector(".message");
+const pcScoreSpan = document.getElementById("pc-score");
 
 //? Score
-
 const scoreCardSection = document.querySelector(".score-card");
 
 //* ------ Variables ------- */
 let userSelectionImg = document.createElement("img");
 let pcSelectImg = document.createElement("img");
+let pcRandom;
 
 //? Colors
 const YELLOW = "#ffc548";
@@ -51,7 +52,7 @@ selectionArticles.addEventListener("click", (e) => {
 
 const createPcSelection = () => {
   const pcArr = ["rock", "paper", "scissor"];
-  const pcRandom = pcArr[Math.floor(Math.random() * 3)];
+  pcRandom = pcArr[Math.floor(Math.random() * 3)];
   pcSelectImg.src = `./assets/${pcRandom}.png`;
   pcSelectImg.alt = `${pcRandom}`;
   pcCoiceDiv.appendChild(pcSelectImg);
@@ -63,8 +64,16 @@ const calculateResult = () => {
   // console.log(pcSelectImg.alt);
 
   //? Eşitlik Durumu
-  if ((userSelectionImg.alt = pcSelectImg.alt)) {
+  if (userSelectionImg.alt == pcRandom) {
     draw();
+  } else {
+    if (userSelectionImg.alt === "rock") {
+      pcRandom === "paper" ? youLost() : youWin();
+    } else if (userSelectionImg.alt === "scissor") {
+      pcRandom === "rock" ? youLost() : youWin();
+    } else if (userSelectionImg.alt === "paper") {
+      pcRandom === "scissor" ? youLost() : youWin();
+    }
   }
 };
 
@@ -73,6 +82,14 @@ const draw = () => {
   scoreCardSection.style.color = YELLOW;
   messagePar.style.backgroundColor = YELLOW;
 };
+
+const youLost = () => {
+  messagePar.textContent = "You Lost 😢😢😢";
+  scoreCardSection.style.color = RED;
+  messagePar.style.backgroundColor = RED;
+  pcScoreSpan.textContent++;
+};
+const youWin = () => {};
 
 //! Ilkel Yontem
 //? Resimler
@@ -99,5 +116,3 @@ scissorImg.addEventListener("click",()=>{
     image.alt = "scissor"
     yourCoiceDiv.appendChild(image)
 }) */
-
-//* ------ Functions ------- */
