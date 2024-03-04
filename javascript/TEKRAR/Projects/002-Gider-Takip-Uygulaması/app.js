@@ -16,6 +16,7 @@ const miktarInput = document.getElementById("miktar");
 
 //? Haracama Tablosu
 const harcamaBody = document.getElementById("harcama-body");
+const temizleBtn = document.getElementById("temizle-btn")
 
 //? Variables
 let gelirler = 0;
@@ -130,3 +131,13 @@ harcamaBody.addEventListener("click", (e) => {
     hesaplaVeGuncelle();
   }
 });
+
+
+//? Temizle Butonuna basildigi zaman calis
+temizleBtn.addEventListener("click",(e)=>{
+  harcamaListesi = [] //? RAM 'deki harcama listesini sil
+  gelirler = 0 //? RAM 'deki gelirleri sil
+  localStorage.clear() //? localStorage 'daki tüm verileri sil
+  harcamaBody.innerHTML = "" //? DOM 'daki tüm harcamalari sil
+  hesaplaVeGuncelle() //? sonuc tablosundaki (DOM) gelirler, g,derler ve kalan degerleri sil.
+})
