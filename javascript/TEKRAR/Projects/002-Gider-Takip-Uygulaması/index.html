@@ -23,7 +23,7 @@
       Aylık Gider Uygulaması
     </header>
     <main class="container" style="max-width: 800px">
-      <form action="" class="d-flex">
+      <form action="" class="d-flex gap-2">
         <input
           id="gelir-input"
           class="form-control"
@@ -42,34 +42,41 @@
         <div class="form-group col-6">
           <label for="harcama-alani" class="form-label">Harcama Alanı</label>
           <input
+            id="harcama-alani"
             type="text"
             class="form-control"
-            id="harcama-alani"
-            placeholder="Manav, Bakkal, fatura"
+            placeholder="Manav, Bakkal, Fatura..."
+            required
           />
         </div>
         <div class="col-6">
           <label for="tarih" class="form-label">Tarih</label>
-          <input type="date" class="form-control" id="tarih" />
+          <input id="tarih" type="date" class="form-control" required />
         </div>
 
         <div class="col-12">
           <label for="miktar" class="form-label">Harcanan Miktar</label>
           <input
+            id="miktar"
             type="number"
             class="form-control"
-            id="miktar"
             placeholder="1000 ₺"
             min="0"
+            required
           />
         </div>
 
         <div class="col-12 text-center">
-          <button type="submit" class="btn btn-warning">Kaydet</button>
+          <button id="kaydet" type="submit" class="btn btn-warning">
+            Kaydet
+          </button>
         </div>
       </form>
 
-      <table id="harcama-tablosu" class="table table-bordered table-hover table-striped mt-4 text-center">
+      <table
+        id="harcama-tablosu"
+        class="table table-bordered table-hover table-striped mt-4 text-center"
+      >
         <thead>
           <tr>
             <th scope="col" class="w-25">Tarih</th>
@@ -79,7 +86,7 @@
           </tr>
         </thead>
         <tbody id="harcama-body">
-            <!-- <tr>
+          <!-- <tr>
                 <th scope="row">1</th>
                 <th scope="row">Mark</th>
                 <th scope="row">Otto</th>
@@ -87,6 +94,29 @@
             </tr> -->
         </tbody>
       </table>
+
+      <table
+        id="sonuc-tablosu"
+        class="table table-bordered table-hover table-striped mt-4 text-center w-50 ms-auto"
+      >
+        <tbody class="text-end">
+          <tr>
+            <th>Geliriniz:</th>
+            <td id="geliriniz">0</td>
+          </tr>
+          <tr>
+            <th>Gideriniz:</th>
+            <td id="gideriniz">0</td>
+          </tr>
+          <tr>
+            <th>Kalan:</th>
+            <td id="kalan">0</td>
+          </tr>
+        </tbody>
+      </table>
+      <section class="text-center">
+        <button class="btn btn-warning">Bilgileri Temizle</button>
+      </section>
     </main>
     <script src="./app.js"></script>
   </body>
