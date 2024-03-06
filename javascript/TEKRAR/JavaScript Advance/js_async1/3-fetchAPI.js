@@ -38,8 +38,8 @@ const showUsers = (users) => {
   users.forEach((user) => {
     // console.log(user.login);
     usersDiv.innerHTML += `
-      <h2>${user.login}</h2>
-      <img class="w-25" src=${user.avatar_url} alt="" />
+      <h2 class="text-warning" type="button">${user.login}</h2>
+      <img class="w-25 border rounded-4" src=${user.avatar_url} alt="" />
   
       `;
   });
