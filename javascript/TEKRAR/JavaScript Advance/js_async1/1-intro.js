@@ -78,3 +78,13 @@ setTimeout(() => {
     }, 1000);
   }, 1000);
 }, 1000);
+
+
+//? CUZUMLER
+//? ------------------------------------------------
+//* 1 - XMLHttpRequest (Eski yontem, Ornek: AJAX)
+//? https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+//* 2 - Promise
+//! 3 - Fetch API ( Promise 'in basitlestirilmis hali)
+//! 4 - ASYNC-AWAIT (Fetch API 'nin makyajlanmis  hali)
+
