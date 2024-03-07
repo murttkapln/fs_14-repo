@@ -19,15 +19,22 @@ fetch("https://api.github.com/users")
     //! Error Handling
     if (!res.ok) {
       throw new Error("Something Wrong", res.status);
+    } else {
+      return res.json();
     }
-    return res.json();
   })
   .then((data) => {
     // veri = data
     // console.log(data);
     showUsers(data);
   })
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    console.log(err);
+    const usersDiv = document.getElementById("users");
+    usersDiv.innerHTML = `
+    <h2 class="text-warning">${err}</h2>
+    `;
+  });
 
 //   console.log(veri);
 
@@ -38,7 +45,7 @@ const showUsers = (users) => {
   users.forEach((user) => {
     // console.log(user.login);
     usersDiv.innerHTML += `
-      <h2 class="text-warning" type="button">${user.login}</h2>
+      <h2 class="text-info" type="button">${user.login}</h2>
       <img class="w-25 border rounded-4" src=${user.avatar_url} alt="" />
   
       `;
