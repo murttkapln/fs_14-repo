@@ -25,18 +25,45 @@ const getNews = async () => {
   try {
     const res = await fetch(URL);
     if (!res.ok) {
+      //! Error Handling
       throw new Error("News can not be fetched");
     }
     const data = await res.json();
 
     renderNews(data.articles);
   } catch (err) {
-    console.log(err);
+    // console.log(err);
+    renderError(err);
   }
+};
+
+const renderError = (err) => {
+  const newsDiv = document.getElementById("news");
+  newsDiv.innerHTML = `
+    <img src="./img/404.png" alt="404" />
+    <h3>${err}</h3>
+`;
 };
 
 const renderNews = (news) => {
   console.log(news);
+  const newsDiv = document.getElementById("news");
+
+  news.map((item) => {
+    const { title, description, content, url, urlToImage } = item;
+    newsDiv.innerHTML += `
+    <div class="col-sm-6 col-md-4  col-lg-3">
+      <div class="card">
+        <img src=${urlToImage} class="card-img-top" alt="" />
+        <div class="card-body">
+          <h5 class="card-title">${title}</h5>
+          <p class="card-text">${content}</p>
+          <a href=${url} target="_blank" class="btn btn-danger">Go Detail</a>
+        </div>
+      </div>
+    </div>
+    `;
+  });
 };
 
 window.addEventListener("load", () => {
