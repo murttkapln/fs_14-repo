@@ -32,7 +32,7 @@ const getNews = async () => {
 
     renderNews(data.articles);
   } catch (err) {
-    // console.log(err);
+    console.log(err);
     renderError(err);
   }
 };
@@ -46,11 +46,10 @@ const renderError = (err) => {
 };
 
 const renderNews = (news) => {
-  console.log(news);
   const newsDiv = document.getElementById("news");
 
   news.map((item) => {
-    const { title, description, content, url, urlToImage } = item;
+    const { title, content, url, urlToImage } = item;
     newsDiv.innerHTML += `
     <div class="col-sm-6 col-md-4  col-lg-3">
       <div class="card">
