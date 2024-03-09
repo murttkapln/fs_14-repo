@@ -59,3 +59,16 @@ console.log(book3);
 console.log(book3.getSummary());
 console.log(book4.getSummary());
 console.log(book5.getSummary());
+
+
+//? Sub-Class tanimlamasi (Inheritance)
+
+class Magazine extends Book {
+  constructor(title, author, year, month) {
+    super(title, author, year)
+    this.month = month
+  }
+}
+
+const mag1 = new Magazine("Elle", "Allen McEller", 2023, "June")
+console.log(mag1);
