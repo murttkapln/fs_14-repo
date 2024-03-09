@@ -6,5 +6,56 @@
 //! Cozum: Object Oriented Programming (ES5 and ES6)
 
 //* Object Literals
-console.log("**** Object Literals ****")
+console.log("**** Object Literals ****");
 
+const book1 = {
+  title: "The Karamazov Brothers",
+  author: "Dostoyevski",
+  year: 1886,
+  getSummary: function () {
+    return `${this.title} was written by ${this.author} in ${this.year}.`;
+  },
+};
+console.log(book1.getSummary());
+
+const book2 = {
+  title: "The Karamazov Brothers",
+  author: "Dostoevski",
+  year: 1886,
+  getSummary: function () {
+    return `${this.title} was written by ${this.author} in ${this.year}`;
+  },
+};
+console.log(book2.getSummary());
+
+//? Classes'lar, object (nesne) olusturmak icin kullanilan sablonlardir.
+//? JS'de Class'lar prototipler uzerine insa edilmistir. Ancak, syntax
+//? ES5'den farklidir. Aslinda, class keyword'u ilk olarak ES6 da
+//? kullanilmistir ancak bu sadece bir syntactical sugar'dir.
+//? JavaScript, class-tabanli bir dil degil, prototype-tabanli bir dildir.
+//? yaygin kullanim class-tabanli oldugu icin syntax'ini O'na benzetmistir.
+
+//? Bir parent class'in degisken ve fonksiyonelliği extends
+//? keyword'u ile child class'a gecmektedir.(INHERITANCE)
+
+console.log("****CLASSES ****");
+
+class Book {
+  constructor(title, author, year) {
+    this.title = title;
+    this.author = author;
+    this.year = year;
+  }
+  getSummary() {
+    return `${this.title} was written by ${this.author} in ${this.year}.`;
+  }
+}
+
+//! Book kalibinda yeni bir ornek (instance) olusturduk.
+const book3 = new Book("Stupid Researches", "XYZ", 2022);
+const book4 = new Book("Stupid Researches", "ABC", 2023);
+const book5 = new Book("Hİ Lova", "ABC", 2021);
+console.log(book3);
+console.log(book3.getSummary());
+console.log(book4.getSummary());
+console.log(book5.getSummary());
