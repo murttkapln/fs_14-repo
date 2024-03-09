@@ -68,7 +68,14 @@ class Magazine extends Book {
     super(title, author, year)
     this.month = month
   }
+
+
+  //? Overriding (Polymorphism)
+  getSummary() {
+    return `${this.title} was written by ${this.author} in ${this.year} in ${this.month}.`;
+  }
 }
 
 const mag1 = new Magazine("Elle", "Allen McEller", 2023, "June")
 console.log(mag1);
+console.log(mag1.getSummary());
