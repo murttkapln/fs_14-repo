@@ -1,13 +1,12 @@
 import Button from "../button/Button"
-
+import CardStyle from "./Card.module.css"
 
 
 const Card = ({ lang, img, btn }) => {
     return (
         <div>
-            <h1>{lang}</h1>
-            <img src={img} alt="image" />
-            <h2>{btn}</h2>
+            <h1 className={CardStyle.title}>{lang}</h1>
+            <img className={CardStyle.images} src={img} alt="image" />
             <Button btn={btn} />
         </div>
     )
