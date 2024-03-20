@@ -3,7 +3,9 @@
 
 const Header = () => {
     return (
-        <div>Header</div>
+        <div>
+            <h1>COMMENTS</h1>
+        </div>
     )
 }
 

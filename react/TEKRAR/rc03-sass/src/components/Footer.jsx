@@ -2,7 +2,9 @@
 
 const Footer = () => {
     return (
-        <div>Footer</div>
+        <div>
+            <p>Copyright by Murat Kaplan {new Date().getFullYear()}</p>
+        </div>
     )
 }
 
