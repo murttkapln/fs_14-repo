@@ -15,6 +15,12 @@ function App() {
 
         <Card key={id} lang={language} img={img} btn={btnName} />
       ))}
+
+      {/*//? Birdem fazla statement kullanilacaksa o zaman  fonksiyonnun suslu ve return keyweodu kullanilanmasi gerekir.  */}
+      {/* {data.map((item) => {
+        const { id, language, img, btnName } = item
+        return <Card key={id} lang={language} img={img} btn={btnName} />
+      })} */}
     </>
   );
 }
