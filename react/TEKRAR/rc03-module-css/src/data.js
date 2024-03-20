@@ -22,7 +22,7 @@ const data = [
   {
     id: 4,
     language: "Java",
-    img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png",
+    img: "https://upload.wikimedia.org/wikipedia/tr/thumb/2/2e/Java_Logo.svg/1200px-Java_Logo.svg.png",
     btnName: "Go",
   },
 ]
