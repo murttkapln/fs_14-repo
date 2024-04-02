@@ -1,9 +1,10 @@
+import Events from "./1-events/Events";
 
 
 function App() {
   return (
     <div>
-      <h1>Hello React</h1>
+      <Events />
     </div>
   );
 }
