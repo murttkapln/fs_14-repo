@@ -17,7 +17,7 @@
 //*    (Custom hook'lar icerisinde bir hook cagrilabilir)
 //?    https://react.dev/reference/react
 //* =============================================================
-import { useState } from "react";
+import { useState, useEffect, useContext, useReducer } from "react";
 
 
 const UseStateCounter = () => {
