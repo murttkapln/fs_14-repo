@@ -1,5 +1,6 @@
 import Events from "./1-events/Events";
 import Counter from "./2-classComponent/Counter"
+import UseStateCounter from "./3-useState/UseStateCounter";
 
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div>
       <Events />
       <Counter />
+      <UseStateCounter />
     </div>
   );
 }
