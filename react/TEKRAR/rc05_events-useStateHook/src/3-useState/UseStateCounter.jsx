@@ -23,13 +23,21 @@ import { useState } from "react";
 const UseStateCounter = () => {
     // let count = 0
 
-    //? Count adinda bir state olusturduk ve baslangic degerine 0 atadik.
+    //! Count adinda bir state olusturduk ve baslangic degerine 0 atadik.
     const [count, setCount] = useState(0)
 
     const handleInc = () => {
         // count = count + 1
+        //! Bir state'in degeri sadece setter metodu ile olabilir.
         setCount(count + 1)
         console.log(count);
+    }
+    const handleDec = () => {
+        if (count <= 0) {
+            alert("count can not be less than 0")
+        } else {
+            setCount(count - 1)
+        }
     }
 
     return (
@@ -37,8 +45,11 @@ const UseStateCounter = () => {
             <h2>USER STATE HOOK</h2>
             <h1>Count:{count}</h1>
             <button onClick={handleInc}>INC</button>
-            <button>CLR</button>
-            <button>DEC</button>
+            <button onDoubleClick={() => setCount(0)}>CLR</button>
+            <button onClick={() => count > 0 ? setCount(count - 1) : alert("can not be less than 0")}>DEC</button>
+            {/* <button onClick={handleDec}>DEC</button> */}
+
+            {/* Eger setCount metodunu callback ile yazmazsak bu metot ilk acilistan itibaren doğrudan cagirilmis olur. Bu durumda da count state'inin gunceller. State guncellendigi icinde component re-render olur. Re-render ise yeninden setCount araciligi state'in guncellenmesine yol acar ve sonsuz donguye girer */}
         </div>
     )
 }
