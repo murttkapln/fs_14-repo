@@ -1,5 +1,11 @@
 
 
+
+
+export const metadata = {
+    title: "Movies",
+}
+
 const Movies = () => {
 
     return (
