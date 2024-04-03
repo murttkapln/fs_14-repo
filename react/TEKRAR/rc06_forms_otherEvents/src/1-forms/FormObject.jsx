@@ -6,8 +6,9 @@ const FormObject = () => {
     const [formData, setFormData] = useState({
         username: "",
         email: "",
-        password
+        password: ""
     })
+
 
     // Destructuring
     const { username, email, password } = formData
@@ -19,7 +20,21 @@ const FormObject = () => {
         email: ${email}
         password: ${password}
         `)
+        setFormData({
+            username: "",
+            email: "",
+            password: ""
+        })
     }
+
+    const handleFormData = (e) => {
+        // console.log(e.target.value);
+        // console.log(e.target.name);
+        // console.log(e.target.id);
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
+
+
     return (
         <div className="container mt-4">
             <form onSubmit={handleSubmit}>
@@ -34,8 +49,9 @@ const FormObject = () => {
                         id="username"
                         aria-describedby="emailHelp"
                         //? OnChange event'ı input degeri her degistiginde tetiklenir. Biz de yazdıgımız event handler araciligi ile State'i guncelleyebiliriz.
-                        onChange={setFormData}
+                        onChange={handleFormData}
                         value={username}
+                        name="username"
                     />
 
                 </div>
@@ -48,8 +64,9 @@ const FormObject = () => {
                         className="form-control"
                         id="email"
                         aria-describedby="emailHelp"
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={handleFormData}
                         value={email}
+                        name="email"
                     />
 
                 </div>
@@ -61,8 +78,9 @@ const FormObject = () => {
                         type="password"
                         className="form-control"
                         id="password"
-                        onChange={(e) => setPassword(e.target.value)}
+                        onChange={handleFormData}
                         value={password}
+                        name="password"
                     />
                 </div>
                 <div className="text-center">
