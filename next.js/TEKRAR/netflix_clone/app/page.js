@@ -1,3 +1,5 @@
+//? next.js'de tüm componentler default olarak server componenttir.Client component kullanmak için "use-client" direktifini kullanmamız gerekir.
+
 
 export default function Home() {
   return (
