@@ -121,7 +121,6 @@ const AuthContextProvider = ({ children }) => {
       .catch((err) => {
         toastErrorNotify(err.message);
         // alert(err.message);
-        // ..
       });
   };
   const values = {

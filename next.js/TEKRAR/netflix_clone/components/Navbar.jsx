@@ -11,7 +11,7 @@ function classNames(...classes) {
 
 const Navbar = () => {
     const currentUser = { displayName: "Ghost Rider" };
-    console.log(currentUser);
+    // console.log(currentUser);
     return (
         <>
             <Disclosure as="nav" className="text-white fixed top-0 z-20 w-full">
