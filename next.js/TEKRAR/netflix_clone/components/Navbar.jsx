@@ -1,8 +1,9 @@
 "use client";
 
+import { AuthContext } from "@/app/context/AuthContext";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 
 
 function classNames(...classes) {
@@ -10,7 +11,7 @@ function classNames(...classes) {
 }
 
 const Navbar = () => {
-    const currentUser = { displayName: "Ghost Rider" };
+    const currentUser = useContext(AuthContext);
     // console.log(currentUser);
     return (
         <>
