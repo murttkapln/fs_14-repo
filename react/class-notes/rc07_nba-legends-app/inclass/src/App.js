@@ -6,8 +6,8 @@ import { Container } from "react-bootstrap";
 function App() {
   return (
     <Container className="text-center mt-5">
-      <Header/>
-      <CardContainer/>
+      <Header />
+      <CardContainer />
     </Container>
   );
 }
