@@ -1,70 +1,132 @@
-# Getting Started with Create React App
+# React Bootstrap
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Dökümanı görüntülemek için tıklayınız](https://react-bootstrap.netlify.app/docs/getting-started/introduction) <br>
+[React Bootstrap Componentlerini görmek için tıklayınız](https://react-bootstrap.netlify.app/docs/components/accordion)
+[React Bootstrap Componentlerini görmek için tıklayınız](https://react-bootstrap.netlify.app/docs/layout/grid)
 
-## Available Scripts
+React Bootstrap, popüler bir UI (Kullanıcı Arayüzü) bileşen kitaplığı olan Bootstrap'in React uygulamalarında kullanılmasını sağlayan bir entegrasyon kitidir.
 
-In the project directory, you can run:
+React-Bootstrap, Bootstrap bileşenlerinin React kullanılarak tamamen yeniden uygulanmasıdır. Bootstrap.js ya da jQuery'ye bağımlılığı yoktur. React kurulumunuz varsa ve React-Bootstrap yüklüyse, ihtiyacınız olan her şeye sahipsiniz demektir.
 
-### `npm start`
+JsDom veya jQuery kullanan yöntemler ve olaylar, DOM'u doğrudan manipüle ederek zorunlu olarak yapılır. Buna karşılık React, sanal DOM'u güncellemek için durum güncellemelerini kullanır. Bu şekilde, React-Bootstrap, Bootstrap işlevselliğini React'in sanal DOM'una dahil ederek daha güvenilir bir çözüm sağlar.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+React Bootstrap'i kullanmak için, React uygulamanıza ilgili paketi (package) eklemeniz ve belgelere göre bileşenleri kullanmanız gerekir. Projenizin bağımlılıklarına React Bootstrap'i ekledikten sonra, örneklerde veya belgelerde verilen bileşenleri kullanarak uygulamanıza istediğiniz tasarımı ekleyebilirsiniz.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Bileşen Tabanlı Yapı: React, bileşen tabanlı bir JavaScript kütüphanesidir. React Bootstrap, bu bileşen tabanlı yapının üzerine inşa edilmiştir. Bileşenler, kullanıcı arayüzünüzdeki farklı parçaları temsil eder ve yeniden kullanılabilirlik sağlar. React Bootstrap, Bootstrap bileşenlerini React bileşenleri olarak uygulamalarınıza entegre etmenizi sağlar. Örneğin, bir Button bileşeni, React Bootstrap ile kolayca oluşturulabilir ve kullanılabilir.
 
-### `npm test`
+- Bootstrap Bileşenlerinin React Uyumlu Hale Getirilmesi: Bootstrap, popüler bir UI framework'tür ve birçok kullanışlı bileşen içerir. Ancak, Bootstrap orijinal haliyle React projelerinde doğrudan kullanılamaz. React Bootstrap, Bootstrap bileşenlerini React uyumlu hale getirir ve bu bileşenlerin React bileşenlerinin avantajlarını kullanmanıza olanak sağlar. Örneğin, React bileşenlerinde durum yönetimi kullanarak, dinamik ve etkileşimli bileşenler oluşturabilirsiniz.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Dökümantasyon ve Örnekler: React Bootstrap, kullanıcılarının projelerine kolayca başlamalarını sağlamak için kapsamlı bir dökümantasyon ve örnekler sunar. Dökümantasyon, React Bootstrap'in nasıl kurulacağını, kullanılacak bileşenlerin özelliklerini ve nasıl kullanılacağını açıklar. Örnekler, tipik kullanım senaryolarını gösterir ve başlangıç noktası olarak kullanılabilir. Bu şekilde, React Bootstrap'i projenize entegre etmek ve bileşenleri doğru şekilde kullanmak daha kolay hale gelir.
 
-### `npm run build`
+- Responsive Tasarım: Bootstrap'in temel özelliklerinden biri, responsive (duyarlı) tasarımı desteklemesidir. Bu özellik, uygulamanızın farklı cihazlarda ve ekran boyutlarında uyumlu bir şekilde görüntülenmesini sağlar. React Bootstrap, Bootstrap'in responsive özelliklerini korur ve React bileşenleriyle birlikte kullanıldığında bile duyarlı bir kullanıcı arayüzü oluşturmanıza yardımcı olur.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Kolay Özelleştirme: React Bootstrap, Bootstrap bileşenlerini kullanmanın yanı sıra, bu bileşenleri özelleştirmenize de olanak tanır. Bootstrap'in CSS sınıfları ve özelleştirme seçenekleri ile bileşenlerin görünümünü ve davranışını kolayca değiştirebilirsiniz. Ayrıca, React'in özellikleri sayesinde bileşenlerin durumunu ve davranışını programatik olarak yönetebilirsiniz.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+React Bootstrap, React ve Bootstrap'i bir araya getirerek, güçlü bir kullanıcı arayüzü oluşturma deneyimi sunar. React'in bileşen tabanlı yapısı, Bootstrap bileşenlerini daha modüler hale getirir ve React'in güçlü özelliklerini kullanarak daha etkileşimli ve dinamik bir kullanıcı arayüzü oluşturmanızı sağlar.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Projemize nasıl dahil edebiliriz?
+```javascript
+npm install react-bootstrap bootstrap
+or
+yarn add react-bootstrap bootstrap
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+// The following line can be included in your src/index.js or App.js file
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+import 'bootstrap/dist/css/bootstrap.min.css';
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Artık projemize eklediğimize göre hem bootstrap özelliklerinden hem de react-bootstrap özelliklerini kullanmaya başlayabiliriz. 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Örneğin; bir buton elementi oluşturmak istiyorsunuz diyelim. Öncelikle ilgili sayfamızda React-Bootstrapten `Button` componentini import ediyoruz.
+```jsx
+import Button from 'react-bootstrap/Button';
+...
+```
+Sonrasında aynı sayfa içerisinde artık Button componentini çağırıp kullanabiliriz.
 
-## Learn More
+```jsx
+import Button from 'react-bootstrap/Button';
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+function MyButtonComp() {
+  return (
+    <>
+      <Button variant="primary">Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button variant="success">Success</Button>
+      <Button variant="warning">Warning</Button>
+      <Button variant="danger">Danger</Button>
+      <Button variant="info">Info</Button>
+      <Button variant="light">Light</Button>
+      <Button variant="dark">Dark</Button>
+      <Button variant="link">Link</Button>
+    </>
+  );
+}
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+export default MyButtonComp;
 
-### Code Splitting
+```
+Button componenti html button elementinin sahip olduğu özellikleri içerisinde barındırıyor. Aynı zamanda `btn` classının sahip olduğu css özelliklerini içerisinde barındırıyor. React props mantığıyla da `Button` componentine ek özellikler kazandırabiliyoruz. React-Bootstrap componentlerinin alacağı props isimleri sabit belirlenmiştir. Bunları dökümandan öğrenebiliriz ([Button örneği için tıklayınız](https://react-bootstrap.netlify.app/docs/components/buttons#api)) veya node_modules klasörü içerisinden react-bootstrapi açıp içerisinden ilgili componente bakabiliriz(Dökümandan incelemenizi tavsiye ederim). 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Responsive Grid yapısına örnekler:
 
-### Analyzing the Bundle Size
+##### Col ile Responsive Ayarı
+Col, 6 breakpoints boyutunda (xs, sm, md, lg, xl ve xxl) sütun genişliklerini belirlemenizi sağlar. Her breakpoints için, yayılacak sütun miktarını belirtebilirsiniz.(Ölçüyü düz bootstrap mantığıyla veriyoruz. Yani `col-sm-8` ile `sm={8}` aynı ölçüye sahip olmuş oluyor. Yani sütunun o satırda ne kadar yer kaplamasını istiyorsanız ona göre değer veriyorsunuz. ) 
+```jsx
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+function ResponsiveAutoExample() {
+  return (
+    <Container>
+      <Row>
+        <Col sm={8} md={6} lg={4}>sm=8-md=6-lg=4</Col>
+        <Col sm={8} md={6} lg={4}>sm=4</Col>
+      </Row>
+    </Container>
+  );
+}
 
-### Making a Progressive Web App
+export default ResponsiveAutoExample;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+##### Row'da Col Genişliklerini Ayarlama ile Responsive Ayarı
 
-### Advanced Configuration
+Row, 6 breakpoints boyutunda (xs, sm, md, lg, xl ve xxl) sütun genişliklerini belirlemenizi sağlar. Her breakpoints için, yan yana sığacak sütun miktarını belirleyebilirsiniz.(Ölçüyü satırda görüntülemek istediğiniz sayıya göre veriyorsunuz. Örneğin; xs ekranlarda her satırda 2 tane göster, md ekranlarda 4, lg ve sonrasında 6tane göster.)
+```jsx
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+function RowColLayoutExample() {
+  return (
+    <Container>
+      <Row xs={2} md={4} lg={6}>
+        <Col>1 of 2</Col>
+        <Col>2 of 2</Col>
+      </Row>
+      <Row xs={1} md={2}>
+        <Col>1 of 3</Col>
+        <Col>2 of 3</Col>
+        <Col>3 of 3</Col>
+      </Row>
+    </Container>
+  );
+}
 
-### Deployment
+export default RowColLayoutExample;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+##### Default 6 Breakpoints
 
-### `npm run build` fails to minify
+| Breakpoint           | Class infix | Dimensions |
+|----------------------|-------------|------------|
+| X-Small              | xs          | <576px     |
+| Small                | sm          | ≥576px     |
+| Medium               | md          | ≥768px     |
+| Large                | lg          | ≥992px     |
+| Extra large          | xl          | ≥1200px    |
+| Extra extra large    | xxl         | ≥1400px    |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
