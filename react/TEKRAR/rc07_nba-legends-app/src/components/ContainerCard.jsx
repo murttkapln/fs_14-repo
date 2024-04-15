@@ -25,6 +25,7 @@ const ContainerCard = () => {
     return (
         <>
             <Form.Control
+                className='w-50 m-auto'
                 type="search"
                 placeholder="Search Player..."
                 onChange={handleChange}
