@@ -8,7 +8,7 @@ const PlayerCard = ({ name, img, statistics }) => {
 
     return (
         <Col>
-            <Card onClick={() => setShowImage(!showImage)} className="player-card" role="button">
+            <Card onClick={() => setShowImage(!showImage)} className="player-card bg-dark" role="button">
                 {showImage ? (
                     <Card.Img
                         variant="top"
@@ -30,7 +30,7 @@ const PlayerCard = ({ name, img, statistics }) => {
                     </ul>
                 )}
                 <Card.Footer>
-                    <Card.Title>{name}</Card.Title>
+                    <Card.Title className="text-warning text-bg-success rounded-3 h-100 ">{name}</Card.Title>
                 </Card.Footer>
             </Card>
         </Col>
