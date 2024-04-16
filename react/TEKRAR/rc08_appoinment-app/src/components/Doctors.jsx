@@ -24,7 +24,7 @@ const Doctors = ({apps,setApps}) => {
                             className="img-thumbnail doctor-img"
                             onClick={() => {
                                 setDrName(name) 
-                                setShow(true)
+                                setShow(!show)
                                 }} />
                         <h5>{name}</h5>
                         <h6>{dep}</h6>
@@ -34,11 +34,11 @@ const Doctors = ({apps,setApps}) => {
 
 
             <AddModal 
-            drName={drName}
             show={show} 
-            handleClose={() => setShow(false)}
+            handleClose={() => setShow(!show)}
             apps={apps}
             setApps={setApps}
+            drName={drName}
             />
 
 

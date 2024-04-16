@@ -14,7 +14,7 @@ const Home = () => {
         <main className="text-center mt-2">
             <h1 className="display-5 text-danger">GHOST HOSPITAL</h1>
             <Doctors  apps={appointments} setApps={setAppointments}/>
-            <AppointmentsList apps = {appointments} />
+            <AppointmentsList apps={appointments} setApps={setAppointments}/>
         </main>
     )
 }
