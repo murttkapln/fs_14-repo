@@ -9,7 +9,12 @@ function AddModal({ show, handleClose }) {
     const [name, setName] = useState("")
     const [date, setDate] = useState(new Date().toISOString().slice(0,10))
 
-    console.log(name, date);
+    const handleSubmit = (e)=> {
+        e.preventDefault()
+        
+        //===========
+        handleClose()
+    }
 
 
     return (
@@ -20,7 +25,7 @@ function AddModal({ show, handleClose }) {
                     <Modal.Title>Apoinment for ...</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Patient Name</Form.Label>
                             <Form.Control type="text" placeholder="Enter Your Name" onChange={(e) => setName(e.target.value)} value={name} />
