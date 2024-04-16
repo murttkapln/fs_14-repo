@@ -6,8 +6,9 @@ import AddModal from "./AddModal";
 import { useState } from "react";
 
 
-const Doctors = () => {
+const Doctors = ({apps,setApps}) => {
     const [show, setShow] = useState(false);
+    const [drName,setDrName] = useState("")
     // console.log(doctorData);
 
     return (
@@ -21,7 +22,10 @@ const Doctors = () => {
                         <img src={img}
                             alt={name}
                             className="img-thumbnail doctor-img"
-                            onClick={() => setShow(true)} />
+                            onClick={() => {
+                                setDrName(name) 
+                                setShow(true)
+                                }} />
                         <h5>{name}</h5>
                         <h6>{dep}</h6>
                     </Col>
@@ -29,7 +33,13 @@ const Doctors = () => {
             </Row>
 
 
-            <AddModal show={show} handleClose={() => !setShow(false)} />
+            <AddModal 
+            drName={drName}
+            show={show} 
+            handleClose={() => setShow(false)}
+            apps={apps}
+            setApps={setApps}
+            />
 
 
         </Container>

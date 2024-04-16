@@ -5,7 +5,7 @@ import { TiDelete } from "react-icons/ti";
 
 
 
-const AppoinmentList = ({apps}) => {
+const AppointmentsList = ({apps}) => {
     console.log(apps);
 
 
@@ -35,4 +35,4 @@ const AppoinmentList = ({apps}) => {
     )
 }
 
-export default AppoinmentList
+export default AppointmentsList
