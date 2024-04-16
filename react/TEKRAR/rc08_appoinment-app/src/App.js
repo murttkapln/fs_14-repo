@@ -1,10 +1,11 @@
-
+import "./App.css"
+import Home from "./pages/Home";
 
 
 function App() {
   return (
     <div className="text-center mt-3">
-      <h1 className="text-success">Welcome Back Auditions!</h1>
+      <Home />
     </div>
   );
 }
