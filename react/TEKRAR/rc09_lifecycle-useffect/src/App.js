@@ -1,11 +1,11 @@
-
-import './App.css';
-
+import Container from "react-bootstrap/Container";
+import LifeCycleMethods from "./components/LifeCycleMethods"
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 function App() {
   return (
-    <div className="App">
-      <h1>Welcome amqq</h1>
-    </div>
+    <Container>
+      <LifeCycleMethods />
+    </Container>
   );
 }
 
