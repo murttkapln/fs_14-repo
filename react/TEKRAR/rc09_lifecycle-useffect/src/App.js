@@ -1,16 +1,18 @@
 import Container from "react-bootstrap/Container";
-import LifeCycleMethods from "./components/LifeCycleMethods"
-import UseEffectHook from "./components/UseEffectHook"
+// import LifeCycleMethods from "./components/LifeCycleMethods"
+// import UseEffectHook from "./components/UseEffectHook"
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import { useState } from "react";
+import User from "./components/User";
+// import { useState } from "react";
 function App() {
 
-  const [visible, setVisible] = useState(true)
+  // const [visible, setVisible] = useState(true)
   return (
-    <Container className="text-center mt-3">
+    <Container className="text-center mt-3 text-bg-warning rounded-pill">
       {/* {visible && <LifeCycleMethods />} */}
-      {visible && <UseEffectHook />}
-      <button className="btn btn-danger m-3" onClick={() => setVisible(!visible)}>Show/Hide</button>
+      {/* {visible && <UseEffectHook />} */}
+      {/* <button className="btn btn-danger m-3" onClick={() => setVisible(!visible)}>Show/Hide</button> */}
+      <User />
     </Container>
   );
 }
