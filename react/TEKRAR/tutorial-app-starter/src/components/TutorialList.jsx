@@ -38,7 +38,7 @@ const TutorialList = ({ tutorials, getTutorials }) => {
   // };
   return (
     <div className="container mt-4">
-      <table className="table table-striped">
+      <table className="table  table-striped">
         <thead>
           <tr>
             <th scope="col">#id</th>
