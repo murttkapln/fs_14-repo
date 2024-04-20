@@ -1,11 +1,13 @@
-import { FaEdit } from "react-icons/fa";
-import { AiFillDelete } from "react-icons/ai";
-import axios from "axios";
-import EditTutorial from "./EditTutorial";
-import { useState } from "react";
+import { FaEdit } from "react-icons/fa"
+import { AiFillDelete } from "react-icons/ai"
+import axios from "axios"
+import EditTutorial from "./EditTutorial"
+import { useState } from "react"
 
 const TutorialList = ({ tutorials, getTutorials }) => {
   const [editItem, setEditItem] = useState("")
+
+  console.log(editItem)
   // const tutorials = [
   //   {
   //     id: 1,
@@ -17,28 +19,45 @@ const TutorialList = ({ tutorials, getTutorials }) => {
   //     title: "React",
   //     description: "JS library for UI design",
   //   },
+  //   {
+  //     id: 3,
+  //     title: "VUE",
+  //     description: "JS library for UI design",
+  //   },
   // ]
-  const BASE_URL = "http://tutorial-api.fullstack.clarusway.com/tutorials";
+  const BASE_URL = "https://tutorial-api.fullstack.clarusway.com/tutorials"
+
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${BASE_URL}/${id}/`);
+      await axios.delete(`${BASE_URL}/${id}/`)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-    getTutorials();
-  };
-  // const editTutor = async (tutor) => {
+    getTutorials()
+  }
+
+  // const editTutor = async(tutor)=>{
   //   try {
-  //     await axios.put(`${BASE_URL}/${tutor.id}/, tutor`);
-  //   } catch (error) {
-  //     console.log(error);
+  //     await axios.put(`${BASE_URL}/${tutor.id}`, tutor)
+  //   } catch (err) {
+  //     console.log(err);
       
   //   }
   //   getTutorials()
-  // };
+  // }
+
+  // const editTutor = async (tutor) => {
+  //   try {
+  //     await axios.put(`${BASE_URL}/${tutor.id}/`, tutor)
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  //   getTutorials()
+  // }
+
   return (
     <div className="container mt-4">
-      <table className="table  table-striped">
+      <table className="table table-striped">
         <thead>
           <tr>
             <th scope="col">#id</th>
@@ -51,7 +70,7 @@ const TutorialList = ({ tutorials, getTutorials }) => {
         </thead>
         <tbody>
           {tutorials?.map((item) => {
-            const { id, title, description } = item; 
+            const { id, title, description } = item
             return (
               <tr key={id}>
                 <th>{id}</th>
@@ -66,12 +85,13 @@ const TutorialList = ({ tutorials, getTutorials }) => {
                     data-bs-target="#open-modal"
                     // onClick={() =>
                     //   editTutor({
-                    //     id: 2119,
+                    //     id: 1934,
                     //     title: "REACT",
                     //     description: "JS Library",
                     //   })
                     // }
-                   onClick={()=>setEditItem(item)}
+
+                    onClick={() => setEditItem(item)}
                   />
                   <AiFillDelete
                     size={22}
@@ -81,13 +101,14 @@ const TutorialList = ({ tutorials, getTutorials }) => {
                   />
                 </td>
               </tr>
-            );
+            )
           })}
         </tbody>
       </table>
-      <EditTutorial editItem={editItem} getTutorials={getTutorials}/>
-    </div>
-  );
-};
 
-export default TutorialList;
+      <EditTutorial editItem={editItem} />
+    </div>
+  )
+}
+
+export default TutorialList
