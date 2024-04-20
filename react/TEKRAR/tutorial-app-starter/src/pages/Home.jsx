@@ -31,7 +31,7 @@ const Home = () => {
   return (
     <>
       <AddTutorial getTutorials={getTutorials}/>
-      <TutorialList/>
+      <TutorialList tutorials={tutorials} getTutorials={getTutorials}/>
     </>
   )
 }
