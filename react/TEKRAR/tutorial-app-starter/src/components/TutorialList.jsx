@@ -35,17 +35,6 @@ const TutorialList = ({ tutorials, getTutorials }) => {
     }
     getTutorials()
   }
-
-  // const editTutor = async(tutor)=>{
-  //   try {
-  //     await axios.put(`${BASE_URL}/${tutor.id}`, tutor)
-  //   } catch (err) {
-  //     console.log(err);
-      
-  //   }
-  //   getTutorials()
-  // }
-
   // const editTutor = async (tutor) => {
   //   try {
   //     await axios.put(`${BASE_URL}/${tutor.id}/`, tutor)
@@ -106,7 +95,7 @@ const TutorialList = ({ tutorials, getTutorials }) => {
         </tbody>
       </table>
 
-      <EditTutorial editItem={editItem} />
+      <EditTutorial editItem={editItem} getTutorials={getTutorials} />
     </div>
   )
 }
