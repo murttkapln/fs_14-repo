@@ -5,6 +5,15 @@ import { useState } from "react"
 const EditTutorial = ({ editItem,getTutorials }) => {
   const { id, description: oldDescription, title: oldTitle } = editItem
 
+  //? https://react.dev/reference/react/useState#usestate
+  //! State degiskeninin degeri, 1.render ile initialState
+  //! parametresinin ilk degerini alir. Dolayisiyle bu durumda
+  //! prop'tan gelen ilk deger state'e aktarilir.
+  //! Sonradan degisen props degerleri useState'e aktarilmaz.
+  //! Eger props'tan gelen degerleri her degisimde useState'e
+  //! aktarmak istersek useEffect hook'unu componentDidUpdate
+  //! gibi kullanabiriz.
+  
   console.log("old:",oldDescription);
   console.log("old:",oldTitle);
 
@@ -12,9 +21,12 @@ const EditTutorial = ({ editItem,getTutorials }) => {
   const [description, setDescription] = useState(oldDescription)
 
 
+
+  //? componentDidUpdate
   useEffect(()=>{
     setTitle(oldTitle)
     setDescription(oldDescription)
+    //* oldTitle ya da oldDescription her degistiginde local title ve description state'lerimizi guncelliyoruz.
   },[oldTitle,oldDescription])
 
   console.log(title); // ilk render   undefined
