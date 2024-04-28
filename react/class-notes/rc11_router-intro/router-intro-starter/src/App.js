@@ -1,4 +1,4 @@
-import { Route,BrowserRouter as  Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
 import Contact from "./pages/Contact";
@@ -12,12 +12,12 @@ function App() {
     <Router>
       <Nav />
       <Routes>
-      <Route path="/" element={<Home />}>
+        <Route path="/" element={<Home />}>
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
 
         </Route>
-        // <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/instructors" element={<Instructors />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
