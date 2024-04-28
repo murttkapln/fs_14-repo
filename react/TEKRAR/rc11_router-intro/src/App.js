@@ -1,11 +1,26 @@
+import Nav from "./components/Nav";
+import Home from "./pages/Home";
+import Instructors from "./pages/Instructors";
+import NotFound from "./pages/NotFound";
+import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
+// import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 
 function App() {
   return (
-    <div className="container text-center bg-dark text-warning ">
-      <h1>Welcome Home</h1>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/instructors" element={<Instructors />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Nav />
+      <Footer />
+    </BrowserRouter>
+  )
 }
 
 export default App;

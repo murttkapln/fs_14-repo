@@ -5,3 +5,5 @@ export const NotFound = () => {
     <div className="p-3">NotFound</div>
   )
 }
+
+export default NotFound
