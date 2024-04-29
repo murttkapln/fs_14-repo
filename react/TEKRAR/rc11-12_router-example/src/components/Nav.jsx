@@ -25,7 +25,7 @@ function Nav({ user, setUser }) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 me-3 mb-lg-0">
             <li className="nav-item">
-              <NavLink to="/" className="nav-link active" aria-current="page">
+              <NavLink to="/" className="nav-link" aria-current="page">
                 Home
               </NavLink>
             </li>
@@ -49,6 +49,7 @@ function Nav({ user, setUser }) {
             {user ? (
               <li className="nav-item">
                 <NavLink
+                  to="/login"
                   className="nav-link"
                   aria-current="page"
                   onClick={handleClick}
