@@ -1,51 +1,61 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({setUser}) => {
-    const [email , setEmail ] = useState("")
-    const [password , setPassword ] = useState("")
-    let navigate = useNavigate()
 
-    const handleSubmit =(e) => {
-        e.preventDefault()
-        setUser({email, password})
-        navigate("/")
+  const [email,setEmail]= useState("")
+  const [password,setPassword]= useState("")
 
-    }
+
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    setUser({email,password})
+    console.log(email,password);
+    sessionStorage.setItem("user", JSON.stringify({email,password}))
+    navigate("/people")
+  }
+
+  let navigate = useNavigate()
+
+
   return (
-    <div className="container mt-4">
+    <div className="container p-5 mt-4  text-secondary fs-5">
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
+          <label htmlFor="email" className="form-label">
             Email address
           </label>
           <input
             type="email"
             className="form-control"
-            id="exampleInputEmail1"
+            id="email"
             aria-describedby="emailHelp"
-            onChange={(e) => setEmail(e.target.value)}
+            required
+            value={email}
+            onChange={(e)=>setEmail(e.target.value)}
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
+          <label htmlFor="password" className="form-label">
             Password
           </label>
           <input
             type="password"
             className="form-control"
-            id="exampleInputPassword1"
-            onChange={(e) => setPassword(e.target.value)}
+            id="password"
+            required
+            value={password}
+            onChange={(e)=> setPassword(e.target.value)}
           />
         </div>
-
-        <button type="submit" className="btn btn-primary">
+        <div className="text-center">
+        <button type="submit" className="btn btn-warning">
           Submit
         </button>
+        </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

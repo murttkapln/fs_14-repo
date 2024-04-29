@@ -1,7 +1,13 @@
 import logo from "../img/logo.png";
-import {NavLink} from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom";
 
-function Nav() {
+function Nav({ user, setUser }) {
+  let navigate = useNavigate();
+
+  const handleClick = () => {
+    setUser("");
+    navigate("/login");
+  };
   return (
     <nav className="navbar navbar-expand-md navbar-light">
       <div className="container-fluid">
@@ -40,6 +46,23 @@ function Nav() {
                 Contact
               </NavLink>
             </li>
+            {user ? (
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  aria-current="page"
+                  onClick={handleClick}
+                >
+                  Logout
+                </NavLink>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <NavLink to="/login" className="nav-link" aria-current="page">
+                  Login
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
       </div>

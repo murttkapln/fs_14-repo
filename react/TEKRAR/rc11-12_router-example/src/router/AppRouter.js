@@ -16,24 +16,29 @@ import { useState } from "react";
 import FullStack from "../pages/FullStack";
 
 const AppRouter = () => {
+  const [user, setUser] = useState(
+    JSON.parse(sessionStorage.getItem("user")) || false
+  );
   return (
     <div>
-      <Nav />
+      <Nav user={user} setUser={setUser} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/paths" element={<Paths />}>
           <Route index element={<FullStack />} />
           <Route path="fullstack" element={<FullStack />}>
             <Route index element={<React />} />
+            <Route path="react" element={<React />} />
             <Route path="next" element={<Next />} />
           </Route>
           <Route path="aws" element={<Aws />} />
         </Route>
-        <Route>
+        <Route element={<PrivateRouter user={user} />}>
           <Route path="/people" element={<People />} />
           <Route path="/people/:id" element={<PersonDetail />} />
         </Route>
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
