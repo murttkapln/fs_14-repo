@@ -1,8 +1,7 @@
-import { Link, Outlet, useNavigate } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 
 
 const Paths = () => {
-  const navigate = useNavigate()
   return (
     <div className="container mt-4">
       <h1>Online IT Courses to Become a Qualified IT Professional with Clarusway</h1>
