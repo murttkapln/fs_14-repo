@@ -16,6 +16,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/people" element={<People />} />
+        <Route>{/* <Route index element={<PersonDetail />} /> */}</Route>
       </Routes>
       <Footer />
     </div>
