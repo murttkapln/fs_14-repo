@@ -35,7 +35,7 @@ const PersonDetail = () => {
         <h3>
           {person?.first_name} {person?.last_name}
         </h3>
-        <Image className="w-50 rounded shadow-lg" src={person?.avatar} />
+        <Image className=" w-25 rounded shadow-lg" src={person?.avatar} />
         <button className=" rounded-4 text-dark mt-3 fs-6">
           {person.email}
         </button>
