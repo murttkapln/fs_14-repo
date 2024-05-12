@@ -8,10 +8,15 @@ import People from "./pages/People";
 import PrivateRouter from "./pages/PrivateRouter";
 import PersonDetail from "./pages/PersonDetail";
 import { LoginContext } from "./context/LoginContext";
+import { useState } from "react";
 
 function App() {
+  //! Local State
+  const [user, setUser] = useState({ email: "", password: "" });
+
+  console.log(user);
   return (
-    <LoginContext.Provider value={{}}>
+    <LoginContext.Provider value={{ user, setUser }}>
       <BrowserRouter>
         <Nav />
         <Routes>

@@ -7,7 +7,8 @@ import { useContext } from "react";
 import { LoginContext } from "../context/LoginContext";
 
 function Navs() {
-  // const { user, setUser } = useContext(LoginContext);
+  //! Consuming Login Context
+  const { user, setUser } = useContext(LoginContext);
   return (
     <Navbar expand="md">
       <Container>
@@ -32,12 +33,20 @@ function Navs() {
             <Link className="nav-link" to="/people">
               People
             </Link>
-            <Link className="nav-link" to="/login">
-              Logout
-            </Link>
-            <Link className="nav-link" to="/login">
-              Login
-            </Link>
+
+            {user.email && user.password ? (
+              <Link
+                className="nav-link"
+                to="/login"
+                onClick={() => setUser({ email: "", password: "" })}
+              >
+                Logout
+              </Link>
+            ) : (
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
