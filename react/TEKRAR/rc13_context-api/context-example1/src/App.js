@@ -26,7 +26,6 @@ function App() {
 
           <Route path="people" element={<PrivateRouter />}>
             <Route path="" element={<People />} />
-            <Route path="people" element={<People />} />
             <Route path=":id" element={<PersonDetail />} />
           </Route>
 

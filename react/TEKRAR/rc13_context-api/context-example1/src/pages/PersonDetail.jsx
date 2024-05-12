@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import Button from "react-bootstrap/esm/Button";
 import Container from "react-bootstrap/esm/Container";
 import Image from "react-bootstrap/esm/Image";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PersonDetail = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [person, setPerson] = useState(null);
   const [error, setError] = useState(false);
@@ -35,10 +37,28 @@ const PersonDetail = () => {
         <h3>
           {person?.first_name} {person?.last_name}
         </h3>
-        <Image className=" w-25 rounded shadow-lg" src={person?.avatar} />
-        <button className=" rounded-4 text-dark mt-3 fs-6">
-          {person.email}
-        </button>
+        <Image
+          className=" w-25 rounded shadow-lg"
+          src={person?.avatar}
+          alt="img"
+        />
+        <h4 className=" rounded-4 text-dark mt-3 fs-6">{person.email}</h4>
+        <Container>
+          <Button
+            onClick={() => navigate("/")}
+            className="me-2"
+            variant="success"
+          >
+            Go Home
+          </Button>
+          <Button
+            onClick={() => navigate(-1)}
+            className="me-2"
+            variant="warning"
+          >
+            Go Back
+          </Button>
+        </Container>
       </Container>
     );
   }
