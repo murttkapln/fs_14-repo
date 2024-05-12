@@ -25,7 +25,7 @@ const People = () => {
       <h1>PEOPLE LISTS</h1>
       <Row className="justify-content-center g-3">
         {people?.map((person, index) => {
-          const { avatar, email, first_name, id, last_name } = person;
+          const { avatar, first_name, id, last_name } = person;
 
           return (
             <Col
@@ -36,12 +36,9 @@ const People = () => {
               type="button"
               onClick={() => navigate(`${id}`)}
             >
-              <Image className="rounded" src={avatar} />
+              <Image className="rounded" src={avatar} alt="img" />
               <h6 className="fs-4 text-dark">
                 {first_name} {last_name}
-              </h6>
-              <h6 className="text-dark btn btn-outline-warning rounded-top-circle ">
-                {email}
               </h6>
             </Col>
           );
